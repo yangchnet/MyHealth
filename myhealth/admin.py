@@ -3,6 +3,7 @@ from .models import  *
 # Register your models here.
 admin.site.register(NormalUser)
 admin.site.register(DoctorUser)
-admin.site.register(Bolg)
-admin.site.register(BlogCommon)
-admin.site.register(CommonReply)
+admin.site.register(Blog)
+admin.site.register(TopComment)
+admin.site.register(BottomComment)
+# admin.site.register(Commont)

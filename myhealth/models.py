@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 class NormalUser(User):
@@ -8,24 +10,30 @@ class NormalUser(User):
 class DoctorUser(User):
     usertype = models.CharField(default='2', max_length=2)
 
-class Bolg(models.Model):
+
+class Blog(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    essay = RichTextUploadingField(verbose_name='正文')
+    date = models.DateTimeField(default=datetime.datetime.now())
     title = models.CharField(max_length=100, default='', primary_key=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1, primary_key=True)
     label = models.CharField(default='', max_length=20)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    date = models.DateTimeField()
     views = models.IntegerField(default=0)
-    article = models.TextField(max_length=10000)
 
-class BlogCommon (models.Model):
-    article = models.ForeignKey(Bolg, on_delete=models.CASCADE, default=1)
+class BaseComment(models.Model):
+    time = models.DateTimeField()
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    date = models.DateTimeField()
-    commont = models.TextField(max_length=1000, default='')
+    content = RichTextUploadingField(verbose_name='正文', )
 
-class CommonReply(models.Model):
-    common = models.ForeignKey(BlogCommon, on_delete=models.CASCADE, default=1)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
-    date = models.DateTimeField()
-    reply = models.TextField(max_length=1000, default='')
+    class Meta:
+        abstract = True
+
+class TopComment(BaseComment):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    class Meta:
+        ordering = ['-time']
+
+class BottomComment(BaseComment):
+    topcomment = models.ForeignKey(TopComment, on_delete=models.CASCADE)
+
+
 

@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import widgets
+from ckeditor.fields import RichTextFormField
 
 class Register(forms.Form):
     user_name = forms.CharField()
@@ -13,3 +14,6 @@ class Register(forms.Form):
 class Login(forms.Form):
     user_name = forms.CharField()
     user_password = forms.CharField()
+
+class CKEditorForm(forms.Form):
+    content = RichTextFormField()

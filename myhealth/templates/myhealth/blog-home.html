@@ -91,7 +91,7 @@
                                         <li><a href="#">{{ page.author_id }}<i class="fa fa-user-o"></i></a></li>
                                         <li><a href="#">{{ page.date }}<i class="fa fa-calendar-o"></i></a></li>
                                         <li><a href="#">{{ page.views }}<i class="fa fa-eye"></i></a></li>
-                                        <li><a href="#">{{ page.common.len }}<i class="fa fa-comment-o"></i></a></li>
+                                        <li><a href="#">{{ page.commonts }}<i class="fa fa-comment-o"></i></a></li>
                                     </ul>
                                 </div>
                            </div>
@@ -99,9 +99,9 @@
                                 <div class="blog_post">
                                     <img src="{% static "assets/images/blog/main-blog/m-blog-1.jpg" %}" alt="">
                                     <div class="blog_details">
-                                        <a href="blog-details.html"><h4>{{ page.title }}</h4></a>
+                                        <a href="../blog/{{ page.id }}"><h4>{{ page.title }}</h4></a>
                                         <p>{{ page.abstract }}......</p>
-                                        <a href="blog-details.html" class="template-btn">View More</a>
+                                        <a href="./blog/{{ page.id }}" class="template-btn">View More</a>
                                     </div>
                                 </div>
                             </div>
