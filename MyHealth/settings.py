@@ -123,15 +123,19 @@ CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'language': 'zh-cn',
-        'skin': 'moono',
-        # 'skin': 'office2013',
-        'height': 100,
-        'width':  "200%",
-        # 'filebrowserWindowHeight': 200,
-        # 'filebrowserWindowWidth': 500,
-        # 'toolbarCanCollapse': True,
-        # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        # 编辑器的宽高请根据你的页面自行设置
+        'width': '800px',
+        'height': '150px',
+        'image_previewText': ' ',
         'tabSpaces': 4,
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Format', 'RemoveFormat'],
+            ['NumberedList', 'BulletedList'],
+            ['Blockquote', 'CodeSnippet'],
+            ['Image', 'Link', 'Unlink']
+        ],
     }
 }
+
+AUTH_USER_MODEL = 'myhealth.mhUser'
