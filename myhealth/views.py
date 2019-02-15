@@ -126,8 +126,9 @@ def blog(request, blog_id):
         page['views'] = blog.views
         page['article'] = blog.essay
         ck = CKEditorForm()
-        comment = BlogCommentView()
+        comments = blogcommentview(request, blog_id)
         if request.user.is_authenticated:
             context = {'log_placeholder': '注销', 'log_url_placeholder': '../logout',
-                       'page': page, 'ck':ck, 'comment': comment}
+                       'page': page, 'ck':ck, 'comments': comments, 'comments_count': len(comments),
+                       'blog_id':blog_id}
         return render(request, 'myhealth/blog-details.html', context)

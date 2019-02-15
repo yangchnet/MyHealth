@@ -1,14 +1,19 @@
 from django.forms import ModelForm, HiddenInput
 from .models import BlogComment, BottomComment
-from ckeditor.fields import CKEditorWidget
+from ckeditor.widgets import CKEditorWidget
+from django import forms
+from ckeditor.fields import RichTextFormField
 
 class BlogCommentForm(ModelForm):
     class Meta:
         model = BlogComment
-        fields = ['comment', 'followed_blog']
+        fields = ['comment']
         widgets = {
-            'comment': CKEditorWidget,
+            'comment': CKEditorWidget
         }
+
+class CKEditorForm(forms.Form):
+    content = RichTextFormField()
 
 class BottomCommentForm(ModelForm):
     class Meta:

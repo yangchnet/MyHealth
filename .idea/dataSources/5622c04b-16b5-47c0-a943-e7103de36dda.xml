@@ -168,7 +168,7 @@ codename</ColNames>
     </column>
     <column id="47" parent="9" name="followed_blog_id">
       <Position>5</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <index id="48" parent="9" name="comment_blogcomment_author_id_2973356d">
@@ -193,7 +193,7 @@ codename</ColNames>
     <foreign-key id="52" parent="9">
       <ColNames>followed_blog_id</ColNames>
       <RefTableName>myhealth_blog</RefTableName>
-      <RefColNames>title</RefColNames>
+      <RefColNames>id</RefColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
     </foreign-key>
@@ -426,19 +426,19 @@ model</ColNames>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="98" parent="15" name="label">
+    <column id="98" parent="15" name="title">
       <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="99" parent="15" name="label">
+      <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="99" parent="15" name="views">
-      <Position>5</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="100" parent="15" name="cover">
+    <column id="100" parent="15" name="views">
       <Position>6</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="101" parent="15" name="author_id">
@@ -446,10 +446,9 @@ model</ColNames>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="102" parent="15" name="title">
+    <column id="102" parent="15" name="cover">
       <Position>8</Position>
       <DataType>varchar(100)|0s</DataType>
-      <NotNull>1</NotNull>
     </column>
     <index id="103" parent="15" name="myhealth_blog_author_id_79a22ee2">
       <ColNames>author_id</ColNames>
