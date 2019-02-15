@@ -100,7 +100,7 @@
                                     <img src="{% static "assets/images/blog/main-blog/m-blog-1.jpg" %}" alt="">
                                     <div class="blog_details">
                                         <a href="../blog/{{ page.id }}"><h4>{{ page.title }}</h4></a>
-                                        <p>{{ page.abstract }}......</p>
+                                        <p>{{ page.abstract|safe }}......</p>
                                         <a href="./blog/{{ page.id }}" class="template-btn">View More</a>
                                     </div>
                                 </div>

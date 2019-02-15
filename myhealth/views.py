@@ -98,12 +98,11 @@ def bloghome(request, page_id):
                     'views': '', 'article': '', 'abstract': '', 'commonts': ''}
             page['id'] = b.pk
             page['title'] = b.title
-            page['author_id'] = User.objects.get(id=b.author_id).username
+            page['author_id'] = b.author
             page['label'] = b.label
             page['date'] = b.date
             page['views'] = b.views
             page['article'] = b.essay
-            page['commonts'] = str(len(list(TopComment.objects.filter(blog=b))))
             page['abstract'] = b.essay[:50]
 
             pages.append(page)
