@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+
 <head>
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
@@ -100,9 +101,10 @@
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9 blog_details">
+                        {{ content|safe }}
                         <h5>{{ page.title }}</h5>
                         <p class="excert">
-                            {{ page.article }}
+                            {{ page.article|safe }}
                         </p>
                     </div>
                 </div>
@@ -274,58 +276,6 @@
                                 <p>01 Hours ago</p>
                             </div>
                         </div>
-                        <div class="br"></div>
-                    </aside>
-                    <aside class="single_sidebar_widget ads_widget">
-                        <a href="#"><img class="img-fluid" src="{% static "" %}assets/images/blog/add.jpg" alt=""></a>
-                        <div class="br"></div>
-                    </aside>
-                    <aside class="single_sidebar_widget post_category_widget">
-                        <h4 class="widget_title">Post Catgories</h4>
-                        <ul class="list cat-list">
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Technology</p>
-                                    <p>37</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Lifestyle</p>
-                                    <p>24</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Fashion</p>
-                                    <p>59</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Art</p>
-                                    <p>29</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Food</p>
-                                    <p>15</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Architecture</p>
-                                    <p>09</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="d-flex justify-content-between">
-                                    <p>Adventure</p>
-                                    <p>44</p>
-                                </a>
-                            </li>
-                        </ul>
                         <div class="br"></div>
                     </aside>
                 </div>

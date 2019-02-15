@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'comment.apps.CommentConfig',
     'ckeditor',
     'ckeditor_uploader',
     'myhealth.apps.MyhealthConfig',

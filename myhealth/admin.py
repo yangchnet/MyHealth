@@ -4,4 +4,5 @@ from .models import  *
 admin.site.register(mhUser)
 admin.site.register(Blog)
 
+
 # admin.site.register(Commont)
