@@ -153,7 +153,7 @@ def bloghome(request, page_id):
             page['commonts'] = str(len(list(TopComment.objects.filter(blog=b))))
             page['abstract'] = b.essay[:50]
 
-
+            pages.append(page)
         if request.user.is_authenticated:
             context = {'log_placeholder': '注销', 'log_url_placeholder': '../logout', \
                        'pages': pages, 'page_range': range(page_id, page_id+5), 'page_id': page_id}
