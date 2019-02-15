@@ -1,0 +1,142 @@
+<script>
+    $(function () {
+        var bodyHeight = $("body").height();
+        var windowHeight = $(window).height();
+        if ((bodyHeight - windowHeight) < 100) {
+            //页面高度比浏览器高度小100时加载一次评论
+            loadCommentWhenScollToBottom();
+        }
+        $(window).scroll(loadCommentWhenScollToBottom);
+    });
+
+    //滚动到页面底部时加载评论
+    function loadCommentWhenScollToBottom() {
+        var docHeight = $(document).height();
+        var scrollBottom = $(window).scrollTop() + $(window).height();
+        if (docHeight - scrollBottom < 100) {
+            if ($("#comment .loading").length == 0) {
+                //防止重复加载
+                $("#comment").append('<div class="loading" style="text-align:center;">loading</div>');
+                var last_ul = $("#comment>ul").last();
+                if (last_ul.length == 0) {
+                    getCommentList();
+                } else if (last_ul.attr("data-next") == "True") {
+                    var page = parseInt(last_ul.attr("data-page"));
+                    getCommentList(page + 1);
+                } else {
+                    //评论加载完毕，不再发送请求
+                    $(window).unbind("scroll");
+                    $("#comment .loading").remove()
+                }
+            }
+        }
+    }
+
+    //获取评论列表
+    function getCommentList(page) {
+        var url = $("#comment").attr("data-url");
+        if (page) {
+            url += "?page=" + page;
+        }
+        $.get(url, function (data, status) {
+            //$.get()是异步请求，在得到服务器响应后才能操作相应DOM
+            if (status == "success") {
+                $("#comment").append(data);
+                var reply_this = $(".reply-this");
+                reply_this.unbind("click");
+                //绑定reply方法
+                reply_this.click(reply);
+                $("#comment .loading").remove();
+            } else {
+                $("#comment .loading").html("无法加载评论");
+            }
+        });
+    }
+
+    function reply() {
+        var reply_id = $(this).attr("data-reply-id");
+        var reply_user = $(this).siblings(".username").first().text();
+        var reply_list, comment_id, reply_form;
+        //判断回复的是几级评论，并获取相应的id
+        if (reply_id) {
+            reply_list = $(this).parent().parent();
+            comment_id = reply_list.siblings(".reply-this").attr("data-comment-id");
+        } else {
+            reply_list = $(this).siblings(".reply-list");
+            comment_id = $(this).attr("data-comment-id");
+        }
+        if ($("#comment-form").length == 0) {
+            //没有#comment-form意味着未登录
+            $("body").animate({scrollTop: $("#comment .login").offset().top - 100}, 500);
+        } else {
+            if (reply_list.siblings(".reply-form").length == 0) {
+                //创建二级评论表单，该表单插在一级评论下方
+                reply_list.after('<form class="reply-form" action="/article/comment/reply/create/" method="post">'
+                    + '<input type="hidden" name="reply" value>'
+                    + '<input type="hidden" name="comment" value></form>');
+                reply_form = reply_list.siblings(".reply-form");
+                reply_form.append($("#comment-form").html());
+                reply_form.find("input[name=comment]").val(comment_id);
+                reply_form.find(".submit").prepend('<span></span><span class="cancel">取消</span>');
+                reply_form.find(".cancel").click(cancelReply);
+            } else {
+                //获取已存在的表单
+                reply_form = reply_list.siblings(".reply-form");
+            }
+            reply_form.find("input[name=reply]").val(reply_id);
+            reply_form.find(".submit span").first().html('回复 ' + reply_user);
+            $("body").animate({scrollTop: reply_form.offset().top - 100}, 500);
+        }
+    }
+
+    function cancelReply() {
+        $(this).parent().parent().remove();
+    }
+</script>
+
+
+{% if page_obj.number == 1 %}
+    <div class="title">{{ paginator.count }}条评论</div>
+    {% if user.is_authenticated %}
+        <form id="comment-form" action="{% url 'myhealth:blog/1' %}" method="post" data-login-user="{{ user.id }}">
+            {% csrf_token %}
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+            <div class="submit">
+                <input type="submit" class="button" value="评论">
+            </div>
+        </form>
+    {% else %}
+        <div class="need-login">
+            <a href="{% url 'account:login' %}?next={% url 'blog:detail' article_id %}">登录后即可评论</a>
+        </div>
+    {% endif %}
+{% endif %}
+
+<ul class="comment-list" data-page="{{ page_obj.number }}" data-next="{{ page_obj.has_next }}">
+    {% for i, comment in comment_list %}
+        <li class="comment-item">
+            <a class="username" href="#">{{ comment.user.username }}</a>
+            <span style="float: right;">#{{ i }}</span>
+            <div class="content">{{ comment.content }}</div>
+            <span>{{ comment.time }}&emsp;</span>
+            <span class="reply-this" data-comment-id="{{ comment.id }}" data-user-id="{{ comment.user.id }}">回复</span>
+            <ul class="reply-list">
+                {% for reply in comment.replies.all %}
+                    <li class="reply-item">
+                        <a class="username" href="#">{{ reply.user.username }}</a>
+                        {% if reply.reply.id %}
+                            <span> 回复 </span>
+                            <a class="username" href="#">{{ reply.reply.user.username }}</a>
+                        {% endif %}
+                        <div class="content">{{ reply.content }}</div>
+                        <span>{{ reply.time }}&emsp;</span>
+                        <span class="reply-this" data-reply-id="{{ reply.id }}"
+                              data-user-id="{{ reply.user.id }}">回复</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% empty %} 暂无评论 {% endfor %}
+</ul>

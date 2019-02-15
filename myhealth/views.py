@@ -8,7 +8,7 @@ from django.db import IntegrityError
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect
 from comment.forms import *
-
+from comment.views import *
 # Create your views here.
 def index(request):
     '''
@@ -115,11 +115,9 @@ def bloghome(request, page_id):
                        'pages': pages, 'page_range': range(page_id, page_id+5), 'page_id': page_id}
         return render(request, 'myhealth/blog-home.html', context)
 
-def blog(request, blog_title):
+def blog(request, blog_id):
     if request.method == 'GET':
-        blog = Blog.objects.get(title=blog_title)
-        commonreply = {'author': '', 'date': '', 'reply': ''}
-        common = {'author': '', 'date': '', 'commont': '', 'reply': []}
+        blog = Blog.objects.get(pk=blog_id)
         page = {'title': '', 'author_id': '', 'label': '', 'date': '', \
                 'views': '', 'article': '', 'common': [], 'abstract': ''}
         page['title'] = blog.title
@@ -129,7 +127,8 @@ def blog(request, blog_title):
         page['views'] = blog.views
         page['article'] = blog.essay
         ck = CKEditorForm()
+        comment = BlogCommentView()
         if request.user.is_authenticated:
             context = {'log_placeholder': '注销', 'log_url_placeholder': '../logout',
-                       'page': page, 'ck':ck}
+                       'page': page, 'ck':ck, 'comment': comment}
         return render(request, 'myhealth/blog-details.html', context)

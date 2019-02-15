@@ -410,19 +410,20 @@ model</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_django_session_1</UnderlyingIndexName>
     </key>
-    <column id="95" parent="15" name="essay">
+    <column id="95" parent="15" name="id">
       <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="96" parent="15" name="essay">
+      <Position>2</Position>
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="96" parent="15" name="date">
-      <Position>2</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="97" parent="15" name="title">
+    <column id="97" parent="15" name="date">
       <Position>3</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="98" parent="15" name="label">
@@ -445,20 +446,18 @@ model</ColNames>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="102" parent="15" name="sqlite_autoindex_myhealth_blog_1">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>title</ColNames>
-      <ColumnCollations></ColumnCollations>
-      <Unique>1</Unique>
-    </index>
+    <column id="102" parent="15" name="title">
+      <Position>8</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
     <index id="103" parent="15" name="myhealth_blog_author_id_79a22ee2">
       <ColNames>author_id</ColNames>
       <ColumnCollations></ColumnCollations>
     </index>
     <key id="104" parent="15">
-      <ColNames>title</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
-      <UnderlyingIndexName>sqlite_autoindex_myhealth_blog_1</UnderlyingIndexName>
     </key>
     <foreign-key id="105" parent="15">
       <ColNames>author_id</ColNames>
