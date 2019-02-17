@@ -95,7 +95,7 @@ def bloghome(request, page_id):
         blog = Blog.objects.all()[4 * (page_id - 1): 4 * page_id]
         for b in blog:
             page = {'id': '', 'title': '', 'author_id': '', 'label': '', 'date': '', \
-                    'views': '', 'article': '', 'abstract': '', 'commonts': ''}
+                    'views': '', 'article': '', 'abstract': '', 'cover': ''}
             page['id'] = b.pk
             page['title'] = b.title
             page['author_id'] = b.author
@@ -104,7 +104,7 @@ def bloghome(request, page_id):
             page['views'] = b.views
             page['article'] = b.essay
             page['abstract'] = b.essay[:50]
-
+            page['cover'] = b.cover
             pages.append(page)
         if request.user.is_authenticated:
             context = {'log_placeholder': '注销', 'log_url_placeholder': '../logout', \

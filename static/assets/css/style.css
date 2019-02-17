@@ -194,7 +194,7 @@ input:focus, textarea:focus {
     padding: 7px 10px;
     text-decoration: none;
     display: inline-block;
-    color: #222;
+    color: #ffffff;
     font-weight: 500;
     font-size: 20px;
     text-transform: uppercase;
@@ -440,7 +440,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #header.header-scrolled {
-    background: #f9f9fd;
+    background: #0C4B33;
     transition: all 0.5s;
     top: 0
 }

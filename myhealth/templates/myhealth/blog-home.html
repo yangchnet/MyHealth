@@ -11,7 +11,7 @@
     <title>Blog Home</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static "assets/images/logo/favicon.png" %}" type="image/x-icon">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{% static "assets/css/animate-3.7.0.css" %}">
@@ -97,7 +97,8 @@
                            </div>
                             <div class="col-md-9">
                                 <div class="blog_post">
-                                    <img src="{% static "assets/images/blog/main-blog/m-blog-1.jpg" %}" alt="">
+                                    <img src="{% get_media_prefix %}/{{ page.cover }}" alt = "{{ page.cover }}">
+{#                                    <img src="{% static "assets/images/blog/main-blog/m-blog-1.jpg" %}" alt="">#}
                                     <div class="blog_details">
                                         <a href="../blog/{{ page.id }}"><h4>{{ page.title }}</h4></a>
                                         <p>{{ page.abstract|safe }}......</p>
