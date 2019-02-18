@@ -1,13 +1,13 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-from myhealth.models import mhUser, Blog
-
+from myhealth.models import  Blog, MhUser
+from django.contrib.auth.models import User, AbstractUser
 
 # Create your models here.
 class BaseComment(models.Model):
     comment = RichTextUploadingField(verbose_name='评论')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
-    author = models.ForeignKey(mhUser, on_delete=models.CASCADE, verbose_name='作者')
+    author = models.ForeignKey(MhUser, on_delete=models.CASCADE, verbose_name='作者')
 
     class Meta:
         abstract = True

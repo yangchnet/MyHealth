@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-zh">
+
 {% load static %}
 <head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +24,8 @@
     <link rel="stylesheet" href="{% static "myhealth/assets/css/jquery.datetimepicker.min.css" %}">
     <link rel="stylesheet" href="{% static "myhealth/assets/css/linearicons.css" %}">
     <link rel="stylesheet" href="{% static "myhealth/assets/css/style.css" %}">
+{#    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>#}
+{#    <script src="https://code.highcharts.com/highcharts.js"></script>#}
 </head>
 
 
@@ -37,8 +42,9 @@
         <div class="container">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="{% url 'myhealth:index' %}"><img src="{% static "myhealth/assets/images/logo/logo.png" %}" alt=""
-                                           title=""/></a>
+                    <a href="{% url 'myhealth:index' %}"><img src="{% static "myhealth/assets/images/logo/logo.png" %}"
+                                                              alt=""
+                                                              title=""/></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
@@ -51,15 +57,20 @@
                                 <li><a href="">售后服务</a></li>
                             </ul>
                         </li>
-                        <li class="menu-has-children"><a href="{% url 'myhealth:individual' 1 %}">我的</a>
-                            <ul>
-                                <li><a href="">心率监测</a></li>
-                                <li><a href="">血氧监测</a></li>
-                                <li><a href="">历史数据</a></li>
-                                <li><a href="">个人信息</a></li>
-                                <li><a href="">全部数据</a></li>
-                                <li><a href="">收到的信息</a></li>
-                            </ul>
+                        {% if user.is_authenticated %}
+                            <li class="menu-has-children"><a href="{% url 'myhealth:individual' user.id %}">我的</a>
+                                {% else %}
+                            <li class="menu-has-children"><a href="{% url 'myhealth:individual' 1 %}">我的</a>
+                        {% endif %}
+                        {#                        <li class="menu-has-children"><a href="{% url 'myhealth:individual' user.id %}">我的</a>#}
+                        <ul>
+                            <li><a href="">心率监测</a></li>
+                            <li><a href="">血氧监测</a></li>
+                            <li><a href="">历史数据</a></li>
+                            <li><a href="">个人信息</a></li>
+                            <li><a href="">全部数据</a></li>
+                            <li><a href="">收到的信息</a></li>
+                        </ul>
                         </li>
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'myhealth:logout' %}">注销</a></li>
@@ -111,8 +122,8 @@
                         <h3 class="mb-4">没找到你想要的？</h3>
                         <p class="mb-4">请在下方搜索框内输入搜索项</p>
                         <form action="#">
-                            <input type="text" placeholder="search here" onfocus="this.placeholder = ''"
-                                   onblur="this.placeholder = 'Your email here'" required>
+                            <input type="text" placeholder="找到你想要的" onfocus="this.placeholder = ''"
+                                   onblur="this.placeholder = '找到你想要的'" required>
                             <button type="submit" class="template-btn">search now</button>
                         </form>
                     </div>
@@ -152,7 +163,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Footer Area End -->
 
 <!-- Javascript -->
-<script src="{% static "myhealth/assets/js/vendor/jquery-2.2.4.min.js" %}"></script>
+
+{#<script src="{% static "myhealth/assets/js/vendor/jquery-2.2.4.min.js" %}"></script>#}
 <script src="{% static "myhealth/assets/js/vendor/bootstrap-4.1.3.min.js" %}"></script>
 <script src="{% static "myhealth/assets/js/vendor/wow.min.js" %}"></script>
 <script src="{% static "myhealth/assets/js/vendor/owl-carousel.min.js" %}"></script>

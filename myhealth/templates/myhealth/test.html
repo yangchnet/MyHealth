@@ -1,22 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <link rel="stylesheet" href="style.css" />
-    <title>{% block title %}My amazing site{% endblock %}</title>
+   <title>Highcharts 教程 | 菜鸟教程(runoob.com)</title>
+   <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+   <script src="https://code.highcharts.com/modules/data.js"></script>
 </head>
-
 <body>
-    <div id="sidebar">
-        {% block sidebar %}
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog/">Blog</a></li>
-        </ul>
-        {% endblock %}
-    </div>
+<div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div>
+<script language="JavaScript">
+$(document).ready(function() {
+   var title = {
+      text: 'Daily visits at www.highcharts.com'
+   };
+   var subtitle = {
+      text: 'Source: Google Analytics'
+   };
+   var xAxis = {
+      tickInterval: 7 * 24 * 3600 * 1000, // one week
+      tickWidth: 0,
+      gridLineWidth: 1,
+      labels: {
+         align: 'left',
+         x: 3,
+         y: -3
+      }
+   };
+   var yAxis = [{ // left y axis
+         title: {
+            text: null
+         },
+         labels: {
+            align: 'left',
+            x: 3,
+            y: 16,
+            format: '{value:.,0f}'
+         },
+         showFirstLabel: false
+      },{ // right y axis
+         linkedTo: 0,
+         gridLineWidth: 0,
+         opposite: true,
+         title: {
+            text: null
+         },
+         labels: {
+            align: 'right',
+            x: -3,
+            y: 16,
+            format: '{value:.,0f}'
+         },
+         showFirstLabel: false
+      }
+   ];
 
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+   var tooltip = {
+      shared: true,
+      crosshairs: true
+   }
+
+   var legend = {
+      align: 'left',
+      verticalAlign: 'top',
+      y: 20,
+      floating: true,
+      borderWidth: 0
+   };
+
+   var plotOptions = {
+      series: {
+         cursor: 'pointer',
+         point: {
+            events: {
+               click: function (e) {
+                  hs.htmlExpand(null, {
+                     pageOrigin: {
+                        x: e.pageX || e.clientX,
+                        y: e.pageY || e.clientY
+                     },
+                     headingText: this.series.name,
+                     maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x)
+                        + ':<br/> ' + this.y + ' visits',
+                     width: 200
+                  });
+               }
+            }
+         },
+         marker: {
+            lineWidth: 1
+         }
+      }
+   }
+
+   var series =  [{
+         name: 'All visits',
+         lineWidth: 4,
+         marker: {
+            radius: 4
+         }
+      }, {
+         name: 'New visitors'
+      }]
+
+   var json = {};
+
+   json.title = title;
+   json.subtitle = subtitle;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.legend = legend;
+   json.series = series;
+   json.plotOptions = plotOptions;
+
+   $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=analytics.csv&callback=?', function (csv) {
+      var data = {
+         csv: csv
+      };
+	  json.data = data;
+	  $('#container').highcharts(json);
+   });
+});
+</script>
 </body>
 </html>

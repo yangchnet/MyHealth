@@ -141,6 +141,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-AUTH_USER_MODEL = 'myhealth.mhUser'
+AUTH_USER_MODEL = 'myhealth.MhUser'
 
 LOGIN_URL = '/myhealth/login'
