@@ -7,7 +7,7 @@ class Register(forms.Form):
     user_email = forms.EmailField()
     user_password = forms.CharField()
     user_type = forms.CharField(
-        widget=widgets.RadioSelect(choices=[(1, '普通用户'), (2, '医生')]),
+        widget=widgets.RadioSelect(choices=[('normal', '普通用户'), ('doctor', '医生')]),
         initial=[1, 2],
     )
 

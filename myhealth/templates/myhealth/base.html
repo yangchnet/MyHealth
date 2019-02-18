@@ -8,144 +8,158 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Page Title -->
-    <title>Medino</title>
+    <title>{% block title %}parent{% endblock %}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static "assets/images/logo/favicon.png" %}" type="image/x-icon">
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{% static "assets/css/animate-3.7.0.css" %}">
-    <link rel="stylesheet" href="{% static "assets/css/font-awesome-4.7.0.min.css"%}">
-    <link rel="stylesheet" href="{% static "assets/css/bootstrap-4.1.3.min.css" %}">
-    <link rel="stylesheet" href="{% static "assets/css/owl-carousel.min.css" %}">
-    <link rel="stylesheet" href="{% static "assets/css/jquery.datetimepicker.min.css" %}">
-    <link rel="stylesheet" href="{% static "assets/css/linearicons.css" %}">
-    <link rel="stylesheet" href="{% static "assets/css/style.css" %}">
+    <link rel="stylesheet" href="{% static "myhealth/assets/css/animate-3.7.0.css" %}">
+    <link rel="stylesheet" href="{% static "myhealth/assets/css/font-awesome-4.7.0.min.css" %}">
+    <link rel="stylesheet" href="{% static "myhealth/assets/css/bootstrap-4.1.3.min.css" %}">
+    <link rel="stylesheet" href="{% static "myhealth/assets/css/owl-carousel.min.css" %}">
+    <link rel="stylesheet" href="{% static "myhealth/assets/css/jquery.datetimepicker.min.css" %}">
+    <link rel="stylesheet" href="{% static "myhealth/assets/css/linearicons.css" %}">
+    <link rel="stylesheet" href="{% static "myhealth/assets/css/style.css" %}">
 </head>
 
 
 <body>
-    <!-- Preloader Starts -->
-    <div class="preloader">
-        <div class="spinner"></div>
-    </div>
-    <!-- Preloader End -->
+<!-- Preloader Starts -->
+<div class="preloader">
+    <div class="spinner"></div>
+</div>
+<!-- Preloader End -->
 
-    <!-- Header Area Starts -->
-    <header class="header-area">
-        <div id="header" id="home">
-            <div class="container">
-                <div class="row align-items-center justify-content-between d-flex">
+<!-- Header Area Starts -->
+<header class="header-area">
+    <div id="header" id="home">
+        <div class="container">
+            <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="./index"><img src="{% static "assets/images/logo/logo.png" %}" alt="" title="" /></a>
+                    <a href="{% url 'myhealth:index' %}"><img src="{% static "myhealth/assets/images/logo/logo.png" %}" alt=""
+                                           title=""/></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
                         <li class="menu-active"><a href="{% url 'myhealth:index' %}">主页</a></li>
-                        <li><a href="./bloghome/1">社区</a></li>
-                        <li><a href="./doctors.">医生</a></li>
-                        <li class="menu-has-children"><a href="">设备</a>
+                        <li><a href="{% url 'myhealth:bloghome' 1 %}">社区</a></li>
+                        <li><a href="{% url 'myhealth:doctors' %}">医生</a></li>
+                        <li class="menu-has-children"><a href="{% url 'myhealth:devices' %}">设备</a>
                             <ul>
-                                <li><a href="./about">购买设备</a></li>
-                                <li><a href="./elements">售后服务</a></li>
+                                <li><a href="">购买设备</a></li>
+                                <li><a href="">售后服务</a></li>
                             </ul>
                         </li>
-                        <li><a href="./personal">我的</a></li>
-                        <li><a href="{{ log_url_placeholder }}">{{ log_placeholder }}</a></li>
+                        <li class="menu-has-children"><a href="{% url 'myhealth:individual' 1 %}">我的</a>
+                            <ul>
+                                <li><a href="">心率监测</a></li>
+                                <li><a href="">血氧监测</a></li>
+                                <li><a href="">历史数据</a></li>
+                                <li><a href="">个人信息</a></li>
+                                <li><a href="">全部数据</a></li>
+                                <li><a href="">收到的信息</a></li>
+                            </ul>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'myhealth:logout' %}">注销</a></li>
+                        {% else %}
+                            <li><a href="{% url 'myhealth:login' %}">登录</a></li>
+                        {% endif %}
+
 
                     </ul>
                 </nav><!-- #nav-menu-container -->
-                </div>
             </div>
         </div>
-    </header>
-    <!-- Header Area End -->
+    </div>
+</header>
+<!-- Header Area End -->
 
-    <!-- Banner Area Starts -->
-    <section class="banner-area">
+<!-- Banner Area Starts -->
+<section class="banner-area">
+    <div class="container">
+        <div class="row">
+            {% block banner %}
+
+            {% endblock %}
+        </div>
+    </div>
+</section>
+<!-- Banner Area End -->
+
+{% block body %}
+{% endblock %}
+
+<!-- Footer Area Starts -->
+<footer class="footer-area section-padding">
+    <div class="footer-widget">
         <div class="container">
             <div class="row">
-                <div class="col-lg-5">
-                    <h4>为了更好的生活</h4>
-                    <h1>引领时尚的医疗方式</h1>
-                    <p>无需去医院，只需在家动动手指即可对身体进行全方位检查</p>
-                    <a href="./register" class="template-btn mt-3">注册</a>
+                <div class="col-xl-2 col-lg-3">
+                    <div class="single-widget-home mb-5 mb-lg-0">
+                        <h3 class="mb-4">联系我们</h3>
+                        <ul>
+                            <li class="mb-2"><a href="#">QQ</a></li>
+                            <li class="mb-2"><a href="#">微信</a></li>
+                            <li class="mb-2"><a href="#">微博</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Banner Area End -->
-
-
-    <!-- Footer Area Starts -->
-    <footer class="footer-area section-padding">
-        <div class="footer-widget">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-2 col-lg-3">
-                        <div class="single-widget-home mb-5 mb-lg-0">
-                            <h3 class="mb-4">联系我们</h3>
-                            <ul>
-                                <li class="mb-2"><a href="#">QQ</a></li>
-                                <li class="mb-2"><a href="#">微信</a></li>
-                                <li class="mb-2"><a href="#">微博</a></li>
-                            </ul>
-                        </div>
+                <div class="col-xl-5 offset-xl-1 col-lg-6">
+                    <div class="single-widget-home mb-5 mb-lg-0">
+                        <h3 class="mb-4">没找到你想要的？</h3>
+                        <p class="mb-4">请在下方搜索框内输入搜索项</p>
+                        <form action="#">
+                            <input type="text" placeholder="search here" onfocus="this.placeholder = ''"
+                                   onblur="this.placeholder = 'Your email here'" required>
+                            <button type="submit" class="template-btn">search now</button>
+                        </form>
                     </div>
-                    <div class="col-xl-5 offset-xl-1 col-lg-6">
-                        <div class="single-widget-home mb-5 mb-lg-0">
-                            <h3 class="mb-4">没找到你想要的？</h3>
-                            <p class="mb-4">请在下方搜索框内输入搜索项</p>
-                            <form action="#">
-                                <input type="text" placeholder="search here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email here'" required>
-                                <button type="submit" class="template-btn">search now</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 offset-xl-1 col-lg-3">
-                        <div class="single-widge-home">
-                            <h3 class="mb-4">活跃用户</h3>
-                            <div class="feed">
-                                <img src="{% static "assets/images/feed1.jpg" %}" alt="feed">
-                                <img src="{% static "assets/images/feed2.jpg" %}" alt="feed">
-                                <img src="{% static "assets/images/feed3.jpg" %}" alt="feed">
-                                <img src="{% static "assets/images/feed4.jpg" %}" alt="feed">
-                                <img src="{% static "assets/images/feed5.jpg" %}" alt="feed">
-                                <img src="{% static "assets/images/feed6.jpg" %}" alt="feed">
-                                <img src="{% static "assets/images/feed7.jpg" %}" alt="feed">
-                                <img src="{% static "assets/images/feed8.jpg" %}" alt="feed">
-                            </div>
+                </div>
+                <div class="col-xl-3 offset-xl-1 col-lg-3">
+                    <div class="single-widge-home">
+                        <h3 class="mb-4">活跃用户</h3>
+                        <div class="feed">
+                            <img src="{% static "myhealth/assets/images/feed1.jpg" %}" alt="feed">
+                            <img src="{% static "myhealth/assets/images/feed2.jpg" %}" alt="feed">
+                            <img src="{% static "myhealth/assets/images/feed3.jpg" %}" alt="feed">
+                            <img src="{% static "myhealth/assets/images/feed4.jpg" %}" alt="feed">
+                            <img src="{% static "myhealth/assets/images/feed5.jpg" %}" alt="feed">
+                            <img src="{% static "myhealth/assets/images/feed6.jpg" %}" alt="feed">
+                            <img src="{% static "myhealth/assets/images/feed7.jpg" %}" alt="feed">
+                            <img src="{% static "myhealth/assets/images/feed8.jpg" %}" alt="feed">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-6">
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-6">
                         <span>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | coding by lichang <i class="fa fa-heart-o" aria-hidden="true"></i>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</span>
-                    </div>
 
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | coding by lichang
+</span>
                 </div>
+
             </div>
         </div>
-    </footer>
-    <!-- Footer Area End -->
+    </div>
+</footer>
+<!-- Footer Area End -->
 
-    <!-- Javascript -->
-    <script src="{% static "assets/js/vendor/jquery-2.2.4.min.js" %}"></script>
-	<script src="{% static "assets/js/vendor/bootstrap-4.1.3.min.js" %}"></script>
-    <script src="{% static "assets/js/vendor/wow.min.js" %}"></script>
-    <script src="{% static "assets/js/vendor/owl-carousel.min.js" %}"></script>
-    <script src="{% static "assets/js/vendor/jquery.datetimepicker.full.min.js" %}"></script>
-    <script src="{% static "assets/js/vendor/jquery.nice-select.min.js" %}"></script>
-    <script src="{% static "assets/js/vendor/superfish.min.js" %}"></script>
-    <script src="{% static "assets/js/main.js" %}"></script>
+<!-- Javascript -->
+<script src="{% static "myhealth/assets/js/vendor/jquery-2.2.4.min.js" %}"></script>
+<script src="{% static "myhealth/assets/js/vendor/bootstrap-4.1.3.min.js" %}"></script>
+<script src="{% static "myhealth/assets/js/vendor/wow.min.js" %}"></script>
+<script src="{% static "myhealth/assets/js/vendor/owl-carousel.min.js" %}"></script>
+<script src="{% static "myhealth/assets/js/vendor/jquery.datetimepicker.full.min.js" %}"></script>
+<script src="{% static "myhealth/assets/js/vendor/jquery.nice-select.min.js" %}"></script>
+<script src="{% static "myhealth/assets/js/vendor/superfish.min.js" %}"></script>
+<script src="{% static "myhealth/assets/js/main.js" %}"></script>
 
 </body>
 </html>

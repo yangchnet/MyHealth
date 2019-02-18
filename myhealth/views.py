@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseRedirect
 from comment.forms import *
 from comment.views import *
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     '''
@@ -34,14 +35,10 @@ def register(request):
         user = Register(request.POST)
         if user.is_valid():
             try:
-                if user.cleaned_data['user_type'] == '1':
-                    curr_user = NormalUser.objects.create_user(username=user.cleaned_data['user_name'],
+                curr_user = mhUser.objects.create_user(username=user.cleaned_data['user_name'],
                                                                email=user.cleaned_data['user_email'],
-                                                               password=user.cleaned_data['user_password'])
-                else:
-                    curr_user = DoctorUser.objects.create_user(username=user.cleaned_data['user_name'],
-                                                               email=user.cleaned_data['user_email'],
-                                                               password=user.cleaned_data['user_password'])
+                                                               password=user.cleaned_data['user_password'],
+                                                           usertype=user.cleaned_data['user_type'])
                 curr_user = auth.authenticate(request, username=user.cleaned_data['user_name'],
                                               password=user.cleaned_data['user_password'])
                 if curr_user is not None:
@@ -57,8 +54,8 @@ def register(request):
 def user_login(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
-            context = {"log_placeholder": "注销", 'log_url_placeholder': './logout'}
-            return HttpResponseRedirect('/myhealth/index', context)
+
+            return HttpResponseRedirect('/myhealth/index')
         else:
             return render(request, 'myhealth/login.html', )
     if request.method == 'POST':
@@ -68,8 +65,7 @@ def user_login(request):
                                           password=user.cleaned_data['user_password'])
             if curr_user is not None:
                 login(request, curr_user)
-                context = {"log_placeholder": "注销", 'log_url_placeholder': './logout'}
-                return HttpResponseRedirect('/myhealth', context)
+                return HttpResponseRedirect('/myhealth')
         return render(request, 'myhealth/login.html')
 
 
@@ -94,11 +90,11 @@ def bloghome(request, page_id):
     if request.method == 'GET':
         blog = Blog.objects.all()[4 * (page_id - 1): 4 * page_id]
         for b in blog:
-            page = {'id': '', 'title': '', 'author_id': '', 'label': '', 'date': '', \
+            page = {'id': '', 'title': '', 'author': '', 'label': '', 'date': '', \
                     'views': '', 'article': '', 'abstract': '', 'cover': ''}
             page['id'] = b.pk
             page['title'] = b.title
-            page['author_id'] = b.author
+            page['author'] = b.author.username
             page['label'] = b.label
             page['date'] = b.date
             page['views'] = b.views
@@ -107,11 +103,9 @@ def bloghome(request, page_id):
             page['cover'] = b.cover
             pages.append(page)
         if request.user.is_authenticated:
-            context = {'log_placeholder': '注销', 'log_url_placeholder': '../logout', \
-                       'pages': pages, 'page_range': range(page_id, page_id+5), 'page_id': page_id}
+            context = {'pages': pages, 'page_range': range(page_id, page_id+5), 'page_id': page_id}
         else:
-            context = {'log_placeholder': '登录', 'log_url_placeholder': '../login', \
-                       'pages': pages, 'page_range': range(page_id, page_id+5), 'page_id': page_id}
+            context = {'pages': pages, 'page_range': range(page_id, page_id+5), 'page_id': page_id}
         return render(request, 'myhealth/blog-home.html', context)
 
 def blog(request, blog_id):
@@ -128,7 +122,25 @@ def blog(request, blog_id):
         ck = CKEditorForm()
         comments = blogcommentview(request, blog_id)
         if request.user.is_authenticated:
-            context = {'log_placeholder': '注销', 'log_url_placeholder': '../logout',
-                       'page': page, 'ck':ck, 'comments': comments, 'comments_count': len(comments),
+            context = {'page': page, 'ck':ck, 'comments': comments, 'comments_count': len(comments),
                        'blog_id':blog_id}
+        else:
+            context = {'page': page, 'ck': ck, 'comments': comments, 'comments_count': len(comments),
+                       'blog_id': blog_id}
         return render(request, 'myhealth/blog-details.html', context)
+
+def doctors(request):
+    return render(request, 'myhealth/doctors.html')
+
+def doctor(request, doctor_id):
+    return render(request, 'myhealth/doctor.html')
+
+def devices(request):
+    return render(request, 'myhealth/devices.html')
+
+def device(request, device_id):
+    return render(request, 'myhealth/device.html')
+
+@login_required
+def individual(request, user_id):
+    return render(request, 'myhealth/individual.html')

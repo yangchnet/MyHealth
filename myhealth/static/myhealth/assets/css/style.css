@@ -2,14 +2,21 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700");
 
 body {
-    color: #321111;
+    color: rgba(0, 0, 0, 0.59);
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    font-weight: 400
+}
+
+body1 {
+    color: rgb(0, 0, 0);
     font-family: "Roboto", sans-serif;
     font-size: 15px;
     font-weight: 400
 }
 
 h1 {
-    color: #222;
+    color: #fcfcfc;
     font-family: "Ubuntu", sans-serif;
     font-size: 45px !important;
     font-weight: 700
@@ -31,7 +38,7 @@ h3 {
 }
 
 h4 {
-    color: #222;
+    color: #fcfcfc;
     font-family: "Ubuntu", sans-serif;
     font-size: 16px !important;
     font-weight: 400
@@ -484,7 +491,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .banner-area {
     padding: 400px 0 350px;
     background-color: #b0b0b0;
-    background-image: url("../images/banner-bg.jpg");
+    background-image: url("../images/1.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -898,7 +905,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .news-area .news-date {
     color: #fff;
-    background: #244cfd;
+    background: #44B78B;
     padding: 12px 30px;
     display: inline-block;
     position: relative;
@@ -926,7 +933,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .footer-area {
     color: #fff;
-    background: #12151f
+    background: #0C4B33
 }
 
 .footer-area h3 {
@@ -3232,7 +3239,7 @@ h6 {
 
 .template-btn {
     color: #fff;
-    background: linear-gradient(to right, #244cfd, #15e4fd);
+    background: linear-gradient(to right, #0C3C26, #44B78B);
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     font-size: 12px;
