@@ -21,7 +21,7 @@ class BlogComment(BaseComment):
 
 
 class BottomComment(BaseComment):
-    followed_comment = models.ForeignKey(BlogComment, on_delete=models.CASCADE, verbose_name='被评论对象')
+    followed_comment = models.ForeignKey(BlogComment, on_delete=models.CASCADE, null=True, blank=True, verbose_name='被评论对象')
     followed_self = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, verbose_name='评论的评论')
 
     class Meta:

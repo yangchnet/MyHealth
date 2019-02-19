@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7733d331-4323-4e11-bdd3-687925fe7fe2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/forgetpassword.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/heartbeat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5622c04b-16b5-47c0-a943-e7103de36dda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5622c04b-16b5-47c0-a943-e7103de36dda.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/oxygen.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/singledata.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MyHealth/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyHealth/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/comment/migrations/0002_auto_20190215_1053.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/comment/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhealth/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhealth/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhealth/migrations/0002_auto_20190215_1055.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhealth/migrations/0003_auto_20190215_1058.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/templates/comment/blog_comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/comment/templates/comment/blog_comment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/blog-home.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/blog-home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/views.py" afterDir="false" />
@@ -67,8 +63,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myhealth/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="790">
-              <caret line="170" column="4" lean-forward="true" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="4" />
+            <state relative-caret-position="351">
+              <caret line="160" column="15" lean-forward="true" selection-start-line="160" selection-start-column="15" selection-end-line="160" selection-end-column="15" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -76,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myhealth/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-80">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="717">
+              <caret line="27" column="86" lean-forward="true" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -88,33 +84,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/admin.py">
+      <file leaf-file-name="blog-details.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+            <state relative-caret-position="243">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/MyHealth/settings.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comment/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="143" column="35" lean-forward="true" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="heartbeat.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/heartbeat.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+            <state relative-caret-position="201">
+              <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="42" />
               <folding>
-                <element signature="e#738#789#0#HTML" expanded="true" />
-                <element signature="e#421#4213#0#HTML" />
+                <element signature="e#0#35#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comment_bottomcomment" pinned="false" current-in-tab="true">
+        <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/comment_bottomcomment">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comment_blogcomment" pinned="false" current-in-tab="false">
+        <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/comment_blogcomment">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -122,38 +126,29 @@
       <file leaf-file-name="blog_comment.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/comment/templates/comment/blog_comment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="146" column="30" lean-forward="true" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
+            <state relative-caret-position="1524">
+              <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/base.html">
+      <file leaf-file-name="time.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1247971762/time.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-729">
-              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+            <state relative-caret-position="446">
+              <caret line="247" column="34" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/login.html">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/comment/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="36" column="97" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
+            <state relative-caret-position="507">
+              <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
               <folding>
-                <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="individual.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/individual.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="34" lean-forward="true" selection-start-column="34" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -189,6 +184,10 @@
       <find>src</find>
       <find>banner-bg</find>
       <find>banner-bg.img</find>
+      <find>c1</find>
+      <find>vertical-align</find>
+      <find>right</find>
+      <find>jpg</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -214,14 +213,10 @@
         <option value="$PROJECT_DIR$/easy_comment/templates/easy_comment/comment.html" />
         <option value="$PROJECT_DIR$/comment/admin.py" />
         <option value="$PROJECT_DIR$/comment/urls.py" />
-        <option value="$PROJECT_DIR$/comment/templates/comment/blog_comment.html" />
         <option value="$PROJECT_DIR$/comment/forms.py" />
-        <option value="$PROJECT_DIR$/comment/views.py" />
         <option value="$PROJECT_DIR$/static/assets/css/style.css" />
         <option value="$PROJECT_DIR$/Tip_of_day" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/index1.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/blog-home.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/register.html" />
         <option value="$PROJECT_DIR$/myhealth/forms.py" />
         <option value="$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.map" />
@@ -235,17 +230,24 @@
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/individual.html" />
         <option value="$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/index.html" />
-        <option value="$PROJECT_DIR$/myhealth/urls.py" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/login.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/forgetpassword.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/test.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/base.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/heartbeat.html" />
-        <option value="$PROJECT_DIR$/myhealth/views.py" />
-        <option value="$PROJECT_DIR$/MyHealth/settings.py" />
-        <option value="$PROJECT_DIR$/comment/models.py" />
         <option value="$PROJECT_DIR$/myhealth/admin.py" />
+        <option value="$PROJECT_DIR$/myhealth/urls.py" />
+        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/oxygen.html" />
+        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/singledata.html" />
+        <option value="$PROJECT_DIR$/explain/models.py" />
+        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/blog-home.html" />
+        <option value="$PROJECT_DIR$/MyHealth/settings.py" />
+        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/base.html" />
+        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/test.html" />
         <option value="$PROJECT_DIR$/myhealth/models.py" />
+        <option value="$PROJECT_DIR$/myhealth/views.py" />
+        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html" />
+        <option value="$PROJECT_DIR$/comment/templates/comment/blog_comment.html" />
+        <option value="$PROJECT_DIR$/comment/views.py" />
+        <option value="$PROJECT_DIR$/comment/models.py" />
       </list>
     </option>
   </component>
@@ -278,6 +280,42 @@
               <item name="MyHealth" type="b2602c69:ProjectViewProjectNode" />
               <item name="MyHealth" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MyHealth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyHealth" type="462c0819:PsiDirectoryNode" />
+              <item name="comment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyHealth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyHealth" type="462c0819:PsiDirectoryNode" />
+              <item name="comment" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyHealth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyHealth" type="462c0819:PsiDirectoryNode" />
+              <item name="comment" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="comment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyHealth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyHealth" type="462c0819:PsiDirectoryNode" />
+              <item name="myhealth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyHealth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyHealth" type="462c0819:PsiDirectoryNode" />
+              <item name="myhealth" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyHealth" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyHealth" type="462c0819:PsiDirectoryNode" />
+              <item name="myhealth" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="myhealth" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -286,11 +324,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SearchEverywhereHistoryKey" value="banner&#9;null&#9;null&#10;banner-bg&#9;FILE&#9;file:///home/lc/workbench/python/MyHealth/myhealth/static/myhealth/assets/images/banner-bg.jpg" />
+    <property name="SearchEverywhereHistoryKey" value="c1.jpg&#9;FILE&#9;file:///home/lc/workbench/python/MyHealth/myhealth/static/myhealth/assets/images/blog-details/c1.jpg&#10;banner&#9;null&#9;null&#10;banner-bg&#9;FILE&#9;file:///home/lc/workbench/python/MyHealth/myhealth/static/myhealth/assets/images/banner-bg.jpg" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../bodyDetect_1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -425,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550480368180</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="增加数据模型，重新定义用户模型，初步显示用户数据图">
+      <created>1550501466586</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1550501466586</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -438,23 +483,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1600" y="30" width="1920" height="1050" extended-state="6" />
+    <frame x="1600" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32929516" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005353" side_tool="true" weight="0.2555066" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.1984479" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.25166297" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.024390243" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.0088691795" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22269808" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.09944751" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.67071825" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.16906077" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.09281768" />
+      <window_info anchor="bottom" id="Database Console" order="8" weight="0.2863436" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18683083" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" weight="0.17237687" />
+      <window_info active="true" anchor="right" id="Database" order="3" visible="true" weight="0.0637045" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32976446" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3436464" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.10088692" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.3929336" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -462,34 +508,33 @@
       <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Database Console" order="8" weight="0.2863436" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="9" weight="0.3292683" />
     </layout>
     <layout-to-restore>
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.2863436" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.12794432" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20503213" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32929516" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.1984479" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.34922394" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.21396896" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.31485587" />
-      <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.31707317" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5005353" side_tool="true" weight="0.2555066" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.1984479" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.3929336" />
       <window_info anchor="right" id="SciView" order="4" weight="0.32976446" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.12794432" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="bottom" id="Python Console" order="13" weight="0.21396896" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,140 +552,84 @@
     <MESSAGE value="完成一级评论功能" />
     <MESSAGE value="调整模板url, 增加封面显示" />
     <MESSAGE value="使用模板继承，优化内部url，增加doctors,doctor, device,devices,individual页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用模板继承，优化内部url，增加doctors,doctor, device,devices,individual页面" />
+    <MESSAGE value="增加数据模型，重新定义用户模型，初步显示用户数据图" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加数据模型，重新定义用户模型，初步显示用户数据图" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="django-line">
-          <url>file://$PROJECT_DIR$/myhealth/templates/myhealth/blog-home.html</url>
-          <line>231</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="44" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Python.DjangoServer">
-        <watch expression="StaticNode.handle_token(parser, token)" language="Python" />
-        <watch expression="cls(varname, path)" language="Python" />
-        <watch expression="b.author.username" language="Python" />
-        <watch expression="next = request.GET" language="Python" />
+        <watch expression="soup('p')[2].text" language="Python" />
+        <watch expression="MhUser.objects.get(username=soup('p')[1].text.lower())" language="Python" />
+        <watch expression="BlogComment.objects.get(author=MhUser.objects.get(username=soup('p')[1].text.lower()),                                                              time=soup('p')[2].text)" language="Python" />
+        <watch expression="soup('p')[1].text.lower()" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>next = request.GET</expression-string>
+        <expression-string>BlogComment.objects.get(author=MhUser.objects.get(username=soup('p')[1].text.lower()),                                                              time=soup('p')[2].text)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>request.REQUEST.get('next', '')</expression-string>
+        <expression-string>MhUser.objects.get(username=soup('p')[1].text.lower())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>b.author.username</expression-string>
+        <expression-string>soup('p')[1].text.lower()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>static</expression-string>
-        <language-id>HTML</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cls(varname, path)</expression-string>
+        <expression-string>soup('p')[2].text</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>StaticNode.handle_token(parser, token)</expression-string>
+        <expression-string>soup('p')[1].text</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>request.user.is_authenticated</expression-string>
+        <expression-string>soup('p')[1]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>comment.cleaned_data</expression-string>
+        <expression-string>soup('p')</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>comment.is_valid()</expression-string>
+        <expression-string>soup('p')[0].decompose()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>comment.cleaned_data['followed_blog']</expression-string>
+        <expression-string>soup('p')[0].extract()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>soup('p')[0].text</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/admin/img/calendar-icons.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/admin/img/icon-addlink.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file:///usr/lib/python3.7/site-packages/django/templatetags/static.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="121" column="16" selection-start-line="121" selection-start-column="16" selection-end-line="121" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tip_of_day">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/index1.html" />
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/logo/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/logo/favicon.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/welcome.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/patient.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/hotline-bg.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/banner-bg.jpg" />
     <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/font-awesome-4.7.0.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-34" />
@@ -665,12 +654,12 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.map">
-      <provider editor-type-id="sourcemapFileViewerProvider" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2313">
           <caret line="174" column="77" selection-start-line="174" selection-start-column="77" selection-end-line="174" selection-end-column="77" />
         </state>
       </provider>
+      <provider editor-type-id="sourcemapFileViewerProvider" />
     </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/animate-3.7.0.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -706,20 +695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="124" selection-start-line="124" selection-end-line="124" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/myhealth_blog">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/blog-home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="8" selection-start-column="15" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -759,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="409">
@@ -793,72 +761,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/test.html">
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/individual.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1627">
-          <caret line="95" column="53" lean-forward="true" selection-start-line="95" selection-start-column="53" selection-end-line="95" selection-end-column="53" />
+        <state>
+          <caret column="34" selection-start-column="34" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+        <state relative-caret-position="405">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/base.html">
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/oxygen.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-729">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+        <state>
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/login.html">
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/blog-home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="36" column="97" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
+        <state relative-caret-position="-194">
+          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/explain/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
           <folding>
-            <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/individual.html">
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/singledata.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="34" lean-forward="true" selection-start-column="34" selection-end-column="34" />
+        <state relative-caret-position="27">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/comment/templates/comment/blog_comment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="146" column="30" lean-forward="true" selection-start-line="146" selection-start-column="30" selection-end-line="146" selection-end-column="30" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/blog-details/c1.jpg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/heartbeat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding>
-            <element signature="e#738#789#0#HTML" expanded="true" />
-            <element signature="e#421#4213#0#HTML" />
-          </folding>
+        <state relative-caret-position="54">
+          <caret line="2" column="35" lean-forward="true" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyHealth/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="117" column="23" lean-forward="true" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4807">
+          <caret line="1845" selection-start-line="1845" selection-end-line="1845" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/blog-details/c2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/lib/python3.7/site-packages/django/db/models/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="125" column="36" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/myhealth_normaluser">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.7/site-packages/django/contrib/auth/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -869,47 +878,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/comment/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="34" column="75" lean-forward="true" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/-1247971762/time.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="247" column="34" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="790">
-          <caret line="170" column="4" lean-forward="true" selection-start-line="170" selection-start-column="4" selection-end-line="170" selection-end-column="4" />
+        <state relative-caret-position="351">
+          <caret line="160" column="15" lean-forward="true" selection-start-line="160" selection-start-column="15" selection-end-line="160" selection-end-column="15" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyHealth/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="143" column="35" lean-forward="true" selection-start-line="143" selection-start-column="35" selection-end-line="143" selection-end-column="35" />
+    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/myhealth_blog">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/comment/models.py">
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="27">
+          <caret line="1" column="19" lean-forward="true" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/admin.py">
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+        <state relative-caret-position="243">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="717">
+          <caret line="27" column="86" lean-forward="true" selection-start-line="27" selection-start-column="86" selection-end-line="27" selection-end-column="86" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="22" column="33" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/templates/comment/blog_comment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1524">
+          <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="55" column="12" lean-forward="true" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/comment_blogcomment">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/comment_bottomcomment">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>

@@ -3,12 +3,12 @@
 {% load static %}
 
 
-{% block title %}BlogHome{% endblock %}
+{% block title %}{{ page.title }}{% endblock %}
 
 {% block banner %}
      <div class="col-lg-12">
-                <h1>Blog Details</h1>
-                <a href="index.html">Home</a> <span>|</span> <a href="blog-details.html">Blog Details</a>
+                <h1>{{ page.title }}</h1>
+                <a href="{% url 'myhealth:index' %}">主页</a> <span>|</span> <a href="{% url 'myhealth:bloghome' 1 %}">社区主页</a>
             </div>
 {% endblock %}
 
@@ -21,7 +21,7 @@
                 <div class="single-post row">
                     <div class="col-lg-12">
                         <div class="feature-img">
-                            <img class="img-fluid" src="{% static "assets/images/blog-details/feature-img1.jpg" %}"
+                            <img class="img-fluid" src="{{ page.cover }}"
                                  alt="">
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                                 <li><a href="#">{{ page.author }}<i class="fa fa-user-o"></i></a></li>
                                 <li><a href="#">{{ page.date }}<i class="fa fa-calendar-o"></i></a></li>
                                 <li><a href="#">{{ page.views }}<i class="fa fa-eye"></i></a></li>
-                                <li><a href="#">{{ page.comments }}<i class="fa fa-comment-o"></i></a></li>
+                                <li><a href="#评论">{{ comments_count }}<i class="fa fa-comment-o"></i></a></li>
                             </ul>
 
                         </div>
@@ -47,6 +47,7 @@
                         </p>
                     </div>
                 </div>
+
                 {% include 'comment/blog_comment.html' with comments=comments comments_count=comments_count  blog_id=blog_id %}
 
             </div>
@@ -62,7 +63,7 @@
                         <div class="br"></div>
                     </aside>
                     <aside class="single_sidebar_widget author_widget">
-                        <img class="author_img rounded-circle" src="{% static "assets/images/blog/author.png" %}"
+                        <img class="author_img rounded-circle" src="{% static "myhealth/assets/images/blog/author.png" %}"
                              alt="">
                         <h5>Charlie Barber</h5>
                         <p>Senior blog writer</p>
@@ -80,28 +81,28 @@
                     <aside class="single_sidebar_widget popular_post_widget">
                         <h4 class="widget_title">Popular Posts</h4>
                         <div class="media post_item">
-                            <img src="{% static "assets/images/blog/popular-post/post1.jpg" %}" alt="post">
+                            <img src="{% static "myhealth/assets/images/blog/popular-post/post1.jpg" %}" alt="post">
                             <div class="media-body">
                                 <a href="blog-details.html"><h5>Space The Final Frontier</h5></a>
                                 <p>02 Hours ago</p>
                             </div>
                         </div>
                         <div class="media post_item">
-                            <img src="{% static "assets/images/blog/popular-post/post2.jpg" %}" alt="post">
+                            <img src="{% static "myhealth/assets/images/blog/popular-post/post2.jpg" %}" alt="post">
                             <div class="media-body">
                                 <a href="blog-details.html"><h5>The Amazing Hubble</h5></a>
                                 <p>02 Hours ago</p>
                             </div>
                         </div>
                         <div class="media post_item">
-                            <img src="{% static "assets/images/blog/popular-post/post3.jpg" %}" alt="post">
+                            <img src="{% static "myhealth/assets/images/blog/popular-post/post3.jpg" %}" alt="post">
                             <div class="media-body">
                                 <a href="blog-details.html"><h5>Astronomy Or Astrology</h5></a>
                                 <p>03 Hours ago</p>
                             </div>
                         </div>
                         <div class="media post_item">
-                            <img src="{% static "assets/images/blog/popular-post/post4.jpg" %}" alt="post">
+                            <img src="{% static "myhealth/assets/images/blog/popular-post/post4.jpg" %}" alt="post">
                             <div class="media-body">
                                 <a href="blog-details.html"><h5>Asteroids telescope</h5></a>
                                 <p>01 Hours ago</p>

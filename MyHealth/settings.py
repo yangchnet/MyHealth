@@ -135,7 +135,8 @@ CKEDITOR_CONFIGS = {
         'toolbar_Custom': [
             ['Bold', 'Italic', 'Underline', 'Format', 'RemoveFormat'],
             ['NumberedList', 'BulletedList'],
-            ['Blockquote', 'CodeSnippet'],
+            ['Blockquote'], ['CodeSnippet'],
+            ['Indent'],
             ['Image', 'Link', 'Unlink']
         ],
     }

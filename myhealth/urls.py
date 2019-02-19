@@ -16,6 +16,6 @@ urlpatterns = [
     path('devices/', views.devices, name='devices'),
     path('device/<int:device_id>/', views.device, name='device'),
     path('individual/<int:user_id>/', views.individual, name='individual'),
-    path('heartbeat/', views.heartbeat, name='heartbeat'),
+    path('individual/<int:user_id>/heartbeat/', views.heartbeat, name='heartbeat'),
     path('ajax_post/', views.ajax_post, name='ajax_post'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -40,9 +40,9 @@
                                     <img src="{% get_media_prefix %}/{{ page.cover }}" alt = "{{ page.cover }}">
 {#                                    <img src="{% static "assets/images/blog/main-blog/m-blog-1.jpg" %}" alt="">#}
                                     <div class="blog_details">
-                                        <a href="../blog/{{ page.id }}"><h4>{{ page.title }}</h4></a>
+                                        <a href="{% url 'myhealth:blog' page.id %}"><h4>{{ page.title }}</h4></a>
                                         <p>{{ page.abstract|safe }}......</p>
-                                        <a href="{% url 'myhealth:blog' page_id %}" class="template-btn">详细</a>
+                                        <a href="{% url 'myhealth:blog' page.id %}" class="template-btn">详细</a>
                                     </div>
                                 </div>
                             </div>
@@ -59,9 +59,9 @@
                                 </li>
                                 {% for p in page_range %}
                                     {% if p == page_id %}
-                                        <li class="page-item active"><a href="#" class="page-link">{{ p }}</a></li>
+                                        <li class="page-item active"><a href="{% url 'myhealth:bloghome' p %}" class="page-link">{{ p }}</a></li>
                                     {% else %}
-                                        <li class="page-item"><a href="#" class="page-link">{{ p }}</a></li>
+                                        <li class="page-item"><a href="{% url 'myhealth:bloghome' p %}" class="page-link">{{ p }}</a></li>
                                     {% endif %}
                                 {% endfor %}
 {#                                <li class="page-item"><a href="#" class="page-link">01</a></li>#}

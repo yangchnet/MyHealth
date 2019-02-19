@@ -44,6 +44,10 @@ def register(request):
                                                        email=user.cleaned_data['user_email'],
                                                        password=user.cleaned_data['user_password'],
                                                        usertype=user.cleaned_data['user_type'])
+                if user.cleaned_data['user_type'] == 'normal':
+                    NormalUser.objects.create(user=curr_user).save()
+                elif user.cleaned_data['user_type'] == 'doctor':
+                    DoctorUser.objects.create(user=curr_user).save()
                 curr_user = auth.authenticate(request, username=user.cleaned_data['user_name'],
                                               password=user.cleaned_data['user_password'])
                 if curr_user is not None:
@@ -126,6 +130,7 @@ def blog(request, blog_id):
         page['date'] = blog.date
         page['views'] = blog.views
         page['article'] = blog.essay
+        page['cover'] = blog.cover
         ck = CKEditorForm()
         comments = blogcommentview(request, blog_id)
         if request.user.is_authenticated:
@@ -169,6 +174,6 @@ def ajax_post(request):
 
 
 @login_required
-def heartbeat(request):
+def heartbeat(request, user_id):
     ck = CKEditorForm()
     return render(request, 'myhealth/heartbeat.html', {'ck': ck})

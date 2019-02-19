@@ -1,153 +1,92 @@
 <script>
-    $(function () {
-        var bodyHeight = $("body").height();
-        var windowHeight = $(window).height();
-        if ((bodyHeight - windowHeight) < 100) {
-            //页面高度比浏览器高度小100时加载一次评论
-            loadCommentWhenScollToBottom();
-        }
-        $(window).scroll(loadCommentWhenScollToBottom);
-    });
-
-    //滚动到页面底部时加载评论
-    function loadCommentWhenScollToBottom() {
-        var docHeight = $(document).height();
-        var scrollBottom = $(window).scrollTop() + $(window).height();
-        if (docHeight - scrollBottom < 100) {
-            if ($("#comment .loading").length == 0) {
-                //防止重复加载
-                $("#comment").append('<div class="loading" style="text-align:center;">loading</div>');
-                var last_ul = $("#comment>ul").last();
-                if (last_ul.length == 0) {
-                    getCommentList();
-                } else if (last_ul.attr("data-next") == "True") {
-                    var page = parseInt(last_ul.attr("data-page"));
-                    getCommentList(page + 1);
-                } else {
-                    //评论加载完毕，不再发送请求
-                    $(window).unbind("scroll");
-                    $("#comment .loading").remove()
-                }
-            }
-        }
-    }
-
-    //获取评论列表
-    function getCommentList(page) {
-        var url = $("#comment").attr("data-url");
-        if (page) {
-            url += "?page=" + page;
-        }
-        $.get(url, function (data, status) {
-            //$.get()是异步请求，在得到服务器响应后才能操作相应DOM
-            if (status == "success") {
-                $("#comment").append(data);
-                var reply_this = $(".reply-this");
-                reply_this.unbind("click");
-                //绑定reply方法
-                reply_this.click(reply);
-                $("#comment .loading").remove();
-            } else {
-                $("#comment .loading").html("无法加载评论");
-            }
-        });
-    }
-
-    function reply() {
-        var reply_id = $(this).attr("data-reply-id");
-        var reply_user = $(this).siblings(".username").first().text();
-        var reply_list, comment_id, reply_form;
-        //判断回复的是几级评论，并获取相应的id
-        if (reply_id) {
-            reply_list = $(this).parent().parent();
-            comment_id = reply_list.siblings(".reply-this").attr("data-comment-id");
-        } else {
-            reply_list = $(this).siblings(".reply-list");
-            comment_id = $(this).attr("data-comment-id");
-        }
-        if ($("#comment-form").length == 0) {
-            //没有#comment-form意味着未登录
-            $("body").animate({scrollTop: $("#comment .login").offset().top - 100}, 500);
-        } else {
-            if (reply_list.siblings(".reply-form").length == 0) {
-                //创建二级评论表单，该表单插在一级评论下方
-                reply_list.after('<form class="reply-form" action="/article/comment/reply/create/" method="post">'
-                    + '<input type="hidden" name="reply" value>'
-                    + '<input type="hidden" name="comment" value></form>');
-                reply_form = reply_list.siblings(".reply-form");
-                reply_form.append($("#comment-form").html());
-                reply_form.find("input[name=comment]").val(comment_id);
-                reply_form.find(".submit").prepend('<span></span><span class="cancel">取消</span>');
-                reply_form.find(".cancel").click(cancelReply);
-            } else {
-                //获取已存在的表单
-                reply_form = reply_list.siblings(".reply-form");
-            }
-            reply_form.find("input[name=reply]").val(reply_id);
-            reply_form.find(".submit span").first().html('回复 ' + reply_user);
-            $("body").animate({scrollTop: reply_form.offset().top - 100}, 500);
-        }
+    function reply(obj) {
+        replied_name = obj.parentNode.previousElementSibling.lastElementChild.children[0].innerText
+        replied_time = obj.parentNode.previousElementSibling.lastElementChild.children[1].innerText
+        replystr = "#回复：" + "<p class=\"myreply\">" + replied_name + "</p>" +  "<p class=\"myreply\">" + replied_time + "</p>" + "<br>"
+        CKEDITOR.instances["id_content"].insertHtml(replystr)
+        document.getElementById('cancelreply').innerText = '取消回复'
+        window.location.hash = "#评论"
     }
 
     function cancelReply() {
-        $(this).parent().parent().remove();
+        CKEDITOR.instances["id_content"].innerText = ''
+        window.location.hash = "#评论列表"
     }
 </script>
 {% load static %}
 <div class="comments-area">
-    <h4>{{ comments_count }}</h4>
-    {% for comment in comments %}
-        {% if comment.bottom_comments == '0' %}
-            <div class="comment-list">
-                <div class="single-comment justify-content-between d-flex">
-                    <div class="user justify-content-between d-flex">
-                        <div class="thumb">
-                            <img src="{% static "assets/images/blog-details/c1.jpg" %}" alt="">
-                        </div>
-                        <div class="desc">
-                            <h5><a href="#">{{ comment.author }}</a></h5>
-                            <p class="date">{{ comment.time }}</p>
-                            <p class="comment">
-                                {{ comment.content|safe }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reply-btn">
-                        <a href="" class="btn-reply text-uppercase">reply</a>
-                    </div>
-                </div>
+    {% if comments_count == 0 %}
+        <h3 hidden="hidden">评论列表</h3>
+        <h3>暂无评论</h3>
+        <div>
+            <div class="form-group col-lg-6 col-md-6">
+                <form action="{% url 'comment:addcomment' blog_id %}" accept-charset="UTF-8" method="post">
+                    {% csrf_token %}
+                    {{ ck.media }}
+                    {{ ck.as_p }}
+                    <p><a id='cancelreply' href = '#评论列表' onclick="cancelReply()"></a></p>
+                    <input href="#评论列表" class="template-btn" type="submit"/>
+                </form>
             </div>
-        {% elif comment.bottom_comments == '1' %}
-            <div class="comment-list left-padding">
-                <div class="single-comment justify-content-between d-flex">
-                    <div class="user justify-content-between d-flex">
-                        <div class="thumb">
-                            <img src="{% static "assets/images/blog-details/c2.jpg" %}" alt="">
-                        </div>
-                        <div class="desc">
-                            <h5><a href="#">{{ comment.author }}</a></h5>
-                            <p class="date">{{ comment.time }}</p>
-                            <p class="comment">
-                                {{ comment.content|safe }}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="reply-btn">
-                        <a href="" class="btn-reply text-uppercase">reply</a>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    {% endfor %}
-    <div>
-        <div class="form-group col-lg-6 col-md-6">
-            <h2 id="评论">评论</h2>
-            <form action="{% url 'comment:addcomment' blog_id %}" accept-charset="UTF-8" method="post" >
-                {% csrf_token %}
-                {{ ck.media }}
-                {{ ck.as_p }}
-                <input class="template-btn" type="submit"/>
-            </form>
         </div>
-    </div>
+    {% else %}
+        <h3>评论（{{ comments_count }}）</h3>
+        {% for comment in comments %}
+            {% if comment.bottom_comments == '0' %}
+                <div class="comment-list">
+                    <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                            <div class="thumb">
+{#                                <img src="{% get_media_prefix %}/{{ comment.avatar }}" alt="">#}
+                            </div>
+                            <div class="desc">
+                                <h5><a href="#">{{ comment.author }}</a></h5>
+                                <p class="date">{{ comment.time|date:"Y-m-d H:i:s.u"}}</p>
+                                <p class="comment">
+                                    {{ comment.content|safe }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reply-btn">
+                            <a onclick="reply(this)" class="btn-reply text-uppercase">reply</a>
+                        </div>
+                    </div>
+                </div>
+            {% elif comment.bottom_comments == '1' %}
+                <div class="comment-list left-padding">
+                    <div class="single-comment justify-content-between d-flex">
+                        <div class="user justify-content-between d-flex">
+                            <div class="thumb">
+                                <img src="{{ comment.avatar }}" alt="">
+                            </div>
+                            <div class="desc">
+                                <h5><a href="#">{{ comment.author }}</a></h5>
+                                <p class="date">{{ comment.time|date:"Y-m-d H:i:s.u" }}</p>
+                                <p class="comment">
+                                    {{ comment.content|safe }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reply-btn">
+                            <a onclick="reply(this)"  class="btn-reply text-uppercase">reply</a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div>
+            <h3>评论</h3>
+            <div class="form-group col-lg-6 col-md-6">
+                <form action="{% url 'comment:addcomment' blog_id %}" accept-charset="UTF-8" method="post">
+                    {% csrf_token %}
+                    {{ ck.media }}
+                    {{ ck.as_p }}
+                    <p><a id='cancelreply' href = '#评论列表' onclick="cancelReply()"></a></p>
+                    <input  href="#评论列表" class="template-btn" type="submit"/>
+                </form>
+
+            </div>
+        </div>
+    {% endif %}
+
 </div>

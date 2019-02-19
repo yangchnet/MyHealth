@@ -25,7 +25,7 @@ class NormalUser(models.Model):
     career = models.CharField(default='', max_length=10, verbose_name='职业', null=True, blank=True)
     signature = models.CharField(default='', max_length=100, verbose_name='个性签名', null=True, blank=True)
     medicalhistory = models.TextField(default='', max_length=1000, verbose_name='用药史', null=True, blank=True)
-    avatar = models.ImageField(verbose_name='头像', default='', null=True, blank=True)
+    avatar = models.ImageField(verbose_name='头像', default=None, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -59,9 +59,14 @@ class Blog(models.Model):
 
 
 class Data(models.Model):
+    DATA_TYPE_CHOICES = (
+        ('pressure', '血压数据'),
+        ('oxygen', '血氧数据'),
+        ('heartbeat', '心跳数据'),
+        ('tem', '体温数据')
+    )
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
-    datatype = models.CharField(choices=(('pressure', '血压数据'), ('oxygen', '血氧数据'),
-                                         ('heartbeat', '心跳数据'), ('tem', '体温数据')),
+    datatype = models.CharField(choices=DATA_TYPE_CHOICES,
                                 default='heartbeat', verbose_name='数据类型', max_length=20)
     doctor = models.ForeignKey(DoctorUser, on_delete=models.CASCADE, default='1', verbose_name='个人医生')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
@@ -69,8 +74,16 @@ class Data(models.Model):
 
 
 class Match(models.Model):
+    DATA_TYPE_CHOICES = (
+        ('pressure', '血压数据'),
+        ('oxygen', '血氧数据'),
+        ('heartbeat', '心跳数据'),
+        ('tem', '体温数据')
+    )
     normaluser = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='普通用户')
     doctor = models.ForeignKey(DoctorUser, on_delete=models.CASCADE, default='1', verbose_name='医生')
-    charged = models.CharField(choices=(('pressure', '血压数据'), ('oxygen', '血氧数据'),
-                                        ('heartbeat', '心跳数据'), ('tem', '体温数据')),
+    charged = models.CharField(choices=DATA_TYPE_CHOICES,
                                default='heartbeat', verbose_name='医生负责的部分', max_length=20)
+
+# class Explain(models.Model):
+#
