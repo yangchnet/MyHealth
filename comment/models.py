@@ -1,6 +1,7 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-from myhealth.models import  Blog, MhUser
+from mhuser.models import MhUser
+from blog.models import Blog
 from django.contrib.auth.models import User, AbstractUser
 
 # Create your models here.

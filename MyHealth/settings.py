@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'device.apps.DeviceConfig',
+    'mhuser.apps.MhuserConfig',
+    'blog.apps.BlogConfig',
     'comment.apps.CommentConfig',
     'ckeditor',
     'ckeditor_uploader',
@@ -142,6 +145,6 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-AUTH_USER_MODEL = 'myhealth.MhUser'
+AUTH_USER_MODEL = 'mhuser.MhUser'
 
-LOGIN_URL = '/myhealth/login'
+LOGIN_URL = '/mhuser/login'

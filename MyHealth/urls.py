@@ -19,8 +19,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+    path('mhuser/', include('mhuser.urls')),
+    path('device/', include('device.urls')),
+    path('blog/', include('blog.urls')),
     path(r'', include('comment.urls')),
     path(r'', include('ckeditor_uploader.urls')),
-    path('myhealth/',include('myhealth.urls')),
+    path('myhealth/', include('myhealth.urls')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

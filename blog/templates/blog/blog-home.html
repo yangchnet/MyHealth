@@ -1,21 +1,12 @@
 {% extends 'myhealth/base.html' %}
 {% load static %}
 
-
 {% block title %}BlogHome{% endblock %}
+ <section class="blog_categorie_area">
 
-
-                {% block banner %}
-                <div class="col-lg-12">
-                    <h1>Blog Home</h1>
-                    <a href="index.html">Home</a> <span>|</span> <a href="blog-home.html">Blog Home</a>
-                </div>
-                {% endblock %}
-
-
-    {% block  body%}
-    <!--================Blog Area =================-->
-    <section class="blog_area">
+</section>
+{% block  body%}
+<section class="blog_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -40,9 +31,9 @@
                                     <img src="{% get_media_prefix %}/{{ page.cover }}" alt = "{{ page.cover }}">
 {#                                    <img src="{% static "assets/images/blog/main-blog/m-blog-1.jpg" %}" alt="">#}
                                     <div class="blog_details">
-                                        <a href="{% url 'myhealth:blog' page.id %}"><h4>{{ page.title }}</h4></a>
+                                        <a href="{% url 'blog:blog' page.id %}"><h4>{{ page.title }}</h4></a>
                                         <p>{{ page.abstract|safe }}......</p>
-                                        <a href="{% url 'myhealth:blog' page.id %}" class="template-btn">详细</a>
+                                        <a href="{% url 'blog:blog' page.id %}" class="template-btn">详细</a>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +42,7 @@
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
+                                    <a href="{% url 'blog:bloghome' page_pre %}" class="page-link" aria-label="Previous">
                                         <span aria-hidden="true">
                                             <span class="fa fa-angle-left"></span>
                                         </span>
@@ -59,9 +50,9 @@
                                 </li>
                                 {% for p in page_range %}
                                     {% if p == page_id %}
-                                        <li class="page-item active"><a href="{% url 'myhealth:bloghome' p %}" class="page-link">{{ p }}</a></li>
+                                        <li class="page-item active"><a href="{% url 'blog:bloghome' p %}" class="page-link">{{ p }}</a></li>
                                     {% else %}
-                                        <li class="page-item"><a href="{% url 'myhealth:bloghome' p %}" class="page-link">{{ p }}</a></li>
+                                        <li class="page-item"><a href="{% url 'blog:bloghome' p %}" class="page-link">{{ p }}</a></li>
                                     {% endif %}
                                 {% endfor %}
 {#                                <li class="page-item"><a href="#" class="page-link">01</a></li>#}
@@ -70,7 +61,7 @@
 {#                                <li class="page-item"><a href="#" class="page-link">04</a></li>#}
 {#                                <li class="page-item"><a href="#" class="page-link">09</a></li>#}
                                 <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
+                                    <a href="{% url 'blog:bloghome' page_next %}" class="page-link" aria-label="Next">
                                         <span aria-hidden="true">
                                             <span class="fa fa-angle-right"></span>
                                         </span>
@@ -92,7 +83,7 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="{% static "assets/images/blog/author.png" %}" alt="">
+                            <img class="author_img rounded-circle" src="{% static "myhealth/assets/images/blog/author.png" %}" alt="">
                             <h5>Charlie Barber</h5>
                             <p>Senior blog writer</p>
                             <div class="social_icon">
@@ -107,28 +98,28 @@
                         <aside class="single_sidebar_widget popular_post_widget">
                             <h4 class="widget_title">Popular Posts</h4>
                             <div class="media post_item">
-                                <img src="{% static "assets/images/blog/popular-post/post1.jpg" %}" alt="post">
+                                <img src="{% static "myhealth/assets/images/blog/popular-post/post1.jpg" %}" alt="post">
                                 <div class="media-body">
                                     <a href="blog-details.html"><h5>Space The Final Frontier</h5></a>
                                     <p>02 Hours ago</p>
                                 </div>
                             </div>
                             <div class="media post_item">
-                                <img src="{% static "assets/images/blog/popular-post/post2.jpg" %}" alt="post">
+                                <img src="{% static "myhealth/assets/images/blog/popular-post/post2.jpg" %}" alt="post">
                                 <div class="media-body">
                                     <a href="blog-details.html"><h5>The Amazing Hubble</h5></a>
                                     <p>02 Hours ago</p>
                                 </div>
                             </div>
                             <div class="media post_item">
-                                <img src="{% static "assets/images/blog/popular-post/post3.jpg" %}" alt="post">
+                                <img src="{% static "myhealth/assets/images/blog/popular-post/post3.jpg" %}" alt="post">
                                 <div class="media-body">
                                     <a href="blog-details.html"><h5>Astronomy Or Astrology</h5></a>
                                     <p>03 Hours ago</p>
                                 </div>
                             </div>
                             <div class="media post_item">
-                                <img src="{% static "assets/images/blog/popular-post/post4.jpg" %}" alt="post">
+                                <img src="{% static "myhealth/assets/images/blog/popular-post/post4.jpg" %}" alt="post">
                                 <div class="media-body">
                                     <a href="blog-details.html"><h5>Asteroids telescope</h5></a>
                                     <p>01 Hours ago</p>
@@ -137,7 +128,7 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget ads_widget">
-                            <a href="#"><img class="img-fluid" src="{% static "assets/images/blog/add.jpg" %}" alt=""></a>
+                            <a href="#"><img class="img-fluid" src="{% static "myhealth/assets/images/blog/add.jpg" %}" alt=""></a>
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget post_category_widget">
@@ -184,7 +175,7 @@
                                         <p>Adventure</p>
                                         <p>44</p>
                                     </a>
-                                </li>															
+                                </li>
                             </ul>
                             <div class="br"></div>
                         </aside>
@@ -202,9 +193,9 @@
                                     <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
                                 </div>
                                 <a href="#" class="bbtns">Subscribe</a>
-                            </div>	
-                            <p class="text-bottom">You can unsubscribe at any time</p>	
-                            <div class="br"></div>							
+                            </div>
+                            <p class="text-bottom">You can unsubscribe at any time</p>
+                            <div class="br"></div>
                         </aside>
                         <aside class="single-sidebar-widget tag_cloud_widget">
                             <h4 class="widget_title">Tag Clouds</h4>
@@ -227,7 +218,5 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!--================Blog Area =================-->
+</section>
 {% endblock %}
-

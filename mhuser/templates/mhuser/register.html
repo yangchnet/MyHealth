@@ -1,4 +1,4 @@
-{% extends 'myhealth/base.html' %}
+{% extends 'myhealth/indexbase.html' %}
 {% load static %}
 {% block title %}注册{% endblock %}
 
@@ -6,11 +6,11 @@
 {% block banner %}
     <div class="col-lg-8">
         <h1>注册</h1>
-        <a href="{% url 'myhealth:index' %}">主页</a> <span>|</span> <a href="../login">登录</a>
+        <a href="{% url 'myhealth:index' %}">主页</a> <span>|</span> <a href="{% url 'mhuser:login' %}">登录</a>
     </div>
     <div class="col-md-4">
         <div class=" text-gray bg-gray-light py-4 px-4 px-md-3 px-lg-4">
-            <form action="{% url 'myhealth:register' %}" accept-charset="UTF-8" method="post"><input name="utf8"
+            <form action="{% url 'mhuser:register' %}" accept-charset="UTF-8" method="post"><input name="utf8"
                                                                                                      type="hidden"
                                                                                                      value="&#x2713;"/>
                 {% csrf_token %}
@@ -44,7 +44,7 @@
                                placeholder="Create a password">
                     </dd>
                 </dl>
-                <div class="switch-wrap d-flex justify-content-between ">
+                <div class="switch-wrap d-flex justify-content-between " style="color:white">
                     {% for u in user.user_type %}
                         {{ u }}
                     {% endfor %}

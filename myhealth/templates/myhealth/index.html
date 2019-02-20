@@ -1,4 +1,4 @@
-{% extends "myhealth/base.html" %}
+{% extends "myhealth/indexbase.html" %}
 {% load static %}
 {% block title %}Myhealth{% endblock %}
 
@@ -7,7 +7,7 @@
                     <h4>为了更好的生活</h4>
                     <h1>引领时尚的医疗方式</h1>
                     <p style="color:white">无需去医院，只需在家动动手指即可对身体进行全方位检查</p>
-                    <a href="{% url 'myhealth:register' %}" class="template-btn mt-3">注册</a>
+                    <a href="{% url 'mhuser:register' %}" class="template-btn mt-3">注册</a>
      </div>
 {% endblock %}
 

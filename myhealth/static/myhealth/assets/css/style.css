@@ -78,7 +78,7 @@ input:focus, textarea:focus {
     width: 40px;
     height: 40px;
     margin: 100px auto;
-    background-color: #244cfd;
+    background-color: #005338;
     border-radius: 100%;
     -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
     animation: sk-scaleout 1.0s infinite ease-in-out
@@ -490,6 +490,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .banner-area {
     padding: 400px 0 350px;
+    background-color: #b0b0b0;
+    background-image: url("../images/1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative
+}
+
+.banner-area_1 {
+    padding: 100px 0 50px;
     background-color: #b0b0b0;
     background-image: url("../images/1.jpg");
     background-repeat: no-repeat;
@@ -1217,7 +1227,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .blog_details .template-btn:hover {
     color: #fff !important;
-    background: linear-gradient(to right, #244cfd, #15e4fd)
+    background: linear-gradient(to right, #004b30, #15e4fd)
 }
 
 .blog_right_sidebar {
@@ -1229,7 +1239,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .blog_right_sidebar .widget_title {
     font-size: 18px;
     line-height: 25px;
-    background: linear-gradient(to right, #244cfd, #15e4fd);
+    background: linear-gradient(to right, #004b30, #15e4fd);
     text-align: center;
     color: #fff;
     padding: 8px 0px;
@@ -1246,7 +1256,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     padding-left: 20px;
     border-radius: 45px;
     z-index: 0;
-    background: linear-gradient(to right, #244cfd, #15e4fd)
+    background: linear-gradient(to right, #004b30, #15e4fd)
 }
 
 .blog_right_sidebar .search_widget .input-group .form-control:focus {
@@ -1394,7 +1404,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 .blog_right_sidebar .newsletter_widget .bbtns {
     color: #fff;
-    background: linear-gradient(to right, #244cfd, #15e4fd);
+    background: linear-gradient(to right, #004b30, #15e4fd);
     font-size: 12px;
     line-height: 38px;
     display: inline-block;
@@ -1453,7 +1463,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .blog-pagination .page-item.active .page-link {
-    background: linear-gradient(to right, #244cfd, #15e4fd);
+    background: linear-gradient(to right, #004b30, #00d60f);
     border-color: transparent;
     color: #fff
 }

@@ -1,19 +1,7 @@
-
 {% extends 'myhealth/base.html' %}
 {% load static %}
-
-
 {% block title %}{{ page.title }}{% endblock %}
-
-{% block banner %}
-     <div class="col-lg-12">
-                <h1>{{ page.title }}</h1>
-                <a href="{% url 'myhealth:index' %}">主页</a> <span>|</span> <a href="{% url 'myhealth:bloghome' 1 %}">社区主页</a>
-            </div>
-{% endblock %}
-
 {% block body %}
-<!--================Blog Area =================-->
 <section class="blog_area section-padding">
     <div class="container">
         <div class="row">
@@ -21,7 +9,7 @@
                 <div class="single-post row">
                     <div class="col-lg-12">
                         <div class="feature-img">
-                            <img class="img-fluid" src="{{ page.cover }}"
+                            <img class="img-fluid" src="{% get_media_prefix %}/{{ page.cover }}"
                                  alt="">
                         </div>
                     </div>
@@ -115,6 +103,4 @@
         </div>
     </div>
 </section>
-<!--================Blog Area =================-->
 {% endblock %}
-

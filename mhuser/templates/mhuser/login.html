@@ -1,4 +1,4 @@
-{% extends 'myhealth/base.html' %}
+{% extends 'myhealth/indexbase.html' %}
 {% load static %}
 
 {% block title %}登录{% endblock %}
@@ -6,7 +6,7 @@
 {% block banner %}
     <div class="col-md-5">
         <div class=" text-gray bg-gray-light py-4 px-4 px-md-3 px-lg-4">
-            <form action="{% url 'myhealth:login' %}" accept-charset="UTF-8" method="post"><input name="utf8"
+            <form action="{% url 'mhuser:login' %}" accept-charset="UTF-8" method="post"><input name="utf8"
                                                                                                   type="hidden"
                                                                                                   value="&#x2713;"/>
                 {% csrf_token %}
@@ -34,7 +34,7 @@
                 </dl>
                 <p class="create-account-callout mt-3" style="color:white">
                     没有账户?
-                    <a data-ga-click="Sign in, switch to sign up" href="{% url 'myhealth:register' %}">注册一个!</a>
+                    <a data-ga-click="Sign in, switch to sign up" href="{% url 'mhuser:register' %}">注册一个!</a>
                 </p>
                 <button class="btn-mktg btn-primary-mktg btn-large-mktg f4 btn-block genric-btn info"
                         type="submit"

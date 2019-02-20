@@ -25,12 +25,12 @@ def blogcommentview(requets, blog_id):
         comment['author'] = blog_c.author.username
         comment['time'] = blog_c.time
         comment['content'] = blog_c.comment
-        if blog_c.author.is_superuser == 1:
-            comment['avatar'] = ''#管理员头像
-        try:
-            comment['avatar'] = NormalUser.objects.get(user=blog_c.author).avatar
-        except BaseException:
-            comment['avatar'] = DoctorUser.objects.get(user=blog_c.author).avatar
+        # if blog_c.author.is_superuser == 1:
+        #     comment['avatar'] = ''#管理员头像
+        # try:
+        #     comment['avatar'] = NormalUser.objects.get(user=blog_c.author).avatar
+        # except BaseException:
+        #     comment['avatar'] = DoctorUser.objects.get(user=blog_c.author).avatar
         blog_comment_list.append(comment)
 
         for bottom in BottomComment.objects.filter(followed_comment_id=blog_c.id):
@@ -39,10 +39,10 @@ def blogcommentview(requets, blog_id):
             comment['author'] = bottom.author
             comment['time'] = bottom.time
             comment['content'] = bottom.comment
-            try:
-                comment['avatar'] = NormalUser.objects.get(user=blog_c.author).avatar
-            except BaseException:
-                comment['avatar'] = DoctorUser.objects.get(user=blog_c.author).avatar
+            # try:
+            #     comment['avatar'] = NormalUser.objects.get(user=blog_c.author).avatar
+            # except BaseException:
+            #     comment['avatar'] = DoctorUser.objects.get(user=blog_c.author).avatar
             blog_comment_list.append(comment)
     return blog_comment_list
 
@@ -72,5 +72,5 @@ def addcomment(request, blog_id):
                 BlogComment(comment=comment.cleaned_data['content'],
                             followed_blog_id=Blog.objects.get(pk=blog_id).id,
                         author_id=request.user.id).save()
-    return HttpResponseRedirect(''.join(('/myhealth/blog/', str(blog_id))))
+    return HttpResponseRedirect(''.join(('/blog/blog/', str(blog_id))))
 
