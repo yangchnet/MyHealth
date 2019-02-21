@@ -28,8 +28,6 @@
                            </div>
                             <div class="col-md-9">
                                 <div class="blog_post">
-                                    <img src="{% get_media_prefix %}/{{ page.cover }}" alt = "{{ page.cover }}">
-{#                                    <img src="{% static "assets/images/blog/main-blog/m-blog-1.jpg" %}" alt="">#}
                                     <div class="blog_details">
                                         <a href="{% url 'blog:blog' page.id %}"><h4>{{ page.title }}</h4></a>
                                         <p>{{ page.abstract|safe }}......</p>

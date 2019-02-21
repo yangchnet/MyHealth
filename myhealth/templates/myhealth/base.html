@@ -57,21 +57,31 @@
                                 <li><a href="">售后服务</a></li>
                             </ul>
                         </li>
-                        {% if user.is_authenticated %}
+                        {{% if user.is_authenticated %}
                             <li class="menu-has-children"><a href="{% url 'mhuser:individual' user.id %}">我的</a>
-                                {% else %}
+                                <ul>
+                                    <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
+                                    <li><a href="{% url 'mhuser:heartbeat' user.id %}">心率监测</a></li>
+                                    <li><a href="">血氧监测</a></li>
+                                    <li><a href="">历史数据</a></li>
+                                    <li><a href="">个人信息</a></li>
+                                    <li><a href="">全部数据</a></li>
+                                    <li><a href="">收到的信息</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
                             <li class="menu-has-children"><a href="{% url 'mhuser:individual' 1 %}">我的</a>
+                                <ul>
+                                    <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
+                                    <li><a href="{% url 'mhuser:heartbeat' 1 %}">心率监测</a></li>
+                                    <li><a href="">血氧监测</a></li>
+                                    <li><a href="">历史数据</a></li>
+                                    <li><a href="">个人信息</a></li>
+                                    <li><a href="">全部数据</a></li>
+                                    <li><a href="">收到的信息</a></li>
+                                </ul>
+                            </li>
                         {% endif %}
-                        {#                        <li class="menu-has-children"><a href="{% url 'myhealth:individual' user.id %}">我的</a>#}
-                        <ul>
-                            <li><a href="">心率监测</a></li>
-                            <li><a href="">血氧监测</a></li>
-                            <li><a href="">历史数据</a></li>
-                            <li><a href="">个人信息</a></li>
-                            <li><a href="">全部数据</a></li>
-                            <li><a href="">收到的信息</a></li>
-                        </ul>
-                        </li>
 
                         {% if user.is_authenticated %}
                             <li><a href="{% url 'mhuser:logout' %}">注销</a></li>

@@ -7,21 +7,15 @@
         <div class="row">
             <div class="col-lg-8 posts-list">
                 <div class="single-post row">
-                    <div class="col-lg-12">
-                        <div class="feature-img">
-                            <img class="img-fluid" src="{% get_media_prefix %}/{{ page.cover }}"
-                                 alt="">
-                        </div>
-                    </div>
                     <div class="col-lg-3  col-md-3">
                         <div class="blog_info text-right">
                             <div class="post_tag">
-                                <a href="#">{{ page.label }}</a>
+                                <a href="#">{{ blog.label }}</a>
                             </div>
                             <ul class="blog_meta list">
-                                <li><a href="#">{{ page.author }}<i class="fa fa-user-o"></i></a></li>
-                                <li><a href="#">{{ page.date }}<i class="fa fa-calendar-o"></i></a></li>
-                                <li><a href="#">{{ page.views }}<i class="fa fa-eye"></i></a></li>
+                                <li><a href="#">{{ blog.author }}<i class="fa fa-user-o"></i></a></li>
+                                <li><a href="#">{{ blog.date }}<i class="fa fa-calendar-o"></i></a></li>
+                                <li><a href="#">{{ blog.views }}<i class="fa fa-eye"></i></a></li>
                                 <li><a href="#评论">{{ comments_count }}<i class="fa fa-comment-o"></i></a></li>
                             </ul>
 
@@ -29,9 +23,9 @@
                     </div>
                     <div class="col-lg-9 col-md-9 blog_details">
                         {{ content|safe }}
-                        <h5>{{ page.title }}</h5>
+                        <h5>{{ blog.title }}</h5>
                         <p class="excert">
-                            {{ page.article|safe }}
+                            {{ blog.essay|safe }}
                         </p>
                     </div>
                 </div>

@@ -7,22 +7,21 @@
     });
 </script>
     <div class="form-group col-lg-6 col-md-6">
-        <form action="{% url 'blog:blogwrite' %}" accept-charset="UTF-8" method="post">
+        <form action="{% url 'blog:blogwrite' %}" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
             {% csrf_token %}
             <div class="blog_right_sidebar">
                 {{ ck.media }}
                 {{ ck.as_p }}
                 <dt class="input-label">
-                            <label class="form-label f5" for="user_password">标签</label>
+                            <label class="form-label f5" name="label">标签</label>
                     </dt>
                     <dd>
-                        <input type="text" class="form-control form-control-lg input-block" placeholder="添加标签">
+                        <input type="text" name="label" id="label" class="form-control form-control-lg input-block" placeholder="添加标签">
                     </dd>
 
-            <label class="'form-label">上传封面</label>
-           <input type="file" class="single-input" value="上传封面">
-                <input type="submit" value="提交">
+           <input type="submit" value="提交">
             </div>
+
         </form>
     </div>
 {% endblock %}
