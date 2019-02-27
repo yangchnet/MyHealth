@@ -2,9 +2,11 @@
 <html lang="ch-CN">
 
 {% load static %}
+{% load notifications_tags %}
 <head>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="{% static 'notifications/notify.js' %}"></script>
     <!-- Required Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,34 +59,41 @@
                                 <li><a href="">售后服务</a></li>
                             </ul>
                         </li>
-                        {% if user.is_authenticated %}
-                            <li class="menu-has-children"><a href="{% url 'mhuser:individual' user.id %}">我的</a>
-                                <ul>
-                                    <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
-                                    <li><a href="{% url 'mhuser:heartbeat' user.id %}">心率监测</a></li>
-                                    <li><a href="">血氧监测</a></li>
-                                    <li><a href="">历史数据</a></li>
-                                    <li><a href="">个人信息</a></li>
-                                    <li><a href="">全部数据</a></li>
-                                    <li><a href="">收到的信息</a></li>
-                                </ul>
-                            </li>
-                        {% else %}
-                            <li class="menu-has-children"><a href="{% url 'mhuser:individual' 1 %}">我的</a>
-                                <ul>
-                                    <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
-                                    <li><a href="{% url 'mhuser:heartbeat' 1 %}">心率监测</a></li>
-                                    <li><a href="">血氧监测</a></li>
-                                    <li><a href="">历史数据</a></li>
-                                    <li><a href="">个人信息</a></li>
-                                    <li><a href="">全部数据</a></li>
-                                    <li><a href="">收到的信息</a></li>
-                                </ul>
-                            </li>
-                        {% endif %}
-                        {% if user.is_authenticated %}
-                            <li><a href="{% url 'mhuser:logout' %}">注销</a></li>
-                        {% else %}
+                        {% if user.is_authenticated %}  {# 如果用户登陆了 #}
+                            {% if user.usertype == 'doctor' %}{# 如果用户是医生 #}
+                                <li class="menu-has-children"><img src="{{ profile.avatar.url }}"/>
+                                    <ul>
+                                        <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
+                                        <li><a href="">我的客户</a></li>
+                                        {% if notifications_unread == 0 %}
+                                            <li><a href="">收到的信息</a></li>
+                                        {% else %}
+                                            <li><a style="color:red" href="">收到的信息{% notifications_unread %}</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                                {% else %}{# 如果用户是普通用户 #}
+                                <li class="menu-has-children"><img src="{{ profile.avatar.url }}"/>
+                                    <ul>
+                                        <li><a href="{% url 'mhuser:profile' %}">个人资料</a></li>
+                                        <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
+                                        <div role="none" class="dropdown-divider"></div>
+                                        <li><a href="{% url 'mhuser:heartbeat'%}">我的心率</a></li>
+                                        <li><a href="">血氧监测</a></li>
+                                        <li><a href="">历史数据</a></li>
+                                        <li><a href="">全部数据</a></li>
+                                        {% if notifications_unread == 0 %}
+                                            <li><a href="">没有未读消息</a></li>
+                                        {% else %}
+                                            <li><a style="color:red" href="">未读信息：{% notifications_unread %}</a></li>
+                                        {% endif %}
+                                        <div role="none" class="dropdown-divider"></div>
+                                        <li><a href="{% url 'mhuser:logout' %}">注销</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+
+                            {% else %}{# 用户未登录 #}
                             <li><a href="{% url 'mhuser:login' %}">登录</a></li>
                         {% endif %}
 

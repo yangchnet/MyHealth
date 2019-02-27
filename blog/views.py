@@ -4,6 +4,7 @@ from comment.views import blogcommentview
 from comment.forms import CKEditorForm
 from blog.forms import  BlogForm
 from mhuser.forms import Login
+from mhuser.models import *
 from bs4 import BeautifulSoup
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -19,6 +20,10 @@ def bloghome(request, page_id):
     pages = []
     if request.method == 'GET':
         blog = Blog.objects.all()[4 * (page_id - 1): 4 * page_id]
+        if request.user.usertype == 'normal':
+            profile = NormalUser.objects.get(user=request.user)
+        else:
+            profile = DoctorUser.objects.get(user=request.user)
         for b in blog:
             page = {'id': '', 'title': '', 'author': '', 'label': '', 'date': '', \
                     'views': '', 'article': '', 'abstract': '', 'cover': ''}
@@ -29,11 +34,12 @@ def bloghome(request, page_id):
             page['views'] = b.views
             page['article'] = b.essay
             soup = BeautifulSoup(b.essay)
-            page['abstract'] = str(soup('p')[0]) + str(soup('p')[1]) + str(soup('p')[2])
+            # page['abstract'] = str(soup('p')[0]) + str(soup('p')[1]) + str(soup('p')[2])
+            page['abstract'] = str(soup('p')[0])
             pages.append(page)
         if request.user.is_authenticated:
             context = {'pages': pages, 'page_range': range(page_id, page_id + 5),
-                       'page_id': page_id, 'page_next': page_id + 1, 'page_pre': page_id - 1}
+                       'page_id': page_id, 'page_next': page_id + 1, 'page_pre': page_id - 1, 'profile':profile}
         else:
             context = {'pages': pages, 'page_range': range(page_id, page_id + 5),
                        'page_id': page_id, 'page_next': page_id + 1, 'page_pre': page_id - 1}

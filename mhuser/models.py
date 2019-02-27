@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 # Create your models here.
 
 class MhUser(AbstractUser):
@@ -21,7 +23,10 @@ class NormalUser(models.Model):
     career = models.CharField(default='', max_length=10, verbose_name='职业', null=True, blank=True)
     signature = models.CharField(default='', max_length=100, verbose_name='个性签名', null=True, blank=True)
     medicalhistory = models.TextField(default='', max_length=1000, verbose_name='用药史', null=True, blank=True)
-    avatar = models.ImageField(verbose_name='头像', default=None, null=True, blank=True)
+    avatar = ProcessedImageField(upload_to='avatars',
+                                 processors=[ResizeToFill(30, 30)],
+                                 format='JPEG',
+                                 options={'quality':60})
 
     def __str__(self):
         return self.user.username
@@ -34,7 +39,10 @@ class DoctorUser(models.Model):
                               verbose_name='性别', null=True, blank=True, max_length=10)
     signature = models.CharField(default='', max_length=100, verbose_name='个性签名', null=True, blank=True)
     expert = models.CharField(default='', max_length=100, verbose_name='擅长', null=True, blank=True)
-    avatar = models.ImageField(verbose_name='头像', default='', null=True, blank=True)
+    avatar = ProcessedImageField(upload_to='avatars',
+                                 processors=[ResizeToFill(50, 50)],
+                                 format='JPEG',
+                                 options={'quality': 60})
 
     def __str__(self):
         return self.user.username

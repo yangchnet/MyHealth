@@ -24,11 +24,15 @@ def index(request):
     '''
     if request.method == "GET":
         if request.user.is_authenticated:
-            context = {"log_placeholder": "注销", 'log_url_placeholder': './logout'}
+            if request.user.usertype == 'normal':
+                profile = NormalUser.objects.get(user=request.user)
+            else:
+                profile = DoctorUser.objects.get(user=request.user)
+            context = {'profile':profile}
             return render(request, 'myhealth/index.html', context)
         else:
-            context = {"log_placeholder": "登录", 'log_url_placeholder': './login'}
-            return render(request, 'myhealth/index.html', context)
+
+            return render(request, 'myhealth/index.html')
 
 
 

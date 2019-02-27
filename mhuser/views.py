@@ -12,6 +12,7 @@ from comment.views import *
 from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 import random
+from notifications.signals import notify
 # Create your views here.
 
 def register(request):
@@ -35,8 +36,7 @@ def register(request):
                                               password=user.cleaned_data['user_password'])
                 if curr_user is not None:
                     login(request, curr_user)
-                    context = {'log_placeholder': '注销'}
-                    return render(request, 'myhealth/index.html', context)
+                    return render(request, 'myhealth/index.html')
             except IntegrityError as e:
                 context = {'user': user, 'z_placeholder': '用户名被占用'}
                 return render(request, 'mhuser/register.html', context)
@@ -70,12 +70,10 @@ def user_logout(request):
     else:
         return HttpResponseRedirect('/myhealth')
 
-
-
-
-
 def doctors(request):
-    return render(request, 'mhuser/doctors.html')
+    notice = request.user.notifications.unread()
+    print('1')
+    return render(request, 'mhuser/doctors.html',{'notices':notice})
 
 
 def doctor(request, doctor_id):
@@ -86,11 +84,19 @@ def devices(request):
     return render(request, 'mhuser/devices.html')
 
 @login_required
-def individual(request, user_id):
-    return render(request, 'mhuser/individual.html')
+def profile(request):
+    if request.user.usertype == 'normal':
+        profile = NormalUser.objects.get(user=request.user)
+    else:
+        profile = DoctorUser.objects.get(user=request.user)
+    return render(request, 'mhuser/profile.html', {'profile':profile})
 
 @login_required
-def heartbeat(request, user_id):
+def heartbeat(request):
     ck = CKEditorForm()
     return render(request, 'mhuser/heartbeat.html', {'ck': ck})
+
+@login_required
+def notification(request):
+    return render(request, 'mhuser/notification.html')
 

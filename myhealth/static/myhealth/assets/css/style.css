@@ -15,6 +15,26 @@ body1 {
     font-weight: 400
 }
 
+.dropdown-divider {
+    background-color: #000000;
+    height: 1px;
+    margin: 8px 1px;
+}
+
+.common-topbar-top .common-topbar-user-info .common-topbar-user-message-count {
+    position: absolute;
+    font-size: 10px;
+    background-color: #ff5029;
+    color: #fff;
+    border-radius: 13px;
+    right: 12px;
+    top: 6px;
+    height: 12px;
+    padding: 0 3px;
+    line-height: 12px;
+    text-align: center
+}
+
 h1 {
     color: #fcfcfc;
     font-family: "Ubuntu", sans-serif;

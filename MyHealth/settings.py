@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'mhuser.apps.MhuserConfig',
     'blog.apps.BlogConfig',
     'comment.apps.CommentConfig',
+    'notifications',
     'ckeditor',
     'ckeditor_uploader',
     'myhealth.apps.MyhealthConfig',
@@ -148,3 +149,6 @@ CKEDITOR_CONFIGS = {
 AUTH_USER_MODEL = 'mhuser.MhUser'
 
 LOGIN_URL = '/mhuser/login'
+
+DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True}
+DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True}
