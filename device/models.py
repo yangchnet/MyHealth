@@ -5,30 +5,17 @@ from imagekit.processors import ResizeToFill
 
 # Create your models here.
 class Device(models.Model):
-    cover1 = ProcessedImageField(upload_to='decice/Cover', processors=[ResizeToFill(300, 200)], format='JPEG',
-                                 options={'quality': 200}, default=None)
-    cover2 = ProcessedImageField(upload_to='decice/Cover', processors=[ResizeToFill(300, 200)], format='JPEG',
-                                 options={'quality': 200}, default=None)
-    cover3 = ProcessedImageField(upload_to='decice/Cover', processors=[ResizeToFill(300, 200)], format='JPEG',
-                                 options={'quality': 200}, default=None)
-    cover4 = ProcessedImageField(upload_to='decice/Cover', processors=[ResizeToFill(300, 200)], format='JPEG',
-                                 options={'quality': 200}, default=None)
-    cover5 = ProcessedImageField(upload_to='decice/Cover', processors=[ResizeToFill(300, 200)], format='JPEG',
-                                 options={'quality': 200}, default=None)
+    name = models.CharField(default='', max_length=30, verbose_name='品名')
+    cover1 = models.ImageField(upload_to='device/Cover',  default=None)
+    cover2 = models.ImageField(upload_to='device/Cover',  default=None, null=True, blank=True)
+    cover3 = models.ImageField(upload_to='device/Cover',  default=None, null=True, blank=True)
+    cover4 = models.ImageField(upload_to='device/Cover',  default=None, null=True, blank=True)
+    cover5 = models.ImageField(upload_to='device/Cover',  default=None, null=True, blank=True)
     label = models.TextField(default='', max_length=50, verbose_name='标签')
     sales = models.IntegerField(default=0, verbose_name='销量')
     price = models.FloatField(default=0.0, verbose_name='价格')
-    detailimage1 = ProcessedImageField(upload_to='device/detailimage', processors=[ResizeToFill(500, 200)], format='JPEG',
-                                 options={'quality': 500}, default=None)
-    detailimage2 = ProcessedImageField(upload_to='device/detailimage', processors=[ResizeToFill(500, 200)],
-                                       format='JPEG',
-                                       options={'quality': 500}, default=None)
-    detailimage3 = ProcessedImageField(upload_to='device/detailimage', processors=[ResizeToFill(500, 200)],
-                                       format='JPEG',
-                                       options={'quality': 500}, default=None)
-    detailimage4 = ProcessedImageField(upload_to='device/detailimage', processors=[ResizeToFill(500, 200)],
-                                       format='JPEG',
-                                       options={'quality': 500}, default=None)
-    detailimage5 = ProcessedImageField(upload_to='device/detailimage', processors=[ResizeToFill(500, 200)],
-                                       format='JPEG',
-                                       options={'quality': 500}, default=None)
+    detailimage1 = models.ImageField(upload_to='device/detailimage',  default=None, null=True, blank=True)
+    detailimage2 = models.ImageField(upload_to='device/detailimage', default=None, null=True, blank=True)
+    detailimage3 = models.ImageField(upload_to='device/detailimage', default=None, null=True, blank=True)
+    detailimage4 = models.ImageField(upload_to='device/detailimage',  default=None, null=True, blank=True)
+    detailimage5 = models.ImageField(upload_to='device/detailimage', default=None, null=True, blank=True)
