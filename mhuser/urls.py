@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
-
+from django.conf.urls.static import static
+from django.conf import settings
 app_name = 'mhuser'
 
 urlpatterns = [
@@ -13,4 +14,4 @@ urlpatterns = [
     path('heartbeat', views.heartbeat, name='heartbeat'),
     path('notification/<int:page_id>/', views.notification, name='notification'),
     path('noti/<int:noti_id>/', views.noti, name='noti'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
