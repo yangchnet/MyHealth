@@ -20,10 +20,7 @@ def bloghome(request, page_id):
     pages = []
     if request.method == 'GET':
         blog = Blog.objects.all()[4 * (page_id - 1): 4 * page_id]
-        if request.user.usertype == 'normal':
-            profile = NormalUser.objects.get(user=request.user)
-        else:
-            profile = DoctorUser.objects.get(user=request.user)
+
         for b in blog:
             page = {'id': '', 'title': '', 'author': '', 'label': '', 'date': '', \
                     'views': '', 'article': '', 'abstract': '', 'cover': ''}
@@ -38,6 +35,13 @@ def bloghome(request, page_id):
             page['abstract'] = str(soup('p')[0])
             pages.append(page)
         if request.user.is_authenticated:
+            try:
+                if request.user.usertype == 'normal':
+                    profile = NormalUser.objects.get(user=request.user)
+                else:
+                    profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
             context = {'pages': pages, 'page_range': range(page_id, page_id + 5),
                        'page_id': page_id, 'page_next': page_id + 1, 'page_pre': page_id - 1, 'profile':profile}
         else:
@@ -52,8 +56,15 @@ def blog(request, blog_id):
         ck = CKEditorForm()
         comments = blogcommentview(request, blog_id)
         if request.user.is_authenticated:
+            try:
+                if request.user.usertype == 'normal':
+                    profile = NormalUser.objects.get(user=request.user)
+                else:
+                    profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
             context = {'blog': blog, 'ck': ck, 'comments': comments, 'comments_count': len(comments),
-                       'blog_id': blog_id}
+                       'blog_id': blog_id, 'profile':profile}
         else:
             context = {'blog': blog, 'ck': ck, 'comments': comments, 'comments_count': len(comments),
                        'blog_id': blog_id}
@@ -61,9 +72,16 @@ def blog(request, blog_id):
 
 @login_required
 def blogwrite(request):
+    try:
+        if request.user.usertype == 'normal':
+            profile = NormalUser.objects.get(user=request.user)
+        else:
+            profile = DoctorUser.objects.get(user=request.user)
+    except ValueError:
+        profile.avatar = NormalUser.objects.get(user_id=3).avatar
     if request.method == 'GET':
         ck = CKEditorForm()
-        return render(request, 'blog/blog-write.html', {'ck':ck})
+        return render(request, 'blog/blog-write.html', {'ck':ck, 'profile':profile})
     else:
         blog = BlogForm(request.POST)
         if blog.is_valid():

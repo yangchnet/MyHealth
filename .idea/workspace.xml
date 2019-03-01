@@ -2,28 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7733d331-4323-4e11-bdd3-687925fe7fe2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/mhuser/templates/mhuser/notification.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MyHealth.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MyHealth.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/37ab746a-a248-4c02-9031-e5b991b52c8c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/37ab746a-a248-4c02-9031-e5b991b52c8c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/5622c04b-16b5-47c0-a943-e7103de36dda.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/5622c04b-16b5-47c0-a943-e7103de36dda.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mhuser/templates/mhuser/noti.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myhealth/static/myhealth/assets/images/avatar.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyHealth/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyHealth/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyHealth/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyHealth/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tip_of_day" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/device/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/templates/device/device.html" beforeDir="false" afterPath="$PROJECT_DIR$/device/templates/device/device.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/templates/device/devices.html" beforeDir="false" afterPath="$PROJECT_DIR$/device/templates/device/devices.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/device/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/device/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mhuser/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mhuser/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mhuser/templates/mhuser/doctors.html" beforeDir="false" afterPath="$PROJECT_DIR$/mhuser/templates/mhuser/doctors.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mhuser/templates/mhuser/forgetpassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/mhuser/templates/mhuser/forgetpassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mhuser/templates/mhuser/individual.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mhuser/templates/mhuser/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/mhuser/templates/mhuser/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mhuser/templates/mhuser/notification.html" beforeDir="false" afterPath="$PROJECT_DIR$/mhuser/templates/mhuser/notification.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mhuser/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mhuser/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mhuser/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mhuser/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/templates/myhealth/indexbase.html" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/templates/myhealth/indexbase.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhealth/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/myhealth/views.py" afterDir="false" />
     </list>
@@ -71,59 +65,25 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
-  <component name="DockManager">
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/blog/views.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="192">
-                    <caret line="23" column="22" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="25" selection-end-column="63" />
-                    <folding>
-                      <element signature="e#0#35#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mhuser/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python3.5/dist-packages/imagekit/models/fields/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/views.py">
+        <entry file="file://$PROJECT_DIR$/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-199">
-              <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+            <state relative-caret-position="626">
+              <caret line="82" column="27" lean-forward="true" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forgetpassword.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/forgetpassword.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="15" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -131,63 +91,26 @@
       <file leaf-file-name="blog-home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog-home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+            <state relative-caret-position="144">
+              <caret line="12" column="49" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-              <folding>
-                <element signature="e#245#264#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1138">
+            <state relative-caret-position="704">
               <caret line="86" column="50" lean-forward="true" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#li#4;n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#li#5;n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/profile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="34" lean-forward="true" selection-start-column="34" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="indexbase.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/indexbase.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="77" column="79" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="79" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#li#5;n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mhuser/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="91" column="68" selection-start-line="91" selection-start-column="68" selection-end-line="91" selection-end-column="68" />
+            <state relative-caret-position="582">
+              <caret line="144" column="54" selection-start-line="144" selection-start-column="54" selection-end-line="144" selection-end-column="54" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -195,11 +118,47 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.5/dist-packages/notifications/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1129">
+              <caret line="80" column="26" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="decorators.py" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.5/dist-packages/django/contrib/auth/decorators.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notification.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/notification.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="41" column="104" lean-forward="true" selection-start-line="41" selection-start-column="104" selection-end-line="41" selection-end-column="104" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="noti.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/noti.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mhuser/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+            <state relative-caret-position="336">
+              <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -220,10 +179,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>input-block</find>
-      <find>placeholder</find>
-      <find>left-padding</find>
-      <find>catefo</find>
       <find>list</find>
       <find>comment-form</find>
       <find>comment-f</find>
@@ -247,6 +202,13 @@
       <find>message</find>
       <find>col</find>
       <find>{{</find>
+      <find>common-topbar-user-message-count</find>
+      <find>message-count</find>
+      <find>padding</find>
+      <find>homepageCategoryProducts</find>
+      <find>changeSelectionAll()</find>
+      <find>col-sm</find>
+      <find>leaveMessageText</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -264,12 +226,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/base1.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/login.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/register.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/blog-details.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/device.html" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/devices.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/doctor.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/doctors.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/forgetpassword.html" />
@@ -285,7 +241,6 @@
         <option value="$PROJECT_DIR$/mhuser/forms.py" />
         <option value="$PROJECT_DIR$/myhealth/forms.py" />
         <option value="$PROJECT_DIR$/device/urls.py" />
-        <option value="$PROJECT_DIR$/device/views.py" />
         <option value="$PROJECT_DIR$/myhealth/models.py" />
         <option value="$PROJECT_DIR$/myhealth/admin.py" />
         <option value="$PROJECT_DIR$/mhuser/admin.py" />
@@ -304,16 +259,23 @@
         <option value="$PROJECT_DIR$/mhuser/templates/mhuser/forgetpassword.html" />
         <option value="$PROJECT_DIR$/blog/templates/blog/test.css" />
         <option value="$PROJECT_DIR$/mhuser/templates/mhuser/doctors.html" />
-        <option value="$PROJECT_DIR$/mhuser/templates/mhuser/notification.html" />
         <option value="$PROJECT_DIR$/mhuser/templates/mhuser/register.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/index.html" />
-        <option value="$PROJECT_DIR$/blog/views.py" />
         <option value="$PROJECT_DIR$/myhealth/views.py" />
-        <option value="$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css" />
         <option value="$PROJECT_DIR$/mhuser/models.py" />
-        <option value="$PROJECT_DIR$/mhuser/urls.py" />
-        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/indexbase.html" />
+        <option value="$PROJECT_DIR$/blog/views.py" />
+        <option value="$USER_HOME$/下载/天猫商城部分资料/静态文件/webapp/css/back/style.css" />
+        <option value="$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/device/templates/device/devices.html" />
+        <option value="$PROJECT_DIR$/device/views.py" />
+        <option value="$PROJECT_DIR$/device/templates/device/device.html" />
+        <option value="$PROJECT_DIR$/device/models.py" />
+        <option value="$PROJECT_DIR$/mhuser/templates/mhuser/1.html" />
         <option value="$PROJECT_DIR$/myhealth/templates/myhealth/base.html" />
+        <option value="$PROJECT_DIR$/myhealth/templates/myhealth/indexbase.html" />
+        <option value="$PROJECT_DIR$/mhuser/urls.py" />
+        <option value="$PROJECT_DIR$/mhuser/templates/mhuser/notification.html" />
+        <option value="$PROJECT_DIR$/mhuser/templates/mhuser/noti.html" />
         <option value="$PROJECT_DIR$/mhuser/views.py" />
       </list>
     </option>
@@ -328,10 +290,10 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1600" />
+    <option name="x" value="1741" />
     <option name="y" value="27" />
-    <option name="width" value="1920" />
-    <option name="height" value="1053" />
+    <option name="width" value="1910" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -434,22 +396,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="Sqlite (Xerial)" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/下载/天猫商城部分资料/静态文件/webapp/css/fore/style.css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myhealth/static/myhealth/assets/images" />
+      <recent name="$PROJECT_DIR$/myhealth/static/assets" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/mhuser/templates/mhuser" />
       <recent name="$PROJECT_DIR$/device/templates/device" />
       <recent name="$PROJECT_DIR$/blog/templates/blog" />
       <recent name="$PROJECT_DIR$/myhealth/templates/myhealth" />
       <recent name="$PROJECT_DIR$/myhealth/templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/myhealth/static/assets" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -584,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550654696480</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="增加了用户头像">
+      <created>1551262952003</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1551262952003</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -604,16 +574,16 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005353" side_tool="true" weight="0.2555066" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.67071825" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.2116228" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" visible="true" weight="0.29276314" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.28070176" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1693376" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.30701753" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946466" weight="0.22258772" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.10745614" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1736111" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" weight="0.14369658" />
+      <window_info anchor="right" id="Database" order="3" weight="0.18910256" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32959402" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.0745614" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.14692983" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.3929336" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -622,7 +592,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Database Console" order="8" weight="0.2863436" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.028508771" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="9" weight="0.3292683" />
     </layout>
     <layout-to-restore>
@@ -669,15 +639,31 @@
     <MESSAGE value="使用模板继承，优化内部url，增加doctors,doctor, device,devices,individual页面" />
     <MESSAGE value="增加数据模型，重新定义用户模型，初步显示用户数据图" />
     <MESSAGE value="重构项目，拆分app" />
-    <option name="LAST_COMMIT_MESSAGE" value="重构项目，拆分app" />
+    <MESSAGE value="增加了用户头像" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了用户头像" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="71" />
+      <option name="time" value="72" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>curr_user.notifications.unread()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>curr_user.notification</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>DoctorUser.objects.get(user=request.user)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>notifications_unread</expression-string>
         <language-id>HTML</language-id>
@@ -713,188 +699,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>request.POST</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>blog.cleaned_data['content']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>blog.cleaned_data['label']</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="25" column="33" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="33" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/heartbeat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="132" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/templates/comment/blog_comment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="22" column="64" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python3.7/site-packages/django/contrib/auth/decorators.py" />
-    <entry file="file://$PROJECT_DIR$/blog/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/blog_blog">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog-write.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/comment/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="984">
-          <caret line="55" column="32" selection-start-line="55" selection-start-column="15" selection-end-line="55" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8c6990c1-0bf4-4ea8-a0a6-ff930eacd512/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="das://37ab746a-a248-4c02-9031-e5b991b52c8c/schema/main/table/notifications_notification">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/individual.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="34" selection-start-column="34" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/doctor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/forgetpassword.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyHealth/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#647#679#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyHealth/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1903">
-          <caret line="151" selection-start-line="151" selection-end-line="151" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/notifications/static/notifications/notify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-694" />
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/django/template/library.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4344">
-          <caret line="189" selection-start-line="189" selection-end-line="189" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/notifications/templatetags/notifications_tags.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="31" column="12" lean-forward="true" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/notifications/templates/notifications/test_tags.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -909,26 +716,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/notifications/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="204" lean-forward="true" selection-start-line="204" selection-end-line="204" />
-          <folding>
-            <element signature="e#98#191#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.map">
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="sourcemapFileViewerProvider" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/blog/templates/blog/test.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="264" column="20" lean-forward="true" selection-start-line="264" selection-start-column="20" selection-end-line="264" selection-end-column="20" />
-        </state>
-      </provider>
     </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/notifications/views.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -944,72 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/doctors.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/notification.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#652#676#0#HTML" expanded="true" />
-            <element signature="e#771#846#0#HTML" expanded="true" />
-            <element signature="e#873#1000#0#HTML" expanded="true" />
-            <element signature="e#1031#1255#0#HTML" expanded="true" />
-            <element signature="e#1315#1442#0#HTML" expanded="true" />
-            <element signature="e#1473#1698#0#HTML" expanded="true" />
-            <element signature="e#1758#1885#0#HTML" expanded="true" />
-            <element signature="e#1916#2141#0#HTML" expanded="true" />
-            <element signature="e#2201#2328#0#HTML" expanded="true" />
-            <element signature="e#2359#2585#0#HTML" expanded="true" />
-            <element signature="e#2645#2772#0#HTML" expanded="true" />
-            <element signature="e#2803#3029#0#HTML" expanded="true" />
-            <element signature="e#3089#3216#0#HTML" expanded="true" />
-            <element signature="e#3247#3473#0#HTML" expanded="true" />
-            <element signature="e#3533#3660#0#HTML" expanded="true" />
-            <element signature="e#3691#3917#0#HTML" expanded="true" />
-            <element signature="e#3977#4104#0#HTML" expanded="true" />
-            <element signature="e#4135#4361#0#HTML" expanded="true" />
-            <element signature="e#4421#4548#0#HTML" expanded="true" />
-            <element signature="e#4579#4805#0#HTML" expanded="true" />
-            <element signature="e#4865#4992#0#HTML" expanded="true" />
-            <element signature="e#5023#5249#0#HTML" expanded="true" />
-            <element signature="e#11371#11399#0#HTML" expanded="true" />
-            <element signature="e#32541#32619#0#HTML" expanded="true" />
-            <element signature="e#32817#32837#0#HTML" expanded="true" />
-            <element signature="e#44611#44657#0#HTML" expanded="true" />
-            <element signature="e#45028#45090#0#HTML" expanded="true" />
-            <element signature="e#45236#45277#0#HTML" expanded="true" />
-            <element signature="e#46063#46087#0#HTML" expanded="true" />
-            <element signature="e#46190#46265#0#HTML" expanded="true" />
-            <element signature="e#46304#46431#0#HTML" expanded="true" />
-            <element signature="e#46474#46698#0#HTML" expanded="true" />
-            <element signature="e#46782#46909#0#HTML" expanded="true" />
-            <element signature="e#46952#47177#0#HTML" expanded="true" />
-            <element signature="e#47261#47388#0#HTML" expanded="true" />
-            <element signature="e#47431#47656#0#HTML" expanded="true" />
-            <element signature="e#47740#47867#0#HTML" expanded="true" />
-            <element signature="e#47910#48136#0#HTML" expanded="true" />
-            <element signature="e#48220#48347#0#HTML" expanded="true" />
-            <element signature="e#48390#48616#0#HTML" expanded="true" />
-            <element signature="e#48700#48827#0#HTML" expanded="true" />
-            <element signature="e#48870#49096#0#HTML" expanded="true" />
-            <element signature="e#49180#49307#0#HTML" expanded="true" />
-            <element signature="e#49350#49576#0#HTML" expanded="true" />
-            <element signature="e#49660#49787#0#HTML" expanded="true" />
-            <element signature="e#49830#50056#0#HTML" expanded="true" />
-            <element signature="e#50140#50267#0#HTML" expanded="true" />
-            <element signature="e#50310#50536#0#HTML" expanded="true" />
-            <element signature="e#50620#50747#0#HTML" expanded="true" />
-            <element signature="e#50790#51016#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1038,10 +762,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog-detail.html">
+    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/mhuser_mhuser">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/templates/blog/test.css" />
+    <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog-write.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="35" column="34" lean-forward="true" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
+        <state relative-caret-position="480">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="23" column="66" lean-forward="true" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/admin/img/search.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/admin/img/tooltag-add.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/admin/img/selector-icons.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/patient1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/patient2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/images/patient.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/doctors.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1052,44 +816,206 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://5622c04b-16b5-47c0-a943-e7103de36dda/schema/main/table/mhuser_mhuser">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
-          <caret line="119" lean-forward="true" selection-start-line="119" selection-end-line="119" />
+          <caret line="123" selection-start-line="123" selection-end-line="123" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css">
+    <entry file="file://$PROJECT_DIR$/comment/templates/comment/blog_comment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+        <state relative-caret-position="672">
+          <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/urls.py">
+    <entry file="file://$USER_HOME$/下载/天猫商城部分资料/静态文件/webapp/css/back/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+        <state relative-caret-position="120">
+          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/下载/天猫商城部分资料/静态文件/webapp/css/fore/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="1320" column="4" selection-start-line="1320" selection-start-column="4" selection-end-line="1320" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/瀑布流.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="120" column="24" selection-start-line="120" selection-start-column="24" selection-end-line="120" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#2;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#3;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#4;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#5;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#6;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#7;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#8;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#9;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#10;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#11;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#12;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#13;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#14;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#15;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device/templates/device/devices.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1576">
+          <caret line="1518" lean-forward="true" selection-start-line="1518" selection-end-line="1518" />
+          <folding>
+            <element signature="e#2414#2432#0#HTML" expanded="true" />
+            <element signature="e#4627#4645#0#HTML" expanded="true" />
+            <element signature="e#6842#6860#0#HTML" expanded="true" />
+            <element signature="e#9055#9073#0#HTML" expanded="true" />
+            <element signature="e#11266#11284#0#HTML" expanded="true" />
+            <element signature="e#13480#13498#0#HTML" expanded="true" />
+            <element signature="e#15690#15708#0#HTML" expanded="true" />
+            <element signature="e#17903#17921#0#HTML" expanded="true" />
+            <element signature="e#20116#20134#0#HTML" expanded="true" />
+            <element signature="e#22320#22338#0#HTML" expanded="true" />
+            <element signature="e#24531#24549#0#HTML" expanded="true" />
+            <element signature="e#26737#26755#0#HTML" expanded="true" />
+            <element signature="e#28946#28964#0#HTML" expanded="true" />
+            <element signature="e#31151#31169#0#HTML" expanded="true" />
+            <element signature="e#33356#33374#0#HTML" expanded="true" />
+            <element signature="e#35559#35577#0#HTML" expanded="true" />
+            <element signature="e#37777#37795#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device/templates/device/device.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="315" lean-forward="true" selection-start-line="315" selection-end-line="315" />
+          <folding>
+            <element signature="e#8621#8639#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/device/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/详情.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="316" column="8" lean-forward="true" selection-start-line="316" selection-start-column="8" selection-end-line="316" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/购物车.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43">
+          <caret line="409" column="432" selection-start-line="409" selection-start-column="432" selection-end-line="409" selection-end-column="432" />
+          <folding>
+            <element signature="e#2620#2625#1#HTML" expanded="true" />
+            <element signature="e#2666#2670#1#HTML" expanded="true" />
+            <element signature="e#2711#2715#1#HTML" expanded="true" />
+            <element signature="e#2756#2762#1#HTML" expanded="true" />
+            <element signature="e#2804#2809#1#HTML" expanded="true" />
+            <element signature="e#61197#61201#0#HTML" expanded="true" />
+            <element signature="e#61337#61343#0#HTML" expanded="true" />
+            <element signature="e#61350#61355#0#HTML" expanded="true" />
+            <element signature="e#61362#61367#0#HTML" expanded="true" />
+            <element signature="e#61398#61402#0#HTML" expanded="true" />
+            <element signature="e#61421#61425#0#HTML" expanded="true" />
+            <element signature="e#83101#83119#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/static/myhealth/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="48" column="1" lean-forward="true" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1892">
+          <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/device/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="5" column="26" lean-forward="true" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhuser/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/imagekit/models/fields/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2208">
+          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/indexbase.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="77" column="79" selection-start-line="77" selection-start-column="53" selection-end-line="77" selection-end-column="79" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#li#5;n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="1848">
+          <caret line="77" column="51" lean-forward="true" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -1100,46 +1026,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="25" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="91" column="68" selection-start-line="91" selection-start-column="68" selection-end-line="91" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mhuser/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.5/dist-packages/imagekit/models/fields/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-199">
+        <state relative-caret-position="24">
           <caret line="20" column="24" lean-forward="true" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -1147,30 +1036,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog-home.html">
+    <entry file="file://$PROJECT_DIR$/blog/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
+        <state relative-caret-position="626">
+          <caret line="82" column="27" lean-forward="true" selection-start-line="82" selection-start-column="27" selection-end-line="82" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/index.html">
+    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/forgetpassword.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        <state>
+          <caret selection-end-line="15" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhuser/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
           <folding>
-            <element signature="e#245#264#0#HTML" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myhealth/templates/myhealth/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1138">
+        <state relative-caret-position="704">
           <caret line="86" column="50" lean-forward="true" selection-start-line="86" selection-start-column="50" selection-end-line="86" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/templates/blog/blog-home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/django/contrib/auth/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/notification.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="41" column="104" lean-forward="true" selection-start-line="41" selection-start-column="104" selection-end-line="41" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhuser/templates/mhuser/noti.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.5/dist-packages/notifications/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1129">
+          <caret line="80" column="26" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mhuser/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="144" column="54" selection-start-line="144" selection-start-column="54" selection-end-line="144" selection-end-column="54" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#li#4;n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#li#5;n#ul#0;n#nav#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,0 +1,14 @@
+{% extends 'myhealth/base.html' %}
+{％load notifications_tags％}
+{% block title %}信息{% endblock %}
+
+{% block body %}
+    <div ng-show="vm.normal &amp;&amp; !vm.nopermission"
+         class="message-detail-container console-box-border margin-top-3 row-padding col-padding blog_right_sidebar">
+        <div>
+            <p> {{ unread.verb }}</p>
+        </div>
+
+    </div>
+
+{% endblock %}

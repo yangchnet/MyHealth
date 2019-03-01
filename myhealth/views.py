@@ -24,14 +24,16 @@ def index(request):
     '''
     if request.method == "GET":
         if request.user.is_authenticated:
-            if request.user.usertype == 'normal':
-                profile = NormalUser.objects.get(user=request.user)
-            else:
-                profile = DoctorUser.objects.get(user=request.user)
+            try:
+                if request.user.usertype == 'normal':
+                    profile = NormalUser.objects.get(user=request.user)
+                else:
+                    profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
             context = {'profile':profile}
             return render(request, 'myhealth/index.html', context)
         else:
-
             return render(request, 'myhealth/index.html')
 
 

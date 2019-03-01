@@ -26,7 +26,8 @@ class NormalUser(models.Model):
     avatar = ProcessedImageField(upload_to='avatars',
                                  processors=[ResizeToFill(30, 30)],
                                  format='JPEG',
-                                 options={'quality':60})
+                                 options={'quality':60},
+                                 default='avatars/wallls.com_119414.jpg')
 
     def __str__(self):
         return self.user.username
@@ -42,7 +43,8 @@ class DoctorUser(models.Model):
     avatar = ProcessedImageField(upload_to='avatars',
                                  processors=[ResizeToFill(50, 50)],
                                  format='JPEG',
-                                 options={'quality': 60})
+                                 options={'quality': 60},
+                                 default='avatars/wallls.com_119414.jpg')
 
     def __str__(self):
         return self.user.username

@@ -13,6 +13,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
 import random
 from notifications.signals import notify
+from notifications.models import Notification
 # Create your views here.
 
 def register(request):
@@ -46,8 +47,7 @@ def register(request):
 def user_login(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
-
-            return HttpResponseRedirect('/myhealth/index')
+            return HttpResponseRedirect('/myhealth')
         else:
             return render(request, 'mhuser/login.html', )
     if request.method == 'POST':
@@ -57,9 +57,7 @@ def user_login(request):
                                           password=user.cleaned_data['user_password'])
             if curr_user is not None:
                 login(request, curr_user)
-                next = request.GET.get('next', '/')
-                # return HttpResponse("OK")
-        return render(request, 'myhealth/index.html')
+                return HttpResponseRedirect('/myhealth')
 
 
 @csrf_exempt
@@ -71,9 +69,17 @@ def user_logout(request):
         return HttpResponseRedirect('/myhealth')
 
 def doctors(request):
-    notice = request.user.notifications.unread()
-    print('1')
-    return render(request, 'mhuser/doctors.html',{'notices':notice})
+    if request.user.is_authenticated:
+        try:
+            if request.user.usertype == 'normal':
+                profile = NormalUser.objects.get(user=request.user)
+            else:
+                profile = DoctorUser.objects.get(user=request.user)
+        except ValueError:
+            profile.avatar = NormalUser.objects.get(user_id=3).avatar
+        notice = request.user.notifications.unread()
+        return render(request, 'mhuser/doctors.html', {'notices': notice, 'profile': profile})
+    return render(request, 'mhuser/doctors.html')
 
 
 def doctor(request, doctor_id):
@@ -85,18 +91,57 @@ def devices(request):
 
 @login_required
 def profile(request):
-    if request.user.usertype == 'normal':
-        profile = NormalUser.objects.get(user=request.user)
-    else:
-        profile = DoctorUser.objects.get(user=request.user)
+    try:
+        if request.user.usertype == 'normal':
+            profile = NormalUser.objects.get(user=request.user)
+        else:
+            profile = DoctorUser.objects.get(user=request.user)
+    except ValueError:
+        profile.avatar = NormalUser.objects.get(user_id=3).avatar
     return render(request, 'mhuser/profile.html', {'profile':profile})
 
 @login_required
 def heartbeat(request):
+    try:
+        if request.user.usertype == 'normal':
+            profile = NormalUser.objects.get(user=request.user)
+        else:
+            profile = DoctorUser.objects.get(user=request.user)
+    except ValueError:
+        profile.avatar = NormalUser.objects.get(user_id=3).avatar
     ck = CKEditorForm()
-    return render(request, 'mhuser/heartbeat.html', {'ck': ck})
+    return render(request, 'mhuser/heartbeat.html', {'ck': ck,'profile':profile})
 
 @login_required
-def notification(request):
-    return render(request, 'mhuser/notification.html')
+def notification(request, page_id):
+    try:
+        if request.user.usertype == 'normal':
+            profile = NormalUser.objects.get(user=request.user)
+
+        else:
+            profile = DoctorUser.objects.get(user=request.user)
+
+    except ValueError:
+        profile.avatar = NormalUser.objects.get(user_id=3).avatar
+    curr_user = request.user
+    unread = curr_user.notifications.unread()[10 * (page_id - 1): 10 * page_id]
+    context = {'profile':profile, 'unread':unread, 'page_range': range(page_id, page_id+4), 'page_id':page_id}
+    return render(request, 'mhuser/notification.html', context)
+
+@login_required
+def noti(request, noti_id):
+    curr_user = request.user
+    unread = Notification.objects.get(id = noti_id)
+    try:
+        if request.user.usertype == 'normal':
+            profile = NormalUser.objects.get(user=request.user)
+
+        else:
+            profile = DoctorUser.objects.get(user=request.user)
+
+    except ValueError:
+        profile.avatar = NormalUser.objects.get(user_id=3).avatar
+    context = {'profile':profile, 'unread':unread}
+    unread.mark_as_read()
+    return render(request, 'mhuser/noti.html', context)
 

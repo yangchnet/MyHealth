@@ -11,5 +11,6 @@ urlpatterns = [
     path('doctor/<int:doctor_id>/', views.doctor, name='doctor'),
     path('profile', views.profile, name='profile'),
     path('heartbeat', views.heartbeat, name='heartbeat'),
-    path('notification/', views.notification, name='notification'),
+    path('notification/<int:page_id>/', views.notification, name='notification'),
+    path('noti/<int:noti_id>/', views.noti, name='noti'),
 ]

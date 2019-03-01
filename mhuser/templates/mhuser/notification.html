@@ -7,96 +7,6 @@
 {% block body %}
     <div class="col-sm-12">
         <div class="row margin-top-3" data-ng-hide="vm.nopermission">
-            <div data-ng-show="!vm.tableDisplay" aliyun-loading="" size="48" style="margin-top:100px" class="ng-hide">
-                <div class="spinner" role="progressbar"
-                     style="position: relative; width: 0px; z-index: 99; left: 685px; top: 0px;">
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-0-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(0deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-1-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(36deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-2-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(72deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-3-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(108deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-4-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(144deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-5-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(180deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-6-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(216deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-7-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(252deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-8-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(288deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                    <div style="position: absolute; top: -2px; opacity: 0.25; animation: opacity-100-25-9-10 1s linear 0s infinite normal none running;">
-                        <div style="position: absolute; width: 11px; height: 5px; background: rgb(0, 0, 0); box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px; transform-origin: left center 0px; transform: rotate(324deg) translate(13px, 0px); border-radius: 2px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12" data-ng-show="vm.tableDisplay">
-                <div state-param-selector="" param-name="categoryId" default-param="vm.defaultParam"
-                     params-model="vm.paramsModel" on-param-change="vm.onParamChange()" class="ng-isolate-scope">
-                    <ul class="nav nav-pills"><!-- ngRepeat: paramItem in paramsModel -->
-                        <li data-ng-class="{'active': paramItem.param == currentParam}"
-                            class="state-selector-item ng-scope active" data-ng-repeat="paramItem in paramsModel"><a
-                                aliyun-console-spm="0" spm-uri="innerMsg_unread" href="javascript:;"
-                                data-ng-disabled="checkDisable(paramItem)" data-ng-click="changeState(paramItem.param)"
-                                class="ng-binding"
-                                data-spm-click="gostr=/aliyun;locaid=d0;uri=innerMsg_unread;">全部类型消息</a>
-                            <!-- ngIf: paramItem.specialInfo --></li><!-- end ngRepeat: paramItem in paramsModel -->
-                        <li data-ng-class="{'active': paramItem.param == currentParam}"
-                            class="state-selector-item ng-scope" data-ng-repeat="paramItem in paramsModel"><a
-                                aliyun-console-spm="1" spm-uri="innerMsg_unread" href="javascript:;"
-                                data-ng-disabled="checkDisable(paramItem)" data-ng-click="changeState(paramItem.param)"
-                                class="ng-binding"
-                                data-spm-click="gostr=/aliyun;locaid=d1;uri=innerMsg_unread;">产品消息(7)</a>
-                            <!-- ngIf: paramItem.specialInfo --></li><!-- end ngRepeat: paramItem in paramsModel -->
-                        <li data-ng-class="{'active': paramItem.param == currentParam}"
-                            class="state-selector-item ng-scope" data-ng-repeat="paramItem in paramsModel"><a
-                                aliyun-console-spm="2" spm-uri="innerMsg_unread" href="javascript:;"
-                                data-ng-disabled="checkDisable(paramItem)" data-ng-click="changeState(paramItem.param)"
-                                class="ng-binding"
-                                data-spm-click="gostr=/aliyun;locaid=d2;uri=innerMsg_unread;">安全消息</a>
-                            <!-- ngIf: paramItem.specialInfo --></li><!-- end ngRepeat: paramItem in paramsModel -->
-                        <li data-ng-class="{'active': paramItem.param == currentParam}"
-                            class="state-selector-item ng-scope" data-ng-repeat="paramItem in paramsModel"><a
-                                aliyun-console-spm="3" spm-uri="innerMsg_unread" href="javascript:;"
-                                data-ng-disabled="checkDisable(paramItem)" data-ng-click="changeState(paramItem.param)"
-                                class="ng-binding"
-                                data-spm-click="gostr=/aliyun;locaid=d3;uri=innerMsg_unread;">服务消息(2)</a>
-                            <!-- ngIf: paramItem.specialInfo --></li><!-- end ngRepeat: paramItem in paramsModel -->
-                        <li data-ng-class="{'active': paramItem.param == currentParam}"
-                            class="state-selector-item ng-scope" data-ng-repeat="paramItem in paramsModel"><a
-                                aliyun-console-spm="4" spm-uri="innerMsg_unread" href="javascript:;"
-                                data-ng-disabled="checkDisable(paramItem)" data-ng-click="changeState(paramItem.param)"
-                                class="ng-binding" data-spm-click="gostr=/aliyun;locaid=d4;uri=innerMsg_unread;">活动消息(40)</a>
-                            <!-- ngIf: paramItem.specialInfo --></li><!-- end ngRepeat: paramItem in paramsModel -->
-                        <li data-ng-class="{'active': paramItem.param == currentParam}"
-                            class="state-selector-item ng-scope" data-ng-repeat="paramItem in paramsModel"><a
-                                aliyun-console-spm="5" spm-uri="innerMsg_unread" href="javascript:;"
-                                data-ng-disabled="checkDisable(paramItem)" data-ng-click="changeState(paramItem.param)"
-                                class="ng-binding"
-                                data-spm-click="gostr=/aliyun;locaid=d5;uri=innerMsg_unread;">历史消息</a>
-                            <!-- ngIf: paramItem.specialInfo --></li><!-- end ngRepeat: paramItem in paramsModel -->
-                        <li data-ng-class="{'active': paramItem.param == currentParam}"
-                            class="state-selector-item ng-scope" data-ng-repeat="paramItem in paramsModel"><a
-                                aliyun-console-spm="26" spm-uri="innerMsg_unread" href="javascript:;"
-                                data-ng-disabled="checkDisable(paramItem)" data-ng-click="changeState(paramItem.param)"
-                                class="ng-binding"
-                                data-spm-click="gostr=/aliyun;locaid=d26;uri=innerMsg_unread;">故障消息</a>
-                            <!-- ngIf: paramItem.specialInfo --></li><!-- end ngRepeat: paramItem in paramsModel -->
-                    </ul>
-                </div>
-            </div>
             <div class="col-sm-12" data-ng-show="vm.tableDisplay">
                 <div aliyun-simple-grid="" columns="vm.columns" store="vm.itemList"
                      refresh-grid-view="vm.config.refreshGridView" loading-state="vm.loadingState"
@@ -111,9 +21,6 @@
                             <table class="table table-hover" style="margin-bottom: 57px;">
                                 <thead>
                                 <tr>
-                                    <th width="10"><input type="checkbox" data-ng-model="tableState.selectAll"
-                                                          ng-change="changeSelectionAll()" aria-label="全选"
-                                                          class="ng-pristine ng-valid"></th>
                                     <th class="state-column"></th>
                                     <th class="title-column">标题内容</th>
                                     <th>提交时间</th>
@@ -125,338 +32,55 @@
                                             class="ng-scope">类型</span></span><!-- end ngIf: !showDropdown --></th>
                                 </tr>
                                 </thead>
-                                <tbody><!-- ngRepeat: item in store --><!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="年后开干！看看同行在悄悄做哪些业务布局？">年后开干！看看同行在悄悄做哪些业务布局？</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-02-18 11:01:39</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-优惠活动</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="免费试用物联网平台，最快10分钟完成硬件上云！">免费试用物联网平台，最快10分钟完成硬件上云！</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-02-13 15:39:43</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-优惠活动</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="阿里云SCDN产品价格调整通知">阿里云SCDN产品价格调整通知</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-02-12 09:46:52</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">产品消息-存储与CDN</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="阿里云CDN新版OPEN API发布，请注意更新">阿里云CDN新版OPEN API发布，请注意更新</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-02-01 16:47:01</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">产品消息-存储与CDN</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="请查收：2018，你的专属云上回忆录 /这一年，我们帮你记录着">请查收：2018，你的专属云上回忆录 /这一年，我们帮你记录着</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-01-24 21:48:04</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-优惠活动</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column" data-spm-anchor-id="5176.2020520130.101.i2.3d38697biDIRBR">
-                                        <a ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                           detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                           class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                       text-length="50"
-                                                                                       source-text="知道同行在悄悄注册这些商标布局未来吗？">知道同行在悄悄注册这些商标布局未来吗？</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-01-21 08:25:17</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-优惠活动</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="【老用户专享】新购满500元即可享满返代金券">【老用户专享】新购满500元即可享满返代金券</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-01-09 14:35:03</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-优惠活动</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="【有奖调研】阿里云CDN问卷调研">【有奖调研】阿里云CDN问卷调研</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2019-01-02 09:41:36</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-问卷回访</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="12.12高潮迭起，推广返利再加码，享30%返现！">12.12高潮迭起，推广返利再加码，享30%返现！</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2018-12-26 15:03:21</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-优惠活动</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store -->
-                                <!-- ngIf: !loadingState -->
-                                <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                    data-ng-repeat="item in store" class="ng-scope">
-                                    <td width="10"><input type="checkbox" data-ng-model="item.selected"
-                                                          ng-change="changeSelection({data: item})"
-                                                          class="ng-pristine ng-valid"></td>
-                                    <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                            class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                        <!-- end ngIf: item.Status*1===0 --></td>
-                                    <td class="title-column"><a
-                                            ng-class="{'title-unread':item.Status*1===0,'title-read':item.Status*1!==0}"
-                                            detail-router="" detail-id="item.MsgId" href="javascript:;"
-                                            class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                        text-length="50"
-                                                                                        source-text="免费试用物联网平台，最快10分钟完成硬件上云！">免费试用物联网平台，最快10分钟完成硬件上云！</span></a>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">2018-12-26 12:58:29</span>
-                                    </td>
-                                    <td><span class="column-text" bo-text="item.CategoryName">活动消息-优惠活动</span></td>
-                                </tr><!-- end ngIf: !loadingState --><!-- end ngRepeat: item in store --></tbody>
-                                <!-- ngIf: !showNoneDataInfoTip --><!-- end ngIf: !showNoneDataInfoTip --></table>
-                            <table class="table table-fixed"
-                                   style="margin: 0px; z-index: 99; width: 1325px; position: fixed; bottom: 0px;">
-                                <tfoot aliyun-table-fixed="" ng-if="!showNoneDataInfoTip" class="ng-scope">
-                                <tr>
-                                    <td width="10" style="width: 30px;"><input type="checkbox"
-                                                                               data-ng-model="tableState.selectAll"
-                                                                               ng-change="changeSelectionAll()"
-                                                                               aria-label="全选"
-                                                                               class="ng-pristine ng-valid"></td>
-                                    <td colspan=" 4">
-                                        <div class="pull-left">
-                                            <div toolbar="" biz-type="innerMsgToolbar" raw-data="selectedItems"
-                                                 class="ng-isolate-scope"><a href="javascript:;"
-                                                                             class="btn btn-default ng-scope"
-                                                                             aliyun-console-spm="" spm-id="6"
-                                                                             inline-command="" biz-type="innerMsg"
-                                                                             action="delete" item-field="rawData"
-                                                                             key-field="msgId"
-                                                                             data-ng-disabled="!rawData || rawData.length==0"
-                                                                             data-spm-click="gostr=/aliyun;locaid=d6;;"
-                                                                             disabled="disabled"><span
-                                                    class=""> 删除 </span></a><span
-                                                    class="margin-right ng-scope"></span><a href="javascript:;"
-                                                                                            class="btn btn-default ng-scope"
-                                                                                            aliyun-console-spm=""
-                                                                                            spm-id="7" inline-command=""
-                                                                                            biz-type="innerMsg"
-                                                                                            action="markRead"
-                                                                                            item-field="rawData"
-                                                                                            key-field="msgId"
-                                                                                            data-ng-disabled="!rawData || rawData.length==0"
-                                                                                            data-spm-click="gostr=/aliyun;locaid=d7;;"
-                                                                                            disabled="disabled"><span
-                                                    class=""> 标记已读 </span></a><span
-                                                    class="margin-right ng-scope"></span><a href="javascript:;"
-                                                                                            class="btn btn-default ng-scope"
-                                                                                            aliyun-console-spm=""
-                                                                                            spm-id="600"
-                                                                                            inline-command=""
-                                                                                            biz-type="innerMsg"
-                                                                                            action="markReadAll"
-                                                                                            item-field="rawData"
-                                                                                            key-field="msgId"
-                                                                                            data-spm-click="gostr=/aliyun;locaid=d600;;"><span
-                                                    class=""> 全部已读 </span></a></div>
-                                        </div>
-                                        <!-- ngIf: paginationSupport && showNoneDataInfoTip != true && !loadingState -->
-                                        <div data-ng-if="paginationSupport &amp;&amp; showNoneDataInfoTip != true &amp;&amp; !loadingState"
-                                             class="ng-scope">
-                                            <div class="pull-right ng-isolate-scope" aliyun-console-pagination=""
-                                                 pagination-info="paginationInfo" show-page-goto="true"
-                                                 max-size="maxSize" on-select-page="pageChanged(page, pageSize)">
-                                                <div class="pagination-info" ng-hide="paginationInfo.tipHide"><span
-                                                        class="ng-binding">共有49条</span>, <span
-                                                        ng-hide="paginationInfo.pageSizeSetting" class="ng-binding">每页显示：10条</span>
-                                                    <span ng-show="paginationInfo.pageSizeSetting"
-                                                          class="ng-binding ng-hide">每页显示：<select
-                                                            ng-model="paginationInfo.pageSize"
-                                                            ng-options="option.value as option.name for option in paginationInfo.pageSizeSetting"
-                                                            class="ng-pristine ng-valid"><option value="?"
-                                                                                                 selected="selected"></option></select>条</span>
-                                                </div>
-                                                <ul class="pagination ng-isolate-scope" ng-show="paginationInfo.total"
-                                                    on-select-page="pageChangedHandler(page)" pagination=""
-                                                    boundary-links="true" max-size="maxSize"
-                                                    total-items="paginationInfo.total" page="paginationInfo.page"
-                                                    items-per-page="paginationInfo.pageSize" previous-text="‹"
-                                                    next-text="›" first-text="«" last-text="»" previous-title="dfdfdfd">
-                                                    <!-- ngRepeat: page in pages -->
-                                                    <li ng-repeat="page in pages"
-                                                        ng-class="{active: page.active, disabled: page.disabled}"
-                                                        class="ng-scope disabled"><a href="javascript:void(0)"
-                                                                                     aria-label="First"
-                                                                                     ng-click="selectPage(page.number)"
-                                                                                     class="ng-binding">«</a></li>
-                                                    <!-- end ngRepeat: page in pages -->
-                                                    <li ng-repeat="page in pages"
-                                                        ng-class="{active: page.active, disabled: page.disabled}"
-                                                        class="ng-scope disabled"><a href="javascript:void(0)"
-                                                                                     aria-label="dfdfdfd"
-                                                                                     ng-click="selectPage(page.number)"
-                                                                                     class="ng-binding">‹</a></li>
-                                                    <!-- end ngRepeat: page in pages -->
-                                                    <li ng-repeat="page in pages"
-                                                        ng-class="{active: page.active, disabled: page.disabled}"
-                                                        class="ng-scope active"><a href="javascript:void(0)"
-                                                                                   aria-label="1"
-                                                                                   ng-click="selectPage(page.number)"
-                                                                                   class="ng-binding">1</a></li>
-                                                    <!-- end ngRepeat: page in pages -->
-                                                    <li ng-repeat="page in pages"
-                                                        ng-class="{active: page.active, disabled: page.disabled}"
-                                                        class="ng-scope"><a href="javascript:void(0)" aria-label="2"
-                                                                            ng-click="selectPage(page.number)"
-                                                                            class="ng-binding">2</a></li>
-                                                    <!-- end ngRepeat: page in pages -->
-                                                    <li ng-repeat="page in pages"
-                                                        ng-class="{active: page.active, disabled: page.disabled}"
-                                                        class="ng-scope"><a href="javascript:void(0)" aria-label="3"
-                                                                            ng-click="selectPage(page.number)"
-                                                                            class="ng-binding">3</a></li>
-                                                    <!-- end ngRepeat: page in pages -->
-                                                    <li ng-repeat="page in pages"
-                                                        ng-class="{active: page.active, disabled: page.disabled}"
-                                                        class="ng-scope"><a href="javascript:void(0)" aria-label="Next"
-                                                                            ng-click="selectPage(page.number)"
-                                                                            class="ng-binding">›</a></li>
-                                                    <!-- end ngRepeat: page in pages -->
-                                                    <li ng-repeat="page in pages"
-                                                        ng-class="{active: page.active, disabled: page.disabled}"
-                                                        class="ng-scope"><a href="javascript:void(0)" aria-label="Last"
-                                                                            ng-click="selectPage(page.number)"
-                                                                            class="ng-binding">»</a></li>
-                                                    <!-- end ngRepeat: page in pages --></ul>
-                                                <span data-ng-show="paginationInfo.showPageGoto"
-                                                      style="padding-left: 15px;padding-right: 15px" class=""><input
-                                                        type="text" data-ng-model="pageGoto"
-                                                        class="form-control ng-pristine ng-valid" aliyun-number-range=""
-                                                        value-min="1" value-max="5"
-                                                        style="width: 40px; display: inline-block; padding-right: 5px"> <button
-                                                        class="btn btn-default"
-                                                        style="padding: 8px 8px;margin-left: 6px"
-                                                        data-ng-disabled="gotoPageBtnDisabled"
-                                                        data-ng-click="gotoPage()"
-                                                        disabled="disabled">GO</button></span></div>
-                                        </div>
-                                        <!-- end ngIf: paginationSupport && showNoneDataInfoTip != true && !loadingState -->
-                                    </td>
-                                </tr>
-                                </tfoot>
+                                <tbody>
+                                {% for ur in unread %}
+                                    <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
+                                        data-ng-repeat="item in store" class="ng-scope">
+                                        <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
+                                                class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
+                                            <!-- end ngIf: item.Status*1===0 --></td>
+                                        <td class="title-column"><a href="{% url 'mhuser:noti' ur.id %}"
+                                                class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
+                                                                                            text-length="50"
+                                                                                            source-text="">{{ ur.verb }}</span></a>
+                                        </td>
+                                        <td><span class="column-text"
+                                                  bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">{{ ur.timestamp|date:"Y-m-d, G:i" }}</span>
+                                        </td>
+                                        <td><span class="column-text"
+                                                  bo-text="item.CategoryName">{{ ur.description }}</span></td>
+                                    </tr>
+                                {% endfor %}
                             </table>
+                            <nav class="blog-pagination justify-content-center d-flex">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a href="" class="page-link" aria-label="Previous">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-angle-left"></span>
+                                        </span>
+                                        </a>
+                                    </li>
+                                    {% for p in page_range %}
+                                        {% if p == page_id %}
+                                            <li class="page-item active"><a href="{% url 'mhuser:notification' p %}"
+                                                                            class="page-link">{{ p }}</a></li>
+                                        {% else %}
+                                            <li class="page-item"><a href="{% url 'mhuser:notification' p %}"
+                                                                     class="page-link">{{ p }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <li class="page-item">
+                                        <a href="" class="page-link"
+                                           aria-label="Next">
+                                        <span aria-hidden="true">
+                                            <span class="fa fa-angle-right"></span>
+                                        </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
                         <div ng-show="loadingState" class="simple-grid-loading ng-hide" aliyun-loading="" size="48"
                              style="margin-top:100px">
