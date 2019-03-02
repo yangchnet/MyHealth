@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import MhUser, Match, NormalUser, DoctorUser
+from .models import MhUser, Match, NormalUser, DoctorUser, Data
 from .forms import Register, Login
 from django.contrib import auth
 from django.contrib.auth import login
@@ -14,6 +14,8 @@ from django.contrib.auth.decorators import login_required
 import random
 from notifications.signals import notify
 from notifications.models import Notification
+from explain.views import getexplainlist
+
 # Create your views here.
 
 def register(request):
@@ -68,6 +70,7 @@ def user_logout(request):
     else:
         return HttpResponseRedirect('/myhealth')
 
+
 def doctors(request):
     if request.user.is_authenticated:
         try:
@@ -89,6 +92,7 @@ def doctor(request, doctor_id):
 def devices(request):
     return render(request, 'mhuser/devices.html')
 
+
 @login_required
 def profile(request):
     try:
@@ -98,19 +102,56 @@ def profile(request):
             profile = DoctorUser.objects.get(user=request.user)
     except ValueError:
         profile.avatar = NormalUser.objects.get(user_id=3).avatar
-    return render(request, 'mhuser/profile.html', {'profile':profile})
+    return render(request, 'mhuser/profile.html', {'profile': profile})
+
+
+def is_perm(doctor, user, charged):
+    try:
+        Match.objects.get(doctor=doctor, normaluser=user, charged=charged)
+        return 1
+    except Match.DoesNotExist:
+        return 0
+
 
 @login_required
-def heartbeat(request):
-    try:
-        if request.user.usertype == 'normal':
-            profile = NormalUser.objects.get(user=request.user)
-        else:
-            profile = DoctorUser.objects.get(user=request.user)
-    except ValueError:
-        profile.avatar = NormalUser.objects.get(user_id=3).avatar
-    ck = CKEditorForm()
-    return render(request, 'mhuser/heartbeat.html', {'ck': ck,'profile':profile})
+def heartbeat(request, user_id):
+    if request.method == "GET":
+        ck = CKEditorForm()
+        # 当前用户是医生
+        if request.user.usertype == 'doctor':
+            # 获取用户信息
+            try:
+                profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            # 检查是否有权限查看
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='heartbeat'):
+                data = Data.objects.filter(own=NormalUser.objects.get(pk=user_id),
+                                           datatype='heartbeat', doctor=DoctorUser.objects.get(user=request.user))
+                explains = getexplainlist(request)
+                explain_count = len(explains)
+                context = {'ck': ck, 'profile': profile,'data': data,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count':explain_count}
+                return render(request, 'mhuser/heartbeat.html', context)
+            else:  # 无权限查看
+                return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+        # 当前用户是普通用户
+        elif request.user.usertype == 'normal':
+            # 获取用户信息
+            try:
+                profile = NormalUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            data = Data.objects.filter(own=NormalUser.objects.get(user=request.user), datatype='heartbeat')
+            explains = getexplainlist(request)
+            explain_count = len(explains)
+            context = {'ck': ck, 'profile': profile, 'data': data,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count':explain_count}
+            return render(request, 'mhuser/heartbeat.html', context)
+
+
 
 @login_required
 def notification(request, page_id):
@@ -125,13 +166,14 @@ def notification(request, page_id):
         profile.avatar = NormalUser.objects.get(user_id=3).avatar
     curr_user = request.user
     unread = curr_user.notifications.unread()[10 * (page_id - 1): 10 * page_id]
-    context = {'profile':profile, 'unread':unread, 'page_range': range(page_id, page_id+4), 'page_id':page_id}
+    context = {'profile': profile, 'unread': unread, 'page_range': range(page_id, page_id + 4), 'page_id': page_id}
     return render(request, 'mhuser/notification.html', context)
+
 
 @login_required
 def noti(request, noti_id):
     curr_user = request.user
-    unread = Notification.objects.get(id = noti_id)
+    unread = Notification.objects.get(id=noti_id)
     try:
         if request.user.usertype == 'normal':
             profile = NormalUser.objects.get(user=request.user)
@@ -141,7 +183,20 @@ def noti(request, noti_id):
 
     except ValueError:
         profile.avatar = NormalUser.objects.get(user_id=3).avatar
-    context = {'profile':profile, 'unread':unread}
+    context = {'profile': profile, 'unread': unread}
     unread.mark_as_read()
     return render(request, 'mhuser/noti.html', context)
 
+
+@login_required
+def myclient(request):
+    curr_user = request.user
+    # 用户个人信息获取
+    try:
+        profile = DoctorUser.objects.get(user=request.user)
+    except ValueError:  # 设置默认头像
+        profile.avatar = NormalUser.objects.get(user_id=3).avatar
+
+    # 通过match表找到我的客户
+    match = Match.objects.filter(doctor=DoctorUser.objects.get(user=curr_user))
+    return render(request, 'mhuser/myclient.html', {'profile': profile, 'match': match})

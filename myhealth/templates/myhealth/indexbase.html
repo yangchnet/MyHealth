@@ -82,8 +82,8 @@
                                 </li>
                                 {% else %}{# 如果用户是普通用户 #}
                                 <li class="menu-has-children"><img src="{{ profile.avatar.url }}"/>
-                                    <sup style="font-size:15px;color:red;">125</sup>
-                                    {% if notifications_unread > 0 %} {# 如果没有信息 #}
+
+                                    {% if notifications_unread == 0 %} {# 如果没有信息 #}
                                     {% else %}
                                         <sup class="message-count">{% notifications_unread %}</sup>
                                     {% endif %}
@@ -92,7 +92,7 @@
                                         <li><a href="{% url 'mhuser:profile' %}">个人资料</a></li>
                                         <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
                                         <div role="none" class="dropdown-divider"></div>
-                                        <li><a href="{% url 'mhuser:heartbeat' %}">我的心率</a></li>
+                                        <li><a href="{% url 'mhuser:heartbeat' user.id %}">我的心率</a></li>
                                         <li><a href="">血氧监测</a></li>
                                         <li><a href="">历史数据</a></li>
                                         <li><a href="">全部数据</a></li>

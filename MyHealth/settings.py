@@ -25,11 +25,12 @@ SECRET_KEY = '$7z$c8%vpoi+9^6hdcq60w3brp14=z!eiig&1fq7s6p9$mnmxz'
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'explain.apps.ExplainConfig',
     'device.apps.DeviceConfig',
     'mhuser.apps.MhuserConfig',
     'blog.apps.BlogConfig',
@@ -124,7 +125,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 CKEDITOR_UPLOAD_PATH = 'upload'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 

@@ -75,3 +75,6 @@ class Data(models.Model):
     doctor = models.ForeignKey(DoctorUser, on_delete=models.CASCADE, default='1', verbose_name='个人医生')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
     value = models.FloatField(default='', verbose_name='具体数值')
+
+    class Meta:
+        ordering = ['-time']
