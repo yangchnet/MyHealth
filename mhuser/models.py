@@ -62,17 +62,32 @@ class Match(models.Model):
     charged = models.CharField(choices=DATA_TYPE_CHOICES,
                                default='heartbeat', verbose_name='医生负责的部分', max_length=20)
 
-class Data(models.Model):
-    DATA_TYPE_CHOICES = (
-        ('pressure', '血压数据'),
-        ('oxygen', '血氧数据'),
-        ('heartbeat', '心跳数据'),
-        ('tem', '体温数据')
-    )
+class TemData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
-    datatype = models.CharField(choices=DATA_TYPE_CHOICES,
-                                default='heartbeat', verbose_name='数据类型', max_length=20)
-    doctor = models.ForeignKey(DoctorUser, on_delete=models.CASCADE, default='1', verbose_name='个人医生')
+    time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
+    value = models.FloatField(default='', verbose_name='具体数值')
+
+    class Meta:
+        ordering = ['-time']
+
+class HeartData(models.Model):
+    own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
+    time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
+    value = models.FloatField(default='', verbose_name='具体数值')
+
+    class Meta:
+        ordering = ['-time']
+
+class PressureData(models.Model):
+    own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
+    time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
+    value = models.FloatField(default='', verbose_name='具体数值')
+
+    class Meta:
+        ordering = ['-time']
+
+class OxygenData(models.Model):
+    own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
     value = models.FloatField(default='', verbose_name='具体数值')
 

@@ -70,7 +70,7 @@
                                         <li><a href="">{{ user.username }}</a></li>
                                         <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
                                         <div role="none" class="dropdown-divider"></div>
-                                        <li><a href="">我的客户</a></li>
+                                        <li><a href="{% url 'mhuser:myclient' %}">我的客户</a></li>
                                         {% if notifications_unread == 0 %}
                                             <li><a href="">收到的信息</a></li>
                                         {% else %}
@@ -93,7 +93,9 @@
                                         <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
                                         <div role="none" class="dropdown-divider"></div>
                                         <li><a href="{% url 'mhuser:heartbeat' user.id %}">我的心率</a></li>
-                                        <li><a href="">血氧监测</a></li>
+                                        <li><a href="{% url 'mhuser:oxygen' user.id %}">血氧监测</a></li>
+                                        <li><a href="{% url 'mhuser:pressure' user.id %}">血压监测</a></li>
+                                        <li><a href="{% url 'mhuser:tem' user.id %}">体温</a></li>
                                         <li><a href="">历史数据</a></li>
                                         <li><a href="">全部数据</a></li>
                                         {% if notifications_unread == 0 %}
