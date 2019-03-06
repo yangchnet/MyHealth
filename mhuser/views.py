@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import MhUser, Match, NormalUser, DoctorUser
+from .models import MhUser, Match, NormalUser, DoctorUser, HeartData, OxygenData, TemData, PressureData
 from .forms import Register, Login
 from django.contrib import auth
 from django.contrib.auth import login
@@ -15,6 +15,7 @@ import random
 from notifications.signals import notify
 from notifications.models import Notification
 from explain.views import getexplainlist
+
 
 # Create your views here.
 
@@ -113,44 +114,43 @@ def is_perm(doctor, user, charged):
         return 0
 
 
-# @login_required
-# def heartbeat(request, user_id):
-#     if request.method == "GET":
-#         ck = CKEditorForm()
-#         # 当前用户是医生
-#         if request.user.usertype == 'doctor':
-#             # 获取用户信息
-#             try:
-#                 profile = DoctorUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             # 检查是否有权限查看
-#             if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='heartbeat'):
-#                 data = Data.objects.filter(own=NormalUser.objects.get(pk=user_id),
-#                                            datatype='heartbeat', doctor=DoctorUser.objects.get(user=request.user))
-#                 explains = getexplainlist(request)
-#                 explain_count = len(explains)
-#                 context = {'ck': ck, 'profile': profile,'data': data,
-#                            'owner': MhUser.objects.get(pk=user_id).username,
-#                            'explains': explains, 'explain_count':explain_count}
-#                 return render(request, 'mhuser/heartbeat.html', context)
-#             else:  # 无权限查看
-#                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
-#         # 当前用户是普通用户
-#         elif request.user.usertype == 'normal':
-#             # 获取用户信息
-#             try:
-#                 profile = NormalUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             data = Data.objects.filter(own=NormalUser.objects.get(user=request.user), datatype='heartbeat')
-#             explains = getexplainlist(request)
-#             explain_count = len(explains)
-#             context = {'ck': ck, 'profile': profile, 'data': data,
-#                        'owner': MhUser.objects.get(pk=user_id).username,
-#                        'explains': explains, 'explain_count':explain_count}
-#             return render(request, 'mhuser/heartbeat.html', context)
-
+@login_required
+def heartbeat(request, user_id):
+    if request.method == "GET":
+        ck = CKEditorForm()
+        # 当前用户是医生
+        if request.user.usertype == 'doctor':
+            # 获取用户信息
+            try:
+                profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            # 检查是否有权限查看
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id),
+                       charged='heartbeat'):
+                data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                explains = getexplainlist(request)
+                explain_count = len(explains)
+                context = {'ck': ck, 'profile': profile, 'data': data,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count}
+                return render(request, 'mhuser/heartbeat.html', context)
+            else:  # 无权限查看
+                return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+        # 当前用户是普通用户
+        elif request.user.usertype == 'normal':
+            # 获取用户信息
+            try:
+                profile = NormalUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            data = HeartData.objects.filter(own=NormalUser.objects.get(user=request.user))
+            explains = getexplainlist(request)
+            explain_count = len(explains)
+            context = {'ck': ck, 'profile': profile, 'data': data,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count': explain_count}
+            return render(request, 'mhuser/heartbeat.html', context)
 
 
 @login_required
@@ -202,119 +202,134 @@ def myclient(request):
     return render(request, 'mhuser/myclient.html', {'profile': profile, 'match': match})
 
 
-# @login_required
-# def oxygen(request, user_id):
-#     if request.method == "GET":
-#         ck = CKEditorForm()
-#         # 当前用户是医生
-#         if request.user.usertype == 'doctor':
-#             # 获取用户信息
-#             try:
-#                 profile = DoctorUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             # 检查是否有权限查看
-#             if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='oxygen'):
-#                 data = Data.objects.filter(own=NormalUser.objects.get(pk=user_id),
-#                                            datatype='oxygen', doctor=DoctorUser.objects.get(user=request.user))
-#                 explains = getexplainlist(request)
-#                 explain_count = len(explains)
-#                 context = {'ck': ck, 'profile': profile,'data': data,
-#                            'owner': MhUser.objects.get(pk=user_id).username,
-#                            'explains': explains, 'explain_count':explain_count}
-#                 return render(request, 'mhuser/oxygen.html', context)
-#             else:  # 无权限查看
-#                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
-#         # 当前用户是普通用户
-#         elif request.user.usertype == 'normal':
-#             # 获取用户信息
-#             try:
-#                 profile = NormalUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             data = Data.objects.filter(own=NormalUser.objects.get(user=request.user), datatype='oxygen')
-#             explains = getexplainlist(request)
-#             explain_count = len(explains)
-#             context = {'ck': ck, 'profile': profile, 'data': data,
-#                        'owner': MhUser.objects.get(pk=user_id).username,
-#                        'explains': explains, 'explain_count':explain_count}
-#             return render(request, 'mhuser/oxygen.html', context)
+@login_required
+def oxygen(request, user_id):
+    if request.method == "GET":
+        ck = CKEditorForm()
+        # 当前用户是医生
+        if request.user.usertype == 'doctor':
+            # 获取用户信息
+            try:
+                profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            # 检查是否有权限查看
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='oxygen'):
+                data = OxygenData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                explains = getexplainlist(request)
+                explain_count = len(explains)
+                context = {'ck': ck, 'profile': profile,'data': data,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count':explain_count}
+                return render(request, 'mhuser/oxygen.html', context)
+            else:  # 无权限查看
+                return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+        # 当前用户是普通用户
+        elif request.user.usertype == 'normal':
+            # 获取用户信息
+            try:
+                profile = NormalUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            data = OxygenData.objects.filter(own=NormalUser.objects.get(user=request.user))
+            explains = getexplainlist(request)
+            explain_count = len(explains)
+            context = {'ck': ck, 'profile': profile, 'data': data,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count':explain_count}
+            return render(request, 'mhuser/oxygen.html', context)
 
 
-
-# @login_required
-# def tem(request, user_id):
-#     if request.method == "GET":
-#         ck = CKEditorForm()
-#         # 当前用户是医生
-#         if request.user.usertype == 'doctor':
-#             # 获取用户信息
-#             try:
-#                 profile = DoctorUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             # 检查是否有权限查看
-#             if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='tem'):
-#                 data = Data.objects.filter(own=NormalUser.objects.get(pk=user_id),
-#                                            datatype='tem', doctor=DoctorUser.objects.get(user=request.user))
-#                 explains = getexplainlist(request)
-#                 explain_count = len(explains)
-#                 context = {'ck': ck, 'profile': profile,'data': data,
-#                            'owner': MhUser.objects.get(pk=user_id).username,
-#                            'explains': explains, 'explain_count':explain_count}
-#                 return render(request, 'mhuser/tem.html', context)
-#             else:  # 无权限查看
-#                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
-#         # 当前用户是普通用户
-#         elif request.user.usertype == 'normal':
-#             # 获取用户信息
-#             try:
-#                 profile = NormalUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             data = Data.objects.filter(own=NormalUser.objects.get(user=request.user), datatype='tem')
-#             explains = getexplainlist(request)
-#             explain_count = len(explains)
-#             context = {'ck': ck, 'profile': profile, 'data': data,
-#                        'owner': MhUser.objects.get(pk=user_id).username,
-#                        'explains': explains, 'explain_count':explain_count}
-#             return render(request, 'mhuser/tem.html', context)
+@login_required
+def tem(request, user_id):
+    if request.method == "GET":
+        ck = CKEditorForm()
+        # 当前用户是医生
+        if request.user.usertype == 'doctor':
+            # 获取用户信息
+            try:
+                profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            # 检查是否有权限查看
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='tem'):
+                # data = TemData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                explains = getexplainlist(request)
+                explain_count = len(explains)
+                context = {'ck': ck, 'profile': profile,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count}
+                return render(request, 'mhuser/tem.html', context)
+            else:  # 无权限查看
+                return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+        # 当前用户是普通用户
+        elif request.user.usertype == 'normal':
+            # 获取用户信息
+            try:
+                profile = NormalUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            # data = TemData.objects.filter(own=NormalUser.objects.get(user=request.user))
+            explains = getexplainlist(request)
+            explain_count = len(explains)
+            context = {'ck': ck, 'profile': profile,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count': explain_count}
+            return render(request, 'mhuser/tem.html', context)
 
 
-# @login_required
-# def pressure(request, user_id):
-#     if request.method == "GET":
-#         ck = CKEditorForm()
-#         # 当前用户是医生
-#         if request.user.usertype == 'doctor':
-#             # 获取用户信息
-#             try:
-#                 profile = DoctorUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             # 检查是否有权限查看
-#             if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='pressure'):
-#                 data = Data.objects.filter(own=NormalUser.objects.get(pk=user_id),
-#                                            datatype='pressure', doctor=DoctorUser.objects.get(user=request.user))
-#                 explains = getexplainlist(request)
-#                 explain_count = len(explains)
-#                 context = {'ck': ck, 'profile': profile,'data': data,
-#                            'owner': MhUser.objects.get(pk=user_id).username,
-#                            'explains': explains, 'explain_count':explain_count}
-#                 return render(request, 'mhuser/pressure.html', context)
-#             else:  # 无权限查看
-#                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
-#         # 当前用户是普通用户
-#         elif request.user.usertype == 'normal':
-#             # 获取用户信息
-#             try:
-#                 profile = NormalUser.objects.get(user=request.user)
-#             except ValueError:
-#                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
-#             data = Data.objects.filter(own=NormalUser.objects.get(user=request.user), datatype='pressure')
-#             explains = getexplainlist(request)
-#             explain_count = len(explains)
-#             context = {'ck': ck, 'profile': profile, 'data': data,
-#                        'owner': MhUser.objects.get(pk=user_id).username,
-#                        'explains': explains, 'explain_count':explain_count}
-#             return render(request, 'mhuser/pressure.html', context)
+@login_required
+def pressure(request, user_id):
+    if request.method == "GET":
+        ck = CKEditorForm()
+        # 当前用户是医生
+        if request.user.usertype == 'doctor':
+            # 获取用户信息
+            try:
+                profile = DoctorUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            # 检查是否有权限查看
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id),
+                       charged='pressure'):
+                data = PressureData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                explains = getexplainlist(request)
+                explain_count = len(explains)
+                context = {'ck': ck, 'profile': profile, 'data': data,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count}
+                return render(request, 'mhuser/pressure.html', context)
+            else:  # 无权限查看
+                return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+        # 当前用户是普通用户
+        elif request.user.usertype == 'normal':
+            # 获取用户信息
+            try:
+                profile = NormalUser.objects.get(user=request.user)
+            except ValueError:
+                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+            data = PressureData.objects.filter(own=NormalUser.objects.get(user=request.user))
+            explains = getexplainlist(request)
+            explain_count = len(explains)
+            context = {'ck': ck, 'profile': profile, 'data': data,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count': explain_count}
+            return render(request, 'mhuser/pressure.html', context)
+
+
+def ajax_pressure(request):
+    data = PressureData.objects.all()
+    d = []
+    for i in range(0, len(data)):
+        d.append(data[i].value)
+        d.append(',')
+    return HttpResponse(d)
+
+
+def ajax_tem(request):
+    data = TemData.objects.all()
+    d = []
+    for i in range(0, len(data)):
+        d.append(data[i].value)
+        d.append(',')
+    return HttpResponse(d)

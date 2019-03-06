@@ -11,6 +11,7 @@ class MhUser(AbstractUser):
     )
     usertype = models.CharField(choices=USER_TYPE_CHOICES, default='normal',
                                 verbose_name='用户类型', max_length=10)
+    deviceid = models.CharField(default='', null=True, blank=True, max_length=50)
 
 
 class NormalUser(models.Model):
