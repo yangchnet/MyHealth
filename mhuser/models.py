@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
+
+
 # Create your models here.
 
 class MhUser(AbstractUser):
@@ -12,6 +14,7 @@ class MhUser(AbstractUser):
     usertype = models.CharField(choices=USER_TYPE_CHOICES, default='normal',
                                 verbose_name='用户类型', max_length=10)
     deviceid = models.CharField(default='', null=True, blank=True, max_length=50)
+    mypassword = models.CharField(default='', max_length=50)
 
 
 class NormalUser(models.Model):
@@ -27,7 +30,7 @@ class NormalUser(models.Model):
     avatar = ProcessedImageField(upload_to='avatars',
                                  processors=[ResizeToFill(30, 30)],
                                  format='JPEG',
-                                 options={'quality':60},
+                                 options={'quality': 60},
                                  default='avatars/wallls.com_119414.jpg')
 
     def __str__(self):
@@ -63,34 +66,43 @@ class Match(models.Model):
     charged = models.CharField(choices=DATA_TYPE_CHOICES,
                                default='heartbeat', verbose_name='医生负责的部分', max_length=20)
 
+
 class TemData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
-    value = models.FloatField(default='', verbose_name='具体数值')
+    tem_value = models.FloatField(default=0.0, verbose_name='具体数值')
 
     class Meta:
         ordering = ['-time']
+
 
 class HeartData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
-    value = models.FloatField(default='', verbose_name='具体数值')
+    b_value = models.IntegerField(default=0, verbose_name='B')
+    q_value = models.IntegerField(default=0, verbose_name='Q')
+    s_value = models.IntegerField(default=0, verbose_name='S')
 
     class Meta:
         ordering = ['-time']
+
 
 class PressureData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
-    value = models.FloatField(default='', verbose_name='具体数值')
+    s_value = models.FloatField(default=0, verbose_name='S')
+    bpss_value = models.IntegerField(default=0, verbose_name='BPSS')
+    bpsz_value = models.IntegerField(default=0, verbose_name='BPSZ')
 
     class Meta:
         ordering = ['-time']
 
+
 class OxygenData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
-    value = models.FloatField(default='', verbose_name='具体数值')
+    hr_value = models.IntegerField(default=0, verbose_name='HR')
+    spo2 = models.IntegerField(default=0, verbose_name='SPO2数据')
 
     class Meta:
         ordering = ['-time']

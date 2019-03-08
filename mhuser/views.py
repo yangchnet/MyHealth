@@ -15,7 +15,8 @@ import random
 from notifications.signals import notify
 from notifications.models import Notification
 from explain.views import getexplainlist
-
+import threading
+from django.contrib.auth.hashers import make_password, check_password
 
 # Create your views here.
 
@@ -333,3 +334,14 @@ def ajax_tem(request):
         d.append(data[i].value)
         d.append(',')
     return HttpResponse(d)
+
+# def out1():
+#     while True:
+#         print('1')
+#
+# def out2():
+#     while True:
+#         print('2')
+#
+# threading.Thread(target=out1(), name='loop').start()
+# threading.Thread(target=out2(), name='loop').start()
