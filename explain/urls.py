@@ -4,6 +4,5 @@ from . import views
 app_name = 'explain'
 
 urlpatterns = [
-    path('addexplain/<path:path>/', views.addexplain, name='addexplain'),
-
+    path(r'^addexplain/<str:own>/<str:type>$', views.addexplain, name='addexplain'),
 ]

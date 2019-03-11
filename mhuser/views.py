@@ -132,14 +132,20 @@ def heartbeat(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             # 检查是否有权限查看
-            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id),
-                       charged='heartbeat'):
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), 'heartbeat'):
                 data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
-                explains = getexplainlist(request)
-                explain_count = len(explains)
-                context = {'ck': ck, 'profile': profile, 'data': data,
-                           'owner': MhUser.objects.get(pk=user_id).username,
-                           'explains': explains, 'explain_count': explain_count}
+                try:
+                    explains = getexplainlist(request, user_id, 'heartbeat')
+                    explain_count = len(explains)
+                    context = {'ck': ck, 'profile': profile, 'data': data,
+                               'owner': MhUser.objects.get(pk=user_id).username,
+                               'explains': explains, 'explain_count': explain_count,
+                               'type': 'heartbeat'}
+                except TypeError:
+                    context = {'ck': ck, 'profile': profile, 'data': data,
+                               'owner': MhUser.objects.get(pk=user_id).username,
+                               'explains': None, 'explain_count': 0,
+                               'type': 'heartbeat'}
                 return render(request, 'mhuser/heartbeat.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
@@ -151,11 +157,18 @@ def heartbeat(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             data = HeartData.objects.filter(own=NormalUser.objects.get(user=request.user))
-            explains = getexplainlist(request)
-            explain_count = len(explains)
-            context = {'ck': ck, 'profile': profile, 'data': data,
-                       'owner': MhUser.objects.get(pk=user_id).username,
-                       'explains': explains, 'explain_count': explain_count}
+            try:
+                explains = getexplainlist(request, user_id, 'heartbeat')
+                explain_count = len(explains)
+                context = {'ck': ck, 'profile': profile, 'data': data,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count,
+                           'type': 'heartbeat'}
+            except TypeError:
+                context = {'ck': ck, 'profile': profile, 'data': data,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': None, 'explain_count': 0,
+                           'type': 'heartbeat'}
             return render(request, 'mhuser/heartbeat.html', context)
 
 
@@ -220,13 +233,14 @@ def oxygen(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             # 检查是否有权限查看
-            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='oxygen'):
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), 'oxygen'):
                 data = OxygenData.objects.filter(own=NormalUser.objects.get(pk=user_id))
-                explains = getexplainlist(request)
+                explains = getexplainlist(request, user_id, 'oxygen')
                 explain_count = len(explains)
                 context = {'ck': ck, 'profile': profile,'data': data,
                            'owner': MhUser.objects.get(pk=user_id).username,
-                           'explains': explains, 'explain_count':explain_count}
+                           'explains': explains, 'explain_count':explain_count,
+                           'type': 'oxygen'}
                 return render(request, 'mhuser/oxygen.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
@@ -238,11 +252,12 @@ def oxygen(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             data = OxygenData.objects.filter(own=NormalUser.objects.get(user=request.user))
-            explains = getexplainlist(request)
+            explains = getexplainlist(request, user_id, 'oxygen')
             explain_count = len(explains)
             context = {'ck': ck, 'profile': profile, 'data': data,
                        'owner': MhUser.objects.get(pk=user_id).username,
-                       'explains': explains, 'explain_count':explain_count}
+                       'explains': explains, 'explain_count':explain_count,
+                       'type': 'oxygen'}
             return render(request, 'mhuser/oxygen.html', context)
 
 
@@ -258,13 +273,14 @@ def tem(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             # 检查是否有权限查看
-            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), charged='tem'):
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), 'tem'):
                 # data = TemData.objects.filter(own=NormalUser.objects.get(pk=user_id))
-                explains = getexplainlist(request)
+                explains = getexplainlist(request, user_id, 'tem')
                 explain_count = len(explains)
                 context = {'ck': ck, 'profile': profile,
                            'owner': MhUser.objects.get(pk=user_id).username,
-                           'explains': explains, 'explain_count': explain_count}
+                           'explains': explains, 'explain_count': explain_count,
+                           'type':'tem'}
                 return render(request, 'mhuser/tem.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
@@ -276,16 +292,18 @@ def tem(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             # data = TemData.objects.filter(own=NormalUser.objects.get(user=request.user))
-            explains = getexplainlist(request)
+            explains = getexplainlist(request, user_id, 'tem')
             explain_count = len(explains)
             context = {'ck': ck, 'profile': profile,
                        'owner': MhUser.objects.get(pk=user_id).username,
-                       'explains': explains, 'explain_count': explain_count}
+                       'explains': explains, 'explain_count': explain_count,
+                       'type':'tem'}
             return render(request, 'mhuser/tem.html', context)
 
 
 @login_required
 def pressure(request, user_id):
+    normal_user = NormalUser.objects.get(pk=user_id)
     if request.method == "GET":
         ck = CKEditorForm()
         # 当前用户是医生
@@ -296,14 +314,14 @@ def pressure(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             # 检查是否有权限查看
-            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id),
-                       charged='pressure'):
+            if is_perm(DoctorUser.objects.get(user=request.user), normal_user, 'pressure'):
                 data = PressureData.objects.filter(own=NormalUser.objects.get(pk=user_id))
-                explains = getexplainlist(request)
+                explains = getexplainlist(request, user_id, 'pressure')
                 explain_count = len(explains)
                 context = {'ck': ck, 'profile': profile, 'data': data,
                            'owner': MhUser.objects.get(pk=user_id).username,
-                           'explains': explains, 'explain_count': explain_count}
+                           'explains': explains, 'explain_count': explain_count,
+                           'type': 'pressure'}
                 return render(request, 'mhuser/pressure.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
@@ -315,11 +333,12 @@ def pressure(request, user_id):
             except ValueError:
                 profile.avatar = NormalUser.objects.get(user_id=3).avatar
             data = PressureData.objects.filter(own=NormalUser.objects.get(user=request.user))
-            explains = getexplainlist(request)
+            explains = getexplainlist(request, user_id, 'pressure')
             explain_count = len(explains)
             context = {'ck': ck, 'profile': profile, 'data': data,
                        'owner': MhUser.objects.get(pk=user_id).username,
-                       'explains': explains, 'explain_count': explain_count}
+                       'explains': explains, 'explain_count': explain_count,
+                       'type': 'pressure'}
             return render(request, 'mhuser/pressure.html', context)
 
 
@@ -339,3 +358,4 @@ def ajax_tem(request):
         d.append(data[i].value)
         d.append(',')
     return HttpResponse(d)
+

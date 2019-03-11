@@ -14,3 +14,12 @@ class Register(forms.Form):
 class Login(forms.Form):
     user_name = forms.CharField()
     user_password = forms.CharField()
+
+# class SelectForm(forms.Form):
+#     DATA_TYPE_CHOICES = (
+#         ('pressure', '血压数据'),
+#         ('oxygen', '血氧数据'),
+#         ('heartbeat', '心跳数据'),
+#         ('tem', '体温数据')
+#     )
+#     charged = forms.ChoiceField(choices=DATA_TYPE_CHOICES)

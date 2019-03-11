@@ -45,9 +45,13 @@
                                                 text-length="50"
                                                 source-text="">{{ d.user }}</span></a>
                                         </td>
-                                        <td><span class="column-text"
-                                                  bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">{{ d.gender}}</span>
-                                        </td>
+                                        {% if d.gender == 'man' %}
+                                            <td><span class="column-text"
+                                                      bo-text="item.GmtCreated">男</span></td>
+                                        {% else %}
+                                            <td><span class="column-text"
+                                                      bo-text="item.GmtCreated">女</span></td>
+                                        {% endif %}
                                         <td><span class="column-text"
                                                   bo-text="item.CategoryName">{{ d.age }}</span></td>
                                         <td><span class="column-text"
