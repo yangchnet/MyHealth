@@ -12,6 +12,6 @@ class Blog(models.Model):
     views = models.IntegerField(default=0, verbose_name='观看次数')
     class Meta:
         ordering = ['-date']
-    # cover = models.ImageField(verbose_name='封面', default='', null=True, blank=True)
+
 
 

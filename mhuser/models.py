@@ -71,7 +71,10 @@ class TemData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
     tem_value = models.FloatField(default=0.0, verbose_name='具体数值')
-
+    ######################################################################
+    # 兼容Android
+    diviceid = models.CharField(default='', null=True, blank=True, max_length=50)
+    ######################################################################
     class Meta:
         ordering = ['-time']
 
@@ -79,6 +82,10 @@ class TemData(models.Model):
 class HeartData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
+    ######################################################################
+    # 兼容Android
+    diviceid = models.CharField(default='', null=True, blank=True, max_length=50)
+    ######################################################################
     b_value = models.IntegerField(default=0, verbose_name='B')
     q_value = models.IntegerField(default=0, verbose_name='Q')
     s_value = models.IntegerField(default=0, verbose_name='S')
@@ -90,7 +97,10 @@ class HeartData(models.Model):
 class PressureData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
-    s_value = models.FloatField(default=0, verbose_name='S')
+    ######################################################################
+    # 兼容Android
+    diviceid = models.CharField(default='', null=True, blank=True, max_length=50)
+    ######################################################################
     bpss_value = models.IntegerField(default=0, verbose_name='BPSS')
     bpsz_value = models.IntegerField(default=0, verbose_name='BPSZ')
 
@@ -102,6 +112,10 @@ class OxygenData(models.Model):
     own = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='1', verbose_name='条目所有者')
     time = models.DateTimeField(auto_now_add=True, verbose_name='时间')
     hr_value = models.IntegerField(default=0, verbose_name='HR')
+    ######################################################################
+    # 兼容Android
+    diviceid = models.CharField(default='', null=True, blank=True, max_length=50)
+    ######################################################################
     spo2 = models.IntegerField(default=0, verbose_name='SPO2数据')
 
     class Meta:

@@ -32,7 +32,8 @@ def register(request):
                 curr_user = MhUser.objects.create_user(username=user.cleaned_data['user_name'],
                                                        email=user.cleaned_data['user_email'],
                                                        password=user.cleaned_data['user_password'],
-                                                       usertype=user.cleaned_data['user_type'])
+                                                       usertype=user.cleaned_data['user_type'],
+                                                       mypassword = user.cleaned_data['user_password']) # 兼容android
                 if user.cleaned_data['user_type'] == 'normal':
                     NormalUser.objects.create(user=curr_user).save()
                 elif user.cleaned_data['user_type'] == 'doctor':
@@ -334,14 +335,3 @@ def ajax_tem(request):
         d.append(data[i].value)
         d.append(',')
     return HttpResponse(d)
-
-# def out1():
-#     while True:
-#         print('1')
-#
-# def out2():
-#     while True:
-#         print('2')
-#
-# threading.Thread(target=out1(), name='loop').start()
-# threading.Thread(target=out2(), name='loop').start()
