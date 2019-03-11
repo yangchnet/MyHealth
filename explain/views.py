@@ -16,7 +16,7 @@ def addexplain(request, path):
         if explain.is_valid():
             context = request.POST['content']
             match = Match.objects.get(normaluser=NormalUser.objects.get(user=own_user), charged=type)
-            Explain(match=match, author=request.user, context=context).save()
+            Explain(match=match, author=request.user, context=context, touserid=own_user).save()
         return HttpResponseRedirect(''.join(('/mhuser/', type, '/', ownid)))
     # return HttpResponseRedirect(request.path)
 
@@ -27,6 +27,8 @@ def getexplainlist(request):
     own_user = MhUser.objects.get(id=int(ownid))
     match = Match.objects.get(normaluser=NormalUser.objects.get(user=own_user), charged=type)
     explains = Explain.objects.filter(match=match)
+    for e in explains:
+        e.read = True
     return explains
 
 

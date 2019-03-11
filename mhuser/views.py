@@ -63,6 +63,7 @@ def user_login(request):
             if curr_user is not None:
                 login(request, curr_user)
                 return HttpResponseRedirect('/myhealth')
+    return HttpResponseRedirect('/myhealth')
 
 
 @csrf_exempt
@@ -75,6 +76,7 @@ def user_logout(request):
 
 
 def doctors(request):
+    doctors = DoctorUser.objects.all()
     if request.user.is_authenticated:
         try:
             if request.user.usertype == 'normal':
@@ -84,8 +86,10 @@ def doctors(request):
         except ValueError:
             profile.avatar = NormalUser.objects.get(user_id=3).avatar
         notice = request.user.notifications.unread()
-        return render(request, 'mhuser/doctors.html', {'notices': notice, 'profile': profile})
-    return render(request, 'mhuser/doctors.html')
+        context = {'notices': notice, 'profile': profile, 'doctors':doctors}
+        return render(request, 'mhuser/doctors.html', context)
+    context = {'doctors': doctors}
+    return render(request, 'mhuser/doctors.html', context)
 
 
 def doctor(request, doctor_id):

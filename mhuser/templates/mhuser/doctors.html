@@ -4,13 +4,65 @@
 <script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
 {% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' %}
 {% register_notify_callbacks callbacks='fill_notification_badge,my_special_notification_callback' %}
-{% block title %}寻找医生{% endblock %}
-{% block banner %}
-     <div class="col-lg-12">
-                    <h1>未完成</h1>
-                    </div>
-{% endblock %}
+{% block title %}医生{% endblock %}
+
 
 {% block body %}
-{#{% include 'notifications/notice.html' with notice=notices %}#}
+    <div class="col-sm-12">
+        <div class="row margin-top-3" data-ng-hide="vm.nopermission">
+            <div class="col-sm-12" data-ng-show="vm.tableDisplay">
+                <div aliyun-simple-grid="" columns="vm.columns" store="vm.itemList"
+                     refresh-grid-view="vm.config.refreshGridView" loading-state="vm.loadingState"
+                     render-table="vm.updateTableData(data)" pagination-info="vm.pageInfo" config="vm.config"
+                     class="ng-isolate-scope">
+                    <div class="ng-scope">
+                        <div class="clearfix">
+                            <div class="searchSection pull-left"></div>
+                            <div class="tagSearchSection pull-left"></div>
+                        </div>
+                        <div class="gridSection">
+                            <table class="table table-hover" style="margin-bottom: 57px;">
+                                <thead>
+                                <tr>
+                                    <th class="state-column"></th>
+                                    <th class="title-column">医生</th>
+                                    <th>性别</th>
+                                    <th>年龄</th>
+                                    <th>个性签名</th>
+                                    <th>擅长</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for d in doctors %}
+                                    <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
+                                        data-ng-repeat="item in store" class="ng-scope">
+                                        <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
+                                                class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
+                                            <!-- end ngIf: item.Status*1===0 --></td>
+                                        <td class="title-column"><a href=""
+                                                                    class="ng-isolate-scope title-unread"><span
+                                                aliyun-truncate-text=""
+                                                text-length="50"
+                                                source-text="">{{ d.user }}</span></a>
+                                        </td>
+                                        <td><span class="column-text"
+                                                  bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">{{ d.gender}}</span>
+                                        </td>
+                                        <td><span class="column-text"
+                                                  bo-text="item.CategoryName">{{ d.age }}</span></td>
+                                        <td><span class="column-text"
+                                                  bo-text="item.CategoryName">{{ d.signature }}</span></td>
+                                        <td><span class="column-text"
+                                                  bo-text="item.CategoryName">{{ d.expert }}</span></td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
