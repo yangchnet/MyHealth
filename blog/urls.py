@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+
 app_name = 'blog'
 urlpatterns = [
     path('bloghome/<int:page_id>/', views.bloghome, name='bloghome'),
