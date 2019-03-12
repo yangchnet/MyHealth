@@ -6,28 +6,26 @@ from .forms import ExplainForm
 # Create your views here.
 
 
-def addexplain(request, path):
+def addexplain(request, own, type):
     if request.method == "POST":
-        p = path.split('/')
-        type = p[2]
-        ownid = p[3]
-        own_user = MhUser.objects.get(id=int(ownid))
+        own_user = NormalUser.objects.get(user=MhUser.objects.get(username=own))
         explain = ExplainForm(request.POST)
         if explain.is_valid():
             context = request.POST['content']
-            match = Match.objects.get(normaluser=NormalUser.objects.get(user=own_user), charged=type)
-            Explain(match=match, author=request.user, context=context).save()
-        return HttpResponseRedirect(''.join(('/mhuser/', type, '/', ownid)))
-    # return HttpResponseRedirect(request.path)
+            match = Match.objects.get(normaluser=own_user, charged=type)
+            Explain(match=match, author=request.user, context=context, touserid=own_user).save()
+        return HttpResponseRedirect(''.join(('/mhuser/', type, '/', str(MhUser.objects.get(username=own).id))))
 
-def getexplainlist(request):
-    p = request.path.split('/')
-    type = p[2]
-    ownid = p[3]
-    own_user = MhUser.objects.get(id=int(ownid))
-    match = Match.objects.get(normaluser=NormalUser.objects.get(user=own_user), charged=type)
-    explains = Explain.objects.filter(match=match)
-    return explains
+def getexplainlist(request, own_id, type):
+    own_user = NormalUser.objects.get(user=MhUser.objects.get(id=int(own_id)))
+    try:
+        match = Match.objects.get(normaluser=own_user, charged=type)
+        explains = Explain.objects.filter(match=match)
+        for e in explains:
+            e.read = True
+        return explains
+    except Match.DoesNotExist:
+        return HttpResponse('error')
 
 
 

@@ -7,7 +7,7 @@
 {% block body %}
 
    <div id="container1" style="width: 550px; height: 400px; margin: 0 auto"></div>
-    {% include 'explain/explain.html' with owner=owner explains=explains explain_count=explain_count%}
+    {% include 'explain/explain.html' with owner=owner type=type explains=explains explain_count=explain_count%}
 {#    {% include 'comment/blog_comment.html' with comments=comments comments_count=comments_count  blog_id=blog_id %}#}
 <script>
     $(document).ready(function () {

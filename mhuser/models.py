@@ -14,7 +14,13 @@ class MhUser(AbstractUser):
     usertype = models.CharField(choices=USER_TYPE_CHOICES, default='normal',
                                 verbose_name='用户类型', max_length=10)
     deviceid = models.CharField(default='', null=True, blank=True, max_length=50)
+    ######################################################################
+    # 兼容Android
+    shequ = models.CharField(default='oxygen', max_length=50)
     mypassword = models.CharField(default='', max_length=50)
+    blinduser = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    ######################################################################
+
 
 
 class NormalUser(models.Model):

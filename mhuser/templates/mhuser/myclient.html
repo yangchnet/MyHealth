@@ -3,49 +3,77 @@
 {% block title %}我的客户{% endblock %}
 
 {% block body %}
-   <div class="ng-scope">
-                        <div class="clearfix">
-                            <div class="searchSection pull-left"></div>
-                            <div class="tagSearchSection pull-left"></div>
-                        </div>
-                        <div class="gridSection">
-                            <table class="table table-hover" style="margin-bottom: 57px;">
-                                <thead>
-                                <tr>
-                                    <th class="state-column"></th>
-                                    <th class="title-column">医生</th>
-                                    <th>用户</th>
-                                    <th aliyun-console-table-search="" select-item="filterItemMap.classId"
-                                        filter-field="classId" items="filterItems.classId"
-                                        click-action="changeTheadFilter(data)" class="ng-isolate-scope">
-                                        <!-- ngIf: showDropdown --><!-- ngIf: !showDropdown --><span
-                                            ng-if="!showDropdown" ng-transclude="" class="ng-scope"><span
-                                            class="ng-scope">健康数据</span></span><!-- end ngIf: !showDropdown --></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for m in match %}
-                                    <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
-                                        data-ng-repeat="item in store" class="ng-scope">
-                                        <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
-                                                class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
-                                            <!-- end ngIf: item.Status*1===0 --></td>
-                                        <td class="title-column"><a href=""
-                                                class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
-                                                                                            text-length="50"
-                                                                                            source-text="">{{ m.doctor }}</span></a>
-                                        </td>
-                                        <td><span class="column-text"
-                                                  bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">{{ m.normaluser }}</span>
-                                        </td>
-                                        <td><span href="" class="column-text"
-                                                  bo-text="item.CategoryName">{{ m.charged }}</span></td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
+    <div class="ng-scope">
+        <div class="clearfix">
+            <div class="searchSection pull-left"></div>
+            <div class="tagSearchSection pull-left"></div>
+        </div>
+        <div class="gridSection">
+            <table class="table table-hover" style="margin-bottom: 57px;">
+                <thead>
+                <tr>
+                    <th class="state-column"></th>
+                    <th class="title-column">医生</th>
+                    <th>用户</th>
+                    <th aliyun-console-table-search="" select-item="filterItemMap.classId"
+                        filter-field="classId" items="filterItems.classId"
+                        click-action="changeTheadFilter(data)" class="ng-isolate-scope">
+                        <!-- ngIf: showDropdown --><!-- ngIf: !showDropdown --><span
+                            ng-if="!showDropdown" ng-transclude="" class="ng-scope"><span
+                            class="ng-scope">健康数据</span></span><!-- end ngIf: !showDropdown --></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for m in match %}
+                    <tr text-editor-trigger-target="" data-ng-if="!loadingState" bindonce=""
+                        data-ng-repeat="item in store" class="ng-scope">
+                        <td class="state-column"><!-- ngIf: item.Status*1===0 --><span
+                                class="state-unread ng-scope" ng-if="item.Status*1===0">●</span>
+                            <!-- end ngIf: item.Status*1===0 --></td>
+                        <td class="title-column"><a href=""
+                                                    class="ng-isolate-scope title-unread"><span aliyun-truncate-text=""
+                                                                                                text-length="50"
+                                                                                                source-text="">{{ m.doctor }}</span></a>
+                        </td>
+                        <td><span class="column-text"
+                                  bo-text="item.GmtCreated|date:'yyyy-MM-dd HH:mm:ss'">{{ m.normaluser }}</span>
+                        </td>
+                        {% if m.charged == 'pressure' %}
+                            <td class="title-column">
+                                <a href="{% url 'mhuser:pressure' m.normaluser_id %}"
+                                   class="ng-isolate-scope title-unread"><span
+                                    aliyun-truncate-text=""
+                                    text-length="50"
+                                    source-text="">血压</span></a>
+                                {% elif m.charged == 'oxygen' %}
+                            <td class="title-column">
+                                <a href="{% url 'mhuser:oxygen' m.normaluser_id %}"
+                                   class="ng-isolate-scope title-unread"><span
+                                    aliyun-truncate-text=""
+                                    text-length="50"
+                                    source-text="">血氧</span></a>
+                        {% elif m.charged == 'heartbeat' %}
+                            <td class="title-column">
+                                <a href="{% url 'mhuser:heartbeat' m.normaluser_id %}"
+                                   class="ng-isolate-scope title-unread"><span
+                                    aliyun-truncate-text=""
+                                    text-length="50"
+                                    source-text="">心率</span></a>
+                        {% elif m.charged == 'tem' %}
+                            <td class="title-column">
+                                <a href="{% url 'mhuser:tem' m.normaluser_id %}"
+                                   class="ng-isolate-scope title-unread"><span
+                                    aliyun-truncate-text=""
+                                    text-length="50"
+                                    source-text="">体温</span></a>
+                        {% endif %}
 
-                        </div>
+                    </tr>
+                {% endfor %}
+            </table>
 
-                    </div>
+        </div>
+
+    </div>
 
 {% endblock %}

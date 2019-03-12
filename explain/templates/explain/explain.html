@@ -1,26 +1,12 @@
-{#<script>#}
-{#    function reply(obj) {#}
-{#        replied_name = obj.parentNode.previousElementSibling.lastElementChild.children[0].innerText#}
-{#        replied_time = obj.parentNode.previousElementSibling.lastElementChild.children[1].innerText#}
-{#        replystr = "#回复：" + "<p class=\"myreply\">" + replied_name + "</p>" +  "<p class=\"myreply\">" + replied_time + "</p>" + "<br>"#}
-{#        CKEDITOR.instances["id_content"].insertHtml(replystr)#}
-{#        document.getElementById('cancelreply').innerText = '取消回复'#}
-{#        window.location.hash = "#评论"#}
-{#    }#}
-{##}
-{#    function cancelReply() {#}
-{#        CKEDITOR.instances["id_content"].innerText = ''#}
-        {#window.location.hash = "#评论列表"#}
-{#    }#}
-{#</script>#}
 {% load static %}
 <div class="comments-area">
     {% if explain_count == 0 %}
         <h3 hidden="hidden">留言列表</h3>
         <h3>暂无留言</h3>
         <div>
+{#        {% url 'explain:addexplain' own type %}#}
             <div class="form-group col-lg-6 col-md-6">
-                <form action="{% url 'explain:addexplain' request.path %}" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
+                <form action="{% url 'explain:addexplain' own=owner type=type %}" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
                     {% csrf_token %}
                     {{ ck.media }}
                     {{ ck.as_p }}
@@ -52,7 +38,7 @@
         <div>
             <h3>留言</h3>
             <div class="form-group col-lg-6 col-md-6">
-                <form action="{% url 'explain:addexplain' request.path %}" accept-charset="UTF-8" method="post">
+                <form action="{% url 'explain:addexplain' own=owner type=type %}" accept-charset="UTF-8" method="post">
                     {% csrf_token %}
                     {{ ck.media }}
                     {{ ck.as_p }}
