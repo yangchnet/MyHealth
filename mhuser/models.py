@@ -18,7 +18,7 @@ class MhUser(AbstractUser):
     # 兼容Android
     shequ = models.CharField(default='oxygen', max_length=50)
     mypassword = models.CharField(default='', max_length=50)
-    blinduser = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    blinduser = models.CharField(default='', max_length=150, null=True, blank=True)
     ######################################################################
 
 

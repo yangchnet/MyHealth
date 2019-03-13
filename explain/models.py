@@ -14,7 +14,7 @@ class Explain(models.Model):
     # 兼容Android
     touserid = models.ForeignKey(NormalUser, on_delete=models.CASCADE, default='', null=True, blank=True)
     ######################################################################
-    read = models.CharField(default=False, max_length=1)
+    read = models.CharField(default='1', max_length=1)
 
     class Meta:
         ordering = ['-time']
