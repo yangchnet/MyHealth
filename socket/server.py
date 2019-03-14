@@ -39,6 +39,7 @@ def tem_insert(data):
         count = threading.active_count()
         print('threading: %d' % count)
     except Exception as e:
+        print(e)
         return 0
 
 # insert heart
@@ -53,13 +54,14 @@ def heart_insert(data):
         q_value = dl[2].split('=')[1]
         s_value = dl[3].split('=')[1]
         time = gettime()
-        sql = "insert into mhuser_heartdata(time, b_value, q_value, s_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', \'{3}\', (select user_id from mhuser_mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{4}\')), \'{4}\')".format(time, b_value, q_value, s_value, id)
+        sql = "insert into mhuser_heartdata(time, b_value, q_value, s_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', \'{3}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{4}\')), \'{4}\')".format(time, b_value, q_value, s_value, id)
         cursor.execute(sql)
         db.commit()
         print(data)
         count = threading.active_count()
         print('threading: %d' % count)
     except Exception as e:
+        print(e)
         return 0
 
 # insert oxygen
@@ -85,6 +87,7 @@ def oxygen_insert(data):
         else:
             return 0
     except Exception as e:
+        print(e)
         return 0
 
 # insert pressure
@@ -105,6 +108,7 @@ def pressure_insert(data):
         count = threading.active_count()
         print('threading: %d' % count)
     except Exception as e:
+        print(e)
         return 0
 
 

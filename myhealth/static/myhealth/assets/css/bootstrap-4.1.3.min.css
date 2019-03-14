@@ -787,8 +787,8 @@ pre code {
 }
 
 @media (min-width: 576px) {
-    .signin-area{
-    color : #00d60f;
+    .signin-area {
+        color: #00d60f;
     }
 
     .col-sm {

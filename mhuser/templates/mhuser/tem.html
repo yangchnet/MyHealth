@@ -96,12 +96,13 @@
             data: (function () {
                 // generate an array of random data
                 var data = [], time = (new Date()).getTime(), i;
-                for (i = -100; i <= 0; i += 1) {
+                data = {{ data | safe }};
+                /*for (i = -100; i <= 0; i += 1) {
                     data.push({
                         x: time + i * 1000,
                         y: Math.random()
                     });
-                }
+                }*/
                 return data;
             }())
         }];
