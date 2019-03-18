@@ -145,6 +145,7 @@ def heartbeat(request, user_id):
                                'explains': explains, 'explain_count': explain_count,
                                'type': 'heartbeat', 's_data': s_data}
                 except TypeError:
+                    s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
                     context = {'ck': ck, 'profile': profile,
                                'owner': MhUser.objects.get(pk=user_id).username,
                                'explains': None, 'explain_count': 0,
@@ -169,6 +170,7 @@ def heartbeat(request, user_id):
                            'explains': explains, 'explain_count': explain_count,
                            'type': 'heartbeat', 's_data': s_data}
             except TypeError:
+                s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
                 context = {'ck': ck, 'profile': profile,
                            'owner': MhUser.objects.get(pk=user_id).username,
                            'explains': None, 'explain_count': 0,

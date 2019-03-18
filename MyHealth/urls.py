@@ -27,6 +27,6 @@ urlpatterns = [
     path(r'', include('ckeditor_uploader.urls')),
     path('myhealth/', include('myhealth.urls')),
     path('admin/', admin.site.urls),
-    path('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
     path(r'', include('explain.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

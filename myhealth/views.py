@@ -30,7 +30,7 @@ def index(request):
                 else:
                     profile = DoctorUser.objects.get(user=request.user)
             except ValueError:
-                profile.avatar = NormalUser.objects.get(user_id=3).avatar
+                profile.avatar = NormalUser.objects.get(user_id=1).avatar
             context = {'profile':profile}
             return render(request, 'myhealth/index.html', context)
         else:
@@ -46,14 +46,14 @@ def index(request):
 
 
 
-@csrf_exempt
-def ajax_post(request):
-    print('ok')
-    data = random.randrange(1, 100)
-    result = data['SIG'][0] + ',' + data['IBI'][0] + ',' + data['BMP'][0]
-    Data(user=str(request.user), curr_time=timezone.now(), sig=data['SIG'][0], ibi=data['IBI'][0],
-         bmp=data['BMP'][0]).save()
-    return HttpResponse(result)
+# @csrf_exempt
+# def ajax_post(request):
+#     print('ok')
+#     data = random.randrange(1, 100)
+#     result = data['SIG'][0] + ',' + data['IBI'][0] + ',' + data['BMP'][0]
+#     Data(user=str(request.user), curr_time=timezone.now(), sig=data['SIG'][0], ibi=data['IBI'][0],
+#          bmp=data['BMP'][0]).save()
+#     return HttpResponse(result)
 
 
 
