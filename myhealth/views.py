@@ -36,16 +36,6 @@ def index(request):
         else:
             return render(request, 'myhealth/index.html')
 
-
-
-
-
-
-
-
-
-
-
 # @csrf_exempt
 # def ajax_post(request):
 #     print('ok')
@@ -54,8 +44,6 @@ def index(request):
 #     Data(user=str(request.user), curr_time=timezone.now(), sig=data['SIG'][0], ibi=data['IBI'][0],
 #          bmp=data['BMP'][0]).save()
 #     return HttpResponse(result)
-
-
 
 def base(request):
     return render(request, 'myhealth/base1.html')
