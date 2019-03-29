@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Django default" uuid="37ab746a-a248-4c02-9031-e5b991b52c8c">
-      <driver-ref>sqlite.xerial</driver-ref>
+    <data-source source="LOCAL" name="MySQL - django_mysql@59.110.140.133" uuid="66a5e72b-fec7-4cfe-a990-76f27707cbe8">
+      <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/MyHealth/settings.py</remarks>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db.sqlite3</jdbc-url>
-      <driver-properties>
-        <property name="enable_load_extension" value="true" />
-      </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="9e473f17-73a8-4b1f-b02f-e7747804bdfa">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://59.110.140.133:3306/django_mysql</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
         <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="Django default" uuid="2de6bb48-3f9f-459c-9094-04fde29b33b1">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/MyHealth/settings.py</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://59.110.140.133:3306/django_mysql</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="yearIsDateType" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="tinyInt1isBit" value="false" />
       </driver-properties>
     </data-source>
   </component>

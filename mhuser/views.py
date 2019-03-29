@@ -315,3 +315,6 @@ def ajax_tem(request):
         d.append(data[i].value)
         d.append(',')
     return HttpResponse(d)
+
+def test(request):
+    return render(request, 'mhuser/test.html')

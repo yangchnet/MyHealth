@@ -86,7 +86,7 @@ DATABASES = {
         'NAME': 'django_mysql',
         'USER': 'root',
         'PASSWORD': 'Lichang1-',
-        'HOST': 'localhost',    # 主机
+        'HOST': '59.110.140.133',    # 主机
         'PORT': '3306',         # 数据库使用的端口
     }
 }

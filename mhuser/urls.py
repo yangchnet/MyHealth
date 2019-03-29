@@ -18,4 +18,5 @@ urlpatterns = [
     path('tem/<int:user_id>/', views.tem, name='tem'),
     path('oxygen/<int:user_id>/', views.oxygen, name='oxygen'),
     path('pressure/<int:user_id>/', views.pressure, name='pressure'),
+    path('test/', views.test),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

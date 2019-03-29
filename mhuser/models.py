@@ -3,7 +3,6 @@ from django.contrib.auth.models import User, AbstractUser
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 
-
 # Create your models here.
 
 class MhUser(AbstractUser):
