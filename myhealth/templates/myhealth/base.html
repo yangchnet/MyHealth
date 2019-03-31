@@ -26,13 +26,19 @@
     <link rel="stylesheet" href="{% static "myhealth/assets/css/jquery.datetimepicker.min.css" %}">
     <link rel="stylesheet" href="{% static "myhealth/assets/css/linearicons.css" %}">
     <link rel="stylesheet" href="{% static "myhealth/assets/css/style.css" %}">
-    <link rel="stylesheet" href="{% static "myhealth/assets/js/vendor/animsition/animsition.min.css"%}"  >
-    <link rel="stylesheet" href="{% static "myhealth/assets/js/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" %}">
-    <link rel="stylesheet" href="{% static "myhealth/assets/js/vendor/wow/animate.css" %}">
-    <link rel="stylesheet" href="{% static "myhealth/assets/js/vendor/css-hamburgers/hamburgers.min.css" %}"  >
-    <link rel="stylesheet" href="{% static "myhealth/assets/js/vendor/slick/slick.css" %}">
-    <link rel="stylesheet" href="{% static "myhealth/assets/js/vendor/select2/select2.min.css" %}">
-    <link rel="stylesheet" href="{% static "myhealth/assets/js/vendor/perfect-scrollbar/perfect-scrollbar.css" %}">
+    <!-- jQuery -->
+{#    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"#}
+{#            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"#}
+{#            crossorigin="anonymous"></script>#}
+
+    <!-- XDSoft DateTimePicker -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+          integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+            integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+
     {#    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>#}
     {#    <script src="https://code.highcharts.com/highcharts.js"></script>#}
 </head>
@@ -81,7 +87,9 @@
                                         {% if notifications_unread == 0 %}
                                             <li><a href="">没有未读信息</a></li>
                                         {% else %}
-                                            <li><a style="color:red" href="{% url 'mhuser:notification' 1 %}">未读信息{% notifications_unread %}</a></li>
+                                            <li><a style="color:red"
+                                                   href="{% url 'mhuser:notification' 1 %}">未读信息{% notifications_unread %}</a>
+                                            </li>
                                         {% endif %}
                                         <div role="none" class="dropdown-divider"></div>
                                         <li><a href="{% url 'mhuser:logout' %}">注销</a></li>
@@ -107,7 +115,9 @@
                                         {% if notifications_unread == 0 %}
                                             <li><a href="">没有未读消息</a></li>
                                         {% else %}
-                                            <li><a style="color:red" href="{% url 'mhuser:notification' 1 %}">未读信息：{% notifications_unread %}</a></li>
+                                            <li><a style="color:red"
+                                                   href="{% url 'mhuser:notification' 1 %}">未读信息：{% notifications_unread %}</a>
+                                            </li>
                                         {% endif %}
                                         <div role="none" class="dropdown-divider"></div>
                                         <li><a href="{% url 'mhuser:logout' %}">注销</a></li>

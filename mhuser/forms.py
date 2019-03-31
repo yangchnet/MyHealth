@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import widgets
-from ckeditor.fields import RichTextFormField
+from .widgets import XDSoftDateTimePickerInput
+
 
 class Register(forms.Form):
     user_name = forms.CharField()
@@ -11,15 +12,20 @@ class Register(forms.Form):
         initial=[1, 2],
     )
 
+
 class Login(forms.Form):
     user_name = forms.CharField()
     user_password = forms.CharField()
 
-# class SelectForm(forms.Form):
-#     DATA_TYPE_CHOICES = (
-#         ('pressure', '血压数据'),
-#         ('oxygen', '血氧数据'),
-#         ('heartbeat', '心跳数据'),
-#         ('tem', '体温数据')
-#     )
-#     charged = forms.ChoiceField(choices=DATA_TYPE_CHOICES)
+
+
+
+class DateForm(forms.Form):
+    start_date = forms.DateTimeField(
+        input_formats=['%d/%m/%Y %H:%M'],
+        widget=XDSoftDateTimePickerInput()
+    )
+    end_date = forms.DateTimeField(
+        input_formats=['%d/%m/%Y %H:%M'],
+        widget=XDSoftDateTimePickerInput()
+    )

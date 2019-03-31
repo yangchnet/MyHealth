@@ -1,25 +1,18 @@
-from django.shortcuts import render
 from .models import MhUser, Match, NormalUser, DoctorUser, HeartData, OxygenData, TemData, PressureData
-from .forms import Register, Login
-from django.contrib import auth
-import json
+from .forms import Register, Login, DateForm
+
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.db import IntegrityError
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse, HttpResponseRedirect
-from comment.forms import *
 from comment.views import *
-from django.shortcuts import render_to_response
 from django.contrib.auth.decorators import login_required
-import random
-from notifications.signals import notify
 from notifications.models import Notification
 from explain.views import getexplainlist
-import threading
-from django.contrib.auth.hashers import make_password, check_password
 from .extract import tem_data, pres_data, oxygen_data, heart_data
 from .profile import get_profile
+
+
 # Create your views here.
 
 def register(request):
@@ -91,6 +84,7 @@ def doctors(request):
 def doctor(request, doctor_id):
     return render(request, 'mhuser/doctor.html')
 
+
 @login_required
 def profile(request):
     profile = get_profile(request.user)
@@ -107,8 +101,9 @@ def is_perm(doctor, user, charged):
 
 @login_required
 def heartbeat(request, user_id):
+    ck = CKEditorForm()
+    dateform = DateForm(request.POST)
     if request.method == "GET":
-        ck = CKEditorForm()
         # 当前用户是医生
         if request.user.usertype == 'doctor':
             # 获取用户信息
@@ -121,10 +116,12 @@ def heartbeat(request, user_id):
                 except TypeError:
                     explain_count = 0
                 s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
-                context = {'ck': ck, 'profile': profile,
-                               'owner': MhUser.objects.get(pk=user_id).username,
-                               'explains': explains, 'explain_count': explain_count,
-                               'type': 'heartbeat', 's_data': s_data}
+                data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                context = {'ck': ck, 'profile': profile, 'form': dateform,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count,
+                           'type': 'heartbeat', 's_data': s_data, 'data': data}
+                return render(request, 'mhuser/heartbeat.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
         # 当前用户是普通用户
@@ -137,11 +134,35 @@ def heartbeat(request, user_id):
             except TypeError:
                 explain_count = 0
             s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(user=request.user)))
-            context = {'ck': ck, 'profile': profile,
-                           'owner': MhUser.objects.get(pk=user_id).username,
-                           'explains': explains, 'explain_count': explain_count,
-                           'type': 'heartbeat', 's_data': s_data}
+            data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+            context = {'ck': ck, 'profile': profile, 'form': dateform,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count': explain_count,
+                       'type': 'heartbeat', 's_data': s_data, 'data': data}
             return render(request, 'mhuser/heartbeat.html', context)
+        else:
+            return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+    elif request.method == 'POST':  # 发出按时间查询请求
+        dateform = DateForm(request.POST)
+        profile = get_profile(request.user)
+        explains = getexplainlist(request, user_id, 'heartbeat')
+        try:
+            explain_count = len(explains)
+        except TypeError:
+            explain_count = 0
+        if dateform.is_valid():
+            s_data = HeartData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+            data = HeartData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+        dateform = DateForm()
+        context = {'ck': ck, 'profile': profile, 'form': dateform,
+                   'owner': MhUser.objects.get(pk=user_id).username,
+                   'explains': explains, 'explain_count': explain_count,
+                   'type': 'heartbeat', 's_data': s_data, 'data': data}
+        return render(request, 'mhuser/test.html', context)
 
 
 @login_required
@@ -176,8 +197,9 @@ def myclient(request):
 
 @login_required
 def oxygen(request, user_id):
+    ck = CKEditorForm()
+    dateform = DateForm(request.POST)
     if request.method == "GET":
-        ck = CKEditorForm()
         # 当前用户是医生
         if request.user.usertype == 'doctor':
             # 获取用户信息
@@ -189,11 +211,12 @@ def oxygen(request, user_id):
                     explain_count = len(explains)
                 except TypeError:
                     explain_count = 0
-                hr_data, spo2 = oxygen_data(OxygenData.objectsfilter(own=NormalUser.objects.get(pk=user_id)))
-                context = {'ck': ck, 'profile': profile,
-                               'owner': MhUser.objects.get(pk=user_id).username,
-                               'explains': explains, 'explain_count': explain_count,
-                               'type': 'oxygen', 'hr_data':hr_data, 'spo2':spo2}
+                hr_data, spo2 = oxygen_data(OxygenData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
+                data = OxygenData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                context = {'ck': ck, 'profile': profile, 'form': dateform,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count,
+                           'type': 'oxygen', 'hr_data': hr_data, 'spo2': spo2, 'data': data}
                 return render(request, 'mhuser/oxygen.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
@@ -207,17 +230,42 @@ def oxygen(request, user_id):
             except TypeError:
                 explain_count = 0
             hr_data, spo2 = oxygen_data(OxygenData.objects.filter(own=NormalUser.objects.get(user=request.user)))
-            context = {'ck': ck, 'profile': profile,
-                           'owner': MhUser.objects.get(pk=user_id).username,
-                           'explains': explains, 'explain_count': explain_count,
-                           'type': 'oxygen', 'hr_data':hr_data, 'spo2':spo2}
+            data = OxygenData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+            context = {'ck': ck, 'profile': profile, 'form': dateform,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count': explain_count,
+                       'type': 'oxygen', 'hr_data': hr_data, 'spo2': spo2, 'data': data}
             return render(request, 'mhuser/oxygen.html', context)
+        else:
+            return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+    elif request.method == 'POST':
+        dateform = DateForm(request.POST)
+        profile = get_profile(request.user)
+        explains = getexplainlist(request, user_id, 'oxygen')
+        try:
+            explain_count = len(explains)
+        except TypeError:
+            explain_count = 0
+        if dateform.is_valid():
+            hr_data, spo2 = oxygen_data(OxygenData.objects.filter(
+                own=NormalUser.objects.get(user=request.user),
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date'])))
+            data = OxygenData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+        dateform = DateForm()
+        context = {'ck': ck, 'profile': profile, 'form': dateform,
+                   'owner': MhUser.objects.get(pk=user_id).username,
+                   'explains': explains, 'explain_count': explain_count,
+                   'type': 'heartbeat', 'hr_data': hr_data, 'spo2': spo2, 'data': data}
+        return render(request, 'mhuser/test.html', context)
 
 
 @login_required
 def tem(request, user_id):
+    ck = CKEditorForm()
+    dateform = DateForm(request.POST)
     if request.method == "GET":
-        ck = CKEditorForm()
         # 当前用户是医生
         if request.user.usertype == 'doctor':
             # 获取用户信息
@@ -230,11 +278,12 @@ def tem(request, user_id):
                     explain_count = len(explains)
                 except TypeError:
                     explain_count = 0
-                data = tem_data(TemData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
-                context = {'ck': ck, 'profile': profile,
-                               'owner': MhUser.objects.get(pk=user_id).username,
-                               'explains': explains, 'explain_count': explain_count,
-                               'type': 'tem', 'data': data}
+                tm_data = tem_data(TemData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
+                data = TemData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                context = {'ck': ck, 'profile': profile,'form': dateform,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count,
+                           'type': 'tem', 'data': data, 'tm_data':tm_data}
                 return render(request, 'mhuser/tem.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
@@ -248,19 +297,44 @@ def tem(request, user_id):
                 explain_count = len(explains)
             except TypeError:
                 explain_count = 0
-            data = tem_data(TemData.objects.filter(own=NormalUser.objects.get(user=request.user)))
-            context = {'ck': ck, 'profile': profile,
+            tm_data = tem_data(TemData.objects.filter(own=NormalUser.objects.get(user=request.user)))
+            data = TemData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+            context = {'ck': ck, 'profile': profile,'form': dateform,
                        'owner': MhUser.objects.get(pk=user_id).username,
                        'explains': explains, 'explain_count': explain_count,
-                       'type': 'tem', 'data': data}
+                       'type': 'tem', 'data': data, 'tm_data':tm_data}
             return render(request, 'mhuser/tem.html', context)
+    elif request.method == 'POST':
+        dateform = DateForm(request.POST)
+        profile = get_profile(request.user)
+        explains = getexplainlist(request, user_id, 'oxygen')
+        try:
+            explain_count = len(explains)
+        except TypeError:
+            explain_count = 0
+        if dateform.is_valid():
+            tm_data = tem_data(TemData.objects.filter(own=NormalUser.objects.get(user=request.user),
+                                                   time__range=(dateform.cleaned_data['start_date'],
+                                                                dateform.cleaned_data['end_date']),))
+            data = TemData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+        dateform = DateForm()
+        context = {'ck': ck, 'profile': profile, 'form': dateform,
+                   'owner': MhUser.objects.get(pk=user_id).username,
+                   'explains': explains, 'explain_count': explain_count,
+                   'type': 'heartbeat', 'data': data, 'tem_data': tm_data}
+        return render(request, 'mhuser/test.html', context)
+
 
 
 @login_required
 def pressure(request, user_id):
+    dateform = DateForm(request.POST)
+    ck = CKEditorForm()
     normal_user = NormalUser.objects.get(pk=user_id)
     if request.method == "GET":
-        ck = CKEditorForm()
+
         # 当前用户是医生
         if request.user.usertype == 'doctor':
             # 获取用户信息
@@ -273,11 +347,13 @@ def pressure(request, user_id):
                     explain_count = len(explains)
                 except TypeError:
                     explain_count = 0
+                data = PressureData.objects.filter(own=NormalUser.objects.get(pk=user_id))
                 bpss_data, bpsz_data = pres_data(PressureData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
-                context = {'ck': ck, 'profile': profile,
+                context = {'ck': ck, 'profile': profile,'form':dateform,
                            'owner': MhUser.objects.get(pk=user_id).username,
                            'explains': explains, 'explain_count': explain_count,
-                           'type': 'pressure', 'bpss_data': bpss_data, 'bpsz_data':bpsz_data}
+                           'type': 'pressure', 'bpss_data': bpss_data,
+                           'bpsz_data': bpsz_data, 'data':data}
                 return render(request, 'mhuser/pressure.html', context)
             else:  # 无权限查看
                 return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
@@ -291,12 +367,37 @@ def pressure(request, user_id):
                 explain_count = len(explains)
             except TypeError:
                 explain_count = 0
+            data = PressureData.objects.filter(own=NormalUser.objects.get(pk=user_id))
             bpss_data, bpsz_data = pres_data(PressureData.objects.filter(own=NormalUser.objects.get(user=request.user)))
-            context = {'ck': ck, 'profile': profile,
+            context = {'ck': ck, 'profile': profile,'form':dateform,
                        'owner': MhUser.objects.get(pk=user_id).username,
                        'explains': explains, 'explain_count': explain_count,
-                       'type': 'pressure', 'bpss_data': bpss_data, 'bpsz_data': bpsz_data}
+                       'type': 'pressure', 'bpss_data': bpss_data,
+                       'bpsz_data': bpsz_data, 'data':data}
             return render(request, 'mhuser/pressure.html', context)
+        else:
+            return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+    elif request.method == 'POST':
+        dateform = DateForm(request.POST)
+        profile = get_profile(request.user)
+        explains = getexplainlist(request, user_id, 'oxygen')
+        try:
+            explain_count = len(explains)
+        except TypeError:
+            explain_count = 0
+        if dateform.is_valid():
+            bpss_data, bpsz_data = pres_data(PressureData.objects.filter(
+                own=NormalUser.objects.get(pk=user_id),
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date'])))
+            data = PressureData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+        dateform = DateForm()
+        context = {'ck': ck, 'profile': profile, 'form': dateform,
+                   'owner': MhUser.objects.get(pk=user_id).username,
+                   'explains': explains, 'explain_count': explain_count,
+                   'type': 'heartbeat', 'hr_data': bpss_data, 'bpsz_data': bpsz_data, 'data': data}
+        return render(request, 'mhuser/test.html', context)
 
 
 def ajax_pressure(request):
@@ -316,5 +417,23 @@ def ajax_tem(request):
         d.append(',')
     return HttpResponse(d)
 
-def test(request):
-    return render(request, 'mhuser/test.html')
+
+def test(request, user_id):
+    s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
+    data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+    if request.method == "GET":
+        dateform = DateForm()
+        context = {'form': dateform, 's_data': s_data, 'data': data}
+        return render(request, 'mhuser/test.html', context)
+    else:
+        dateform = DateForm(request.POST)
+        if dateform.is_valid():
+            s_data = HeartData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+            data = HeartData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+        dateform = DateForm()
+        context = {'form': dateform, 's_data': s_data, 'data': data}
+        return render(request, 'mhuser/test.html', context)

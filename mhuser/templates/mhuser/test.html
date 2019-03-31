@@ -2,240 +2,45 @@
 {% load static %}
 {% block title %}测试页{% endblock %}
 {% block body %}
+    <div class="row　card">
+        <div class="col-md-8 col-lg-8　card-body">
+            <div class="mt-10">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.start_date }}～{{ form.end_date }}
+                    <input class="genric-btn primary small" type="submit" value="查询">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div><p></p></div>
     <div>
         <div class="card">
-            {#            <div class="card-header">#}
-            {#                <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自定义标签</font></font>#}
-            {#                </h4>#}
-            {#            </div>#}
             <div class="card-body">
                 <div class="custom-tab">
-
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="custom-nav-home-tab" data-toggle="tab"
-                               href="#custom-nav-home" role="tab" aria-controls="custom-nav-home"
+                               href="#chart" role="tab" aria-controls="custom-nav-home"
                                aria-selected="true"><font style="vertical-align: inherit;"><font
                                     style="vertical-align: inherit;">图表</font></font></a>
                             <a class="nav-item nav-link" id="custom-nav-profile-tab" data-toggle="tab"
-                               href="#custom-nav-profile" role="tab" aria-controls="custom-nav-profile"
+                               href="#table" role="tab" aria-controls="table"
                                aria-selected="false"><font style="vertical-align: inherit;"><font
                                     style="vertical-align: inherit;">数据</font></font></a>
                             <a class="nav-item nav-link" id="custom-nav-contact-tab" data-toggle="tab"
-                               href="#custom-nav-contact" role="tab" aria-controls="custom-nav-contact"
+                               href="javascript:funDownload({{ data }}, 1)" role="tab" aria-controls="custom-nav-contact"
                                aria-selected="false"><font style="vertical-align: inherit;"><font
                                     style="vertical-align: inherit;">下载</font></font></a>
                         </div>
                     </nav>
                     <div class="tab-content pl-3 pt-2" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="custom-nav-home" role="tabpanel"
+                        <div class="tab-pane fade show active" id="chart" role="tabpanel"
                              aria-labelledby="custom-nav-home-tab">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">年销售额</font></font></h3>
-                                            <canvas id="sales-chart" height="254" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 254px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">团队提交</font></font></h3>
-                                            <canvas id="team-chart" height="254" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 254px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">条形图</font></font></h3>
-                                            <canvas id="barChart" height="338" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 338px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">Rader图表</font></font></h3>
-                                            <canvas id="radarChart" height="338" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 338px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">折线图</font></font></h3>
-                                            <canvas id="lineChart" height="254" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 254px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">Doughut图表</font></font></h3>
-                                            <canvas id="doughutChart" height="254" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 254px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">饼形图</font></font></h3>
-                                            <canvas id="pieChart" height="338" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 338px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">极地图</font></font></h3>
-                                            <canvas id="polarChart" height="338" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 338px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="au-card m-b-30">
-                                        <div class="au-card-inner">
-                                            <div class="chartjs-size-monitor"
-                                                 style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-                                                <div class="chartjs-size-monitor-expand"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-                                                </div>
-                                                <div class="chartjs-size-monitor-shrink"
-                                                     style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-                                                    <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-                                                </div>
-                                            </div>
-                                            <h3 class="title-2 m-b-40"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">单条形图</font></font></h3>
-                                            <canvas id="singelBarChart" height="254" width="508"
-                                                    class="chartjs-render-monitor"
-                                                    style="display: block; width: 508px; height: 254px;"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
                         </div>
 
 
-                        <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel"
+                        <div class="tab-pane fade" id="table" role="tabpanel"
                              aria-labelledby="custom-nav-profile-tab">
                             <div class="col-lg-9">
                                 <div class="table-responsive table--no-card m-b-30">
@@ -243,152 +48,182 @@
                                         <thead>
                                         <tr>
                                             <th><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">日期</font></font></th>
+                                                    style="vertical-align: inherit;">时间</font></font></th>
                                             <th><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">订单ID</font></font></th>
+                                                    style="vertical-align: inherit;">心跳</font></font></th>
                                             <th><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">名称</font></font></th>
+                                                    style="vertical-align: inherit;">心跳间隔</font></font></th>
                                             <th class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">价钱</font></font></th>
+                                                    style="vertical-align: inherit;">信号强度</font></font></th>
                                             <th class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">数量</font></font></th>
-                                            <th class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">总</font></font></th>
+                                                    style="vertical-align: inherit;">设备号</font></font></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-29 05:57</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100398</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">iPhone X 64Gb灰色</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 999.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">1</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 999.00</font></font></td>
-                                        </tr>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-28 01:22</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100397</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">三星S8黑色</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 756.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">1</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 756.00</font></font></td>
-                                        </tr>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-27 02:12</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100396</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">游戏机控制器</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 22.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 44.00</font></font></td>
-                                        </tr>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-26 23:06</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100395</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">iPhone X 256Gb黑色</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 1199.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">1</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 1199.00</font></font></td>
-                                        </tr>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-25 19:03</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100393</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">USB 3.0电缆</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 10.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">3</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 30.00</font></font></td>
-                                        </tr>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-29 05:57</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100392</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">Smartwatch 4.0 LTE
-                                                Wifi</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 199.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">6</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 1494.00</font></font></td>
-                                        </tr>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-24 19:10</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100391</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">相机C430W 4k</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 699.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">1</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 699.00</font></font></td>
-                                        </tr>
-                                        <tr>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">2018-09-22 00:43</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">100393</font></font></td>
-                                            <td><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">USB 3.0电缆</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 10.00</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">3</font></font></td>
-                                            <td class="text-right"><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">$ 30.00</font></font></td>
-                                        </tr>
+                                        {% for d in data %}
+                                            <tr>
+                                                <td><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.time }}</font></font></td>
+                                                <td><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.b_value }}</font></font>
+                                                </td>
+                                                <td><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.q_value }}</font></font>
+                                                </td>
+                                                <td class="text-right"><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.s_value }}</font></font>
+                                                </td>
+                                                <td class="text-right"><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.diviceid }}</font></font>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        {#                        <div class="tab-pane fade" id="custom-nav-contact" role="tabpanel"#}
-                        {#                             aria-labelledby="custom-nav-contact-tab">#}
-                        {#                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown#}
-                        {#                                aliqua, retro synth#}
-                        {#                                master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.#}
-                        {#                                Reprehenderit butcher retro keffiyeh#}
-                        {#                                dreamcatcher synth. Cosby sweater eu banh mi, irure terry richardson ex sd. Alip placeat#}
-                        {#                                salvia cillum iphone.#}
-                        {#                                Seitan alip s cardigan american apparel, butcher voluptate nisi .</p>#}
-                        {#                        </div>#}
+
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            var data;
+            var chart = {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in IE < IE 10.
+                marginRight: 10,
+                events: {
+                    load: function () {
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var xmlHttp = new XMLHttpRequest();
+                            xmlHttp.onreadystatechange = function () {
+                                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                                    var div = document.getElementById("div1");
+                                    data = xmlHttp.responseText;
+                                    div.innerText = xmlHttp.responseText;
+                                    div.textContent = xmlHttp.responseText;
+                                    var x = (new Date()).getTime(), // current time
+                                        y = Number(data);
+                                    var d = data.split(",");
+                                    a = Number(d[0]);
+                                    b = Number(d[1]);
+                                    c = Number(d[2]);
+                                    series.addPoint([x, a], true, true);
+                                }
+                            };
+                            xmlHttp.open("GET", "ajax_post", true);
+                            xmlHttp.send(null);
+                        }, 1000);
+                    }
+                }
+            };
+            var title = {
+                text: '{{ owner }}的心率图'
+            };
+            var xAxis = {
+                type: 'datetime',
+                tickPixelInterval: null
+            };
+            var yAxis = {
+                title: {
+                    text: 'Value'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            };
+            var tooltip = {
+                /*formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y, 2);
+                }*/
+                shared: true,
+                crosshairs: true
+            };
+            var plotOptions = {
+                series: {
+                    animation: true
+                },
+                area: {
+                    pointStart: 1940,
+                    marker: {
+                        enabled: false,
+                        symbol: 'circle',
+                        radius: 2,
+                        states: {
+                            hover: {
+                                enabled: true
+                            }
+                        }
+                    }
+                }
+            };
+            var legend = {
+                enabled: false
+            };
+            var exporting = {
+                enabled: false
+            };
+            var series = [{
+                name: 'Random data',
+                data: (function () {
+                    // generate an array of random data
+                    /*var data = [], time = (new Date()).getTime(), i;
+                    for (i = -100; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 1000,
+                            y: Math.random()
+                        });
+                    }*/
+                    var data =
+                    {{ s_data | safe }}
+                    return data;
+                }())
+            }];
+            var json = {};
+            json.chart = chart;
+            json.title = title;
+            json.tooltip = tooltip;
+            json.xAxis = xAxis;
+            json.yAxis = yAxis;
+            json.legend = legend;
+            json.exporting = exporting;
+            json.series = series;
+            json.plotOptions = plotOptions;
+            Highcharts.setOptions({
+                global: {
+                    useUTC: false
+                }
+            });
+            $('#chart').highcharts(json);
+        });
+    </script>
+    <script>
+        var funDownload = function (content, filename) {
+            // 创建隐藏的可下载链接
+            var eleLink = document.createElement('a');
+            eleLink.download = filename;
+            eleLink.style.display = 'none';
+            // 字符内容转变成blob地址
+            var blob = new Blob([content]);
+            eleLink.href = URL.createObjectURL(blob);
+            // 触发点击
+            document.body.appendChild(eleLink);
+            eleLink.click();
+            // 然后移除
+            document.body.removeChild(eleLink);
+        };
+    </script>
 {% endblock %}

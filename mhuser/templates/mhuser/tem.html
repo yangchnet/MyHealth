@@ -5,8 +5,88 @@
 
 
 {% block body %}
+    <div class="row　card">
+        <div class="col-md-8 col-lg-8　card-body">
+            <div class="mt-10">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.start_date }}～{{ form.end_date }}
+                    <input class="genric-btn primary small" type="submit" value="查询">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div><p></p></div>
+    <div>
+        <div class="card">
+            <div class="card-body">
+                <div class="custom-tab">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="custom-nav-home-tab" data-toggle="tab"
+                               href="#chart" role="tab" aria-controls="custom-nav-home"
+                               aria-selected="true"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">图表</font></font></a>
+                            <a class="nav-item nav-link" id="custom-nav-profile-tab" data-toggle="tab"
+                               href="#table" role="tab" aria-controls="table"
+                               aria-selected="false"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">数据</font></font></a>
+                            <a class="nav-item nav-link" id="custom-nav-contact-tab" data-toggle="tab"
+                               href="javascript:funDownload({{ data }}, 1)" role="tab" aria-controls="custom-nav-contact"
+                               aria-selected="false"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">下载</font></font></a>
+                        </div>
+                    </nav>
+                    <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="chart" role="tabpanel"
+                             aria-labelledby="custom-nav-home-tab">
+                            <div id="container1" style="width: 550px; height: 400px; margin: 0 auto"></div>
+                        </div>
 
-   <div id="container1" style="width: 550px; height: 400px; margin: 0 auto"></div>
+
+                        <div class="tab-pane fade" id="table" role="tabpanel"
+                             aria-labelledby="custom-nav-profile-tab">
+                            <div class="col-lg-9">
+                                <div class="table-responsive table--no-card m-b-30">
+                                    <table class="table table-borderless table-striped table-earning">
+                                        <thead>
+                                        <tr>
+                                            <th><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">时间</font></font></th>
+                                            <th><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">体温</font></font></th>
+                                            <th class="text-right"><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">设备号</font></font></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for d in data %}
+                                            <tr>
+                                                <td><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.time }}</font></font></td>
+                                                <td><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.tem_value }}</font></font>
+                                                </td>
+                                                <td class="text-right"><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">{{ d.diviceid }}</font></font>
+                                                </td>
+
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     {% include 'explain/explain.html' with owner=owner type=type explains=explains explain_count=explain_count%}
 {#    {% include 'comment/blog_comment.html' with comments=comments comments_count=comments_count  blog_id=blog_id %}#}
 <script>
@@ -98,7 +178,7 @@
             data: (function () {
                 // generate an array of random data
                 var data = [], time = (new Date()).getTime(), i;
-                data = {{ data | safe }};
+                data = {{ tm_data | safe }};
                 /*for (i = -100; i <= 0; i += 1) {
                     data.push({
                         x: time + i * 1000,
