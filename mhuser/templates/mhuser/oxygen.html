@@ -145,9 +145,8 @@
                 text: '{{ owner }}的血氧数据图'
             };
             var xAxis = {
-                type: 'datetime',
-                tickPixelInterval: null
-            };
+            categories: {{ hr_data | safe }}
+        }
             var yAxis = {
                 title: {
                     text: 'Value'
@@ -263,9 +262,8 @@
                 text: '{{ owner }}的血氧数据图'
             };
             var xAxis = {
-                type: 'datetime',
-                tickPixelInterval: null
-            };
+            categories: {{ spo2 | safe }}
+        }
             var yAxis = {
                 title: {
                     text: 'Value'

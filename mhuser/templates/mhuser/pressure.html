@@ -134,8 +134,7 @@
                 text: '{{ owner }}收缩压'
             };
             var xAxis = {
-                type: 'datetime',
-                tickPixelInterval: null
+            categories: {{ bpsz_data | safe }}
             };
             var yAxis = {
                 title: {
@@ -246,9 +245,8 @@
                 text: '{{ owner }}舒张压'
             };
             var xAxis = {
-                type: 'datetime',
-                tickPixelInterval: null
-            };
+            categories: {{ bpss_data | safe }}
+        };
             var yAxis = {
                 title: {
                     text: 'Value'
@@ -304,7 +302,7 @@
                     // generate an array of random data
                     //var data = [], time = (new Date()).getTime(), i;
                     var data =
-                    {{ bpsz_data | safe }}
+                    {{ bpss_data | safe }}
                     /*var data = [], i;
                     for(i = 0; i < r_data.length; i+=1){
                         data.push({

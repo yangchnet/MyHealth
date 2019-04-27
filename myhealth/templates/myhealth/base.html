@@ -103,7 +103,7 @@
                                     {% endif %}
                                     <ul>
                                         <li><a href="">{{ user.username }}</a></li>
-                                        <li><a href="{% url 'mhuser:profile' %}">个人资料</a></li>
+{#                                        <li><a href="{% url 'mhuser:profile' %}">个人资料</a></li>#}
                                         <li><a href="{% url 'blog:blogwrite' %}">写博客</a></li>
                                         <div role="none" class="dropdown-divider"></div>
                                         <li><a href="{% url 'mhuser:heartbeat' user.id %}">我的心率</a></li>
@@ -196,21 +196,21 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-xl-3 offset-xl-1 col-lg-3">
-                    <div class="single-widge-home">
-                        <h3 class="mb-4">活跃用户</h3>
-                        <div class="feed">
-                            <img src="{% static "myhealth/assets/images/feed1.jpg" %}" alt="feed">
-                            <img src="{% static "myhealth/assets/images/feed2.jpg" %}" alt="feed">
-                            <img src="{% static "myhealth/assets/images/feed3.jpg" %}" alt="feed">
-                            <img src="{% static "myhealth/assets/images/feed4.jpg" %}" alt="feed">
-                            <img src="{% static "myhealth/assets/images/feed5.jpg" %}" alt="feed">
-                            <img src="{% static "myhealth/assets/images/feed6.jpg" %}" alt="feed">
-                            <img src="{% static "myhealth/assets/images/feed7.jpg" %}" alt="feed">
-                            <img src="{% static "myhealth/assets/images/feed8.jpg" %}" alt="feed">
-                        </div>
-                    </div>
-                </div>
+{#                <div class="col-xl-3 offset-xl-1 col-lg-3">#}
+{#                    <div class="single-widge-home">#}
+{#                        <h3 class="mb-4">活跃用户</h3>#}
+{#                        <div class="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed1.jpg" %}" alt="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed2.jpg" %}" alt="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed3.jpg" %}" alt="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed4.jpg" %}" alt="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed5.jpg" %}" alt="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed6.jpg" %}" alt="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed7.jpg" %}" alt="feed">#}
+{#                            <img src="{% static "myhealth/assets/images/feed8.jpg" %}" alt="feed">#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
             </div>
         </div>
     </div>

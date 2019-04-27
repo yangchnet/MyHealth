@@ -25,7 +25,8 @@ SECRET_KEY = '$7z$c8%vpoi+9^6hdcq60w3brp14=z!eiig&1fq7s6p9$mnmxz'
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ["59.110.140.133", "www.zeroyl.com"]
+
 
 # Application definition
 

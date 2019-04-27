@@ -127,8 +127,7 @@
             text: '{{ owner }}的体温数据图'
         };
         var xAxis = {
-            {#type: 'datetime',#}
-            tickPixelInterval: null
+            categories: {{ tm_data | safe }}
         };
         var yAxis = {
             title: {

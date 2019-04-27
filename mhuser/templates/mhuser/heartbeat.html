@@ -95,7 +95,7 @@
             </div>
         </div>
     </div>
-   <div id="container1" style="width: 550px; height: 400px; margin: 0 auto"></div>
+{#   <div id="container1" style="width: 550px; height: 400px; margin: 0 auto"></div>#}
     {% include 'explain/explain.html' with type=type owner=owner explains=explains explain_count=explain_count%}
 {#    {% include 'comment/blog_comment.html' with comments=comments comments_count=comments_count  blog_id=blog_id %}#}
 <script>
@@ -133,12 +133,15 @@
             }
         };
         var title = {
-            text: '{{ owner }}的心率图'
+            text: '{{ owner }}的心电图'
         };
         var xAxis = {
             type: 'datetime',
             tickPixelInterval: null
         };
+        var xAxis = {
+            categories: {{ s_data | safe }}
+        }
         var yAxis = {
             title: {
                 text: 'Value'
@@ -186,14 +189,8 @@
             name: 'Random data',
             data: (function () {
                 // generate an array of random data
-                /*var data = [], time = (new Date()).getTime(), i;
-                for (i = -100; i <= 0; i += 1) {
-                    data.push({
-                        x: time + i * 1000,
-                        y: Math.random()
-                    });
-                }*/
                 var data = {{ s_data | safe }}
+
                 return data;
             }())
         }];
