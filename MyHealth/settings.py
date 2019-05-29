@@ -25,12 +25,13 @@ SECRET_KEY = '$7z$c8%vpoi+9^6hdcq60w3brp14=z!eiig&1fq7s6p9$mnmxz'
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = ["59.110.140.133", "www.zeroyl.com"]
+ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'chat.apps.ChatConfig',
     'explain.apps.ExplainConfig',
     'device.apps.DeviceConfig',
     'mhuser.apps.MhuserConfig',
@@ -159,3 +160,12 @@ LOGIN_URL = '/mhuser/login'
 
 DJANGO_NOTIFICATIONS_CONFIG = { 'SOFT_DELETE': True}
 DJANGO_NOTIFICATIONS_CONFIG = { 'USE_JSONFIELD': True}
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.qq.com' #SMTP地址
+EMAIL_PORT = 587 #SMTP端口
+EMAIL_HOST_USER = '1048887414@qq.com' # 自己的邮箱名
+EMAIL_HOST_PASSWORD = 'pwutpzeqmhnqbcfh' # 自己的邮箱密码
+EMAIL_SUBJECT_PREFIX = 'Myhealth' # 为邮件Subject-line前缀,默认是'[django]'
+EMAIL_USE_TLS = True # 与SMTP服务器通信时，是否启动TLS链接(安全链接)。默认是false

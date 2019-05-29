@@ -19,4 +19,6 @@ urlpatterns = [
     path('oxygen/<int:user_id>/', views.oxygen, name='oxygen'),
     path('pressure/<int:user_id>/', views.pressure, name='pressure'),
     path('test/<int:user_id>', views.test),
+    path('forgetpassword/', views.forgetpassword, name='forgetpassword'),
+    path('ver_ajax', views.ver_ajax, name='ver_ajax'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

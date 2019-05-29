@@ -7,7 +7,7 @@ import time
 
 # socket setting
 HOST = ''
-POST = 21567
+POST = 8888
 BUFSIZ = 1024
 ADDR = (HOST, POST)
 tcpSerSock = socket(AF_INET, SOCK_STREAM)
@@ -24,7 +24,8 @@ def gettime():
 # insert tem
 tem = '1,ID:10101010,TEMP=35.45'
 def tem_insert(data):
-    print("receive:%s" % data)
+    time = str(gettime())
+    print("time:%s, receive:%s" % (time,data))
     try:
         data = data[2:]
         dl = data.split(',')
@@ -35,9 +36,9 @@ def tem_insert(data):
         # sql = "insert into mhuser_temdata(time, tem_value,own_id, diviceid) values('2019-03-13 07:07:33.3', '23.23', (select id from mhuser_mhuser where deviceid='10101010'), '10101010')"
         cursor.execute(sql)
         db.commit()
-        print(data)
+        print('time:%s, data:%s'%(time, data))
         count = threading.active_count()
-        print('threading: %d' % count)
+        print('time:%s, threading: %d' % (time, count))
     except Exception as e:
         print(e)
         return 0
@@ -45,7 +46,8 @@ def tem_insert(data):
 # insert heart
 heart = '3,ID=30303030,B=234,Q=345,S=456'
 def heart_insert(data):
-    print("receive:%s" % data)
+    time = str(gettime())
+    print("time:%s, receive:%s" % (time, data))
     try:
         data = data[2:]
         dl = data.split(',')
@@ -57,9 +59,9 @@ def heart_insert(data):
         sql = "insert into mhuser_heartdata(time, b_value, q_value, s_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', \'{3}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{4}\')), \'{4}\')".format(time, b_value, q_value, s_value, id)
         cursor.execute(sql)
         db.commit()
-        print(data)
+        print('time:%s, data:%s'%(time, data))
         count = threading.active_count()
-        print('threading: %d' % count)
+        print('time:%s, threading: %d' % (time, count))
     except Exception as e:
         print(e)
         return 0
@@ -67,7 +69,8 @@ def heart_insert(data):
 # insert oxygen
 oxygen = '2,ID:20202020,HR=123,HRvalid=1,SPO2=321,SPO2valid=1'
 def oxygen_insert(data):
-    print("receive:%s" % data)
+    time = str(gettime())
+    print("time:%s, receive:%s" % (time, data))
     try:
         data = data[2:]
         dl = data.split(',')
@@ -81,9 +84,9 @@ def oxygen_insert(data):
             sql = "insert into mhuser_oxygendata(time, hr_value, spo2, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{3}\')), \'{3}\')".format(time, hr_value, spo2, id)
             cursor.execute(sql)
             db.commit()
-            print(data)
+            print('time:%s, data:%s'%(time, data))
             count = threading.active_count()
-            print('threading: %d' % count)
+            print('time:%s, threading: %d' % (time, count))
         else:
             return 0
     except Exception as e:
@@ -93,7 +96,8 @@ def oxygen_insert(data):
 # insert pressure
 pressure = '4,ID:40404040,BPSS=345,BPSZ=577'
 def pressure_insert(data):
-    print("receive:%s"%data)
+    time = str(gettime())
+    print("time:%s, receive:%s"%(time, data))
     try:
         data = data[2:]
         dl = data.split(',')
@@ -104,9 +108,9 @@ def pressure_insert(data):
         sql = "insert into mhuser_pressuredata(time, bpss_value, bpsz_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{3}\')), \'{3}\')".format(time, bpss, bpsz, id)
         cursor.execute(sql)
         db.commit()
-        print(data)
+        print('time:%s, data:%s'%(time, data))
         count = threading.active_count()
-        print('threading: %d' % count)
+        print('time:%s, threading: %d' % (time, count))
     except Exception as e:
         print(e)
         return 0
@@ -127,6 +131,8 @@ class Recv(threading.Thread):
             if not rece_data:
                 break
             if data[0] == '1':
+                send_data = '59.110.140.133'
+                self.tcpCliSock.send(send_data.encode())
                 tem_insert(data)
             elif data[0] == '2':
                 oxygen_insert(data)
@@ -141,14 +147,18 @@ class Recv(threading.Thread):
 
 
 while True:
-    print('waiting for connection...')
+    time = str(gettime())
+    print('time:%s, waiting for connection...'%time)
     count = threading.active_count()
-    print('threading: %d' % count)
+    print('time:%s, threading: %d' % (time,count))
     tcpCliSock, addr = tcpSerSock.accept()
-    print('...connected from:', addr)
+    print('time:%s, ...connected from:%s'%(time, addr))
     # count = threading.current_thread()
     # print(count)
 
     recv = Recv(tcpCliSock)
     recv.start()
 tcpSerSock.close()
+
+
+
