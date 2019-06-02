@@ -6,16 +6,16 @@ import datetime
 import time
 
 # socket setting
-HOST = ''
-POST = 8888
+HOST = '::'
+POST = 30000
 BUFSIZ = 1024
 ADDR = (HOST, POST)
-tcpSerSock = socket(AF_INET, SOCK_STREAM)
+tcpSerSock = socket(AF_INET6, SOCK_STREAM)
 tcpSerSock.bind(ADDR)
 tcpSerSock.listen(50)
 
 # mysql setting
-db = pymysql.connect(host="localhost", user="root", password="Lichang1-", db="django_mysql", port=3306)
+db = pymysql.connect(host="localhost", user="ahnu", password="ahnu2019", db="django_mysql", port=3306)
 cursor = db.cursor()
 
 def gettime():
@@ -24,21 +24,21 @@ def gettime():
 # insert tem
 tem = '1,ID:10101010,TEMP=35.45'
 def tem_insert(data):
-    time = str(gettime())
-    print("time:%s, receive:%s" % (time,data))
+    tm = str(gettime())
+    print("time:%s, receive:%s" % (tm,data))
     try:
         data = data[2:]
         dl = data.split(',')
         id = dl[0].split(':')[1]
         tem = dl[1].split('=')[1]
-        time = gettime()
-        sql = "insert into mhuser_temdata(time, tem_value,own_id, diviceid) values (\'{0}\', \'{1}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{2}\')), \'{2}\')".format(time, tem, id)
+        t = gettime()
+        sql = "insert into mhuser_temdata(time, tem_value,own_id, diviceid) values (\'{0}\', \'{1}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{2}\')), \'{2}\')".format(t, tem, id)
         # sql = "insert into mhuser_temdata(time, tem_value,own_id, diviceid) values('2019-03-13 07:07:33.3', '23.23', (select id from mhuser_mhuser where deviceid='10101010'), '10101010')"
         cursor.execute(sql)
         db.commit()
-        print('time:%s, data:%s'%(time, data))
+        print('time:%s, data:%s'%(t, data))
         count = threading.active_count()
-        print('time:%s, threading: %d' % (time, count))
+        print('time:%s, threading: %d' % (t, count))
     except Exception as e:
         print(e)
         return 0
@@ -46,8 +46,8 @@ def tem_insert(data):
 # insert heart
 heart = '3,ID=30303030,B=234,Q=345,S=456'
 def heart_insert(data):
-    time = str(gettime())
-    print("time:%s, receive:%s" % (time, data))
+    tm = str(gettime())
+    print("time:%s, receive:%s" % (tm, data))
     try:
         data = data[2:]
         dl = data.split(',')
@@ -55,13 +55,13 @@ def heart_insert(data):
         b_value = dl[1].split('=')[1]
         q_value = dl[2].split('=')[1]
         s_value = dl[3].split('=')[1]
-        time = gettime()
-        sql = "insert into mhuser_heartdata(time, b_value, q_value, s_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', \'{3}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{4}\')), \'{4}\')".format(time, b_value, q_value, s_value, id)
+        t = gettime()
+        sql = "insert into mhuser_heartdata(time, b_value, q_value, s_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', \'{3}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{4}\')), \'{4}\')".format(t, b_value, q_value, s_value, id)
         cursor.execute(sql)
         db.commit()
-        print('time:%s, data:%s'%(time, data))
+        print('time:%s, data:%s'%(t, data))
         count = threading.active_count()
-        print('time:%s, threading: %d' % (time, count))
+        print('time:%s, threading: %d' % (t, count))
     except Exception as e:
         print(e)
         return 0
@@ -69,8 +69,8 @@ def heart_insert(data):
 # insert oxygen
 oxygen = '2,ID:20202020,HR=123,HRvalid=1,SPO2=321,SPO2valid=1'
 def oxygen_insert(data):
-    time = str(gettime())
-    print("time:%s, receive:%s" % (time, data))
+    tm = str(gettime())
+    print("time:%s, receive:%s" % (tm, data))
     try:
         data = data[2:]
         dl = data.split(',')
@@ -80,13 +80,13 @@ def oxygen_insert(data):
         spo2 = dl[3].split('=')[1]
         spo2_v = dl[4].split('=')[1]
         if hr_v == '1' and spo2_v == '1':
-            time = gettime()
-            sql = "insert into mhuser_oxygendata(time, hr_value, spo2, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{3}\')), \'{3}\')".format(time, hr_value, spo2, id)
+            t = gettime()
+            sql = "insert into mhuser_oxygendata(time, hr_value, spo2, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{3}\')), \'{3}\')".format(t, hr_value, spo2, id)
             cursor.execute(sql)
             db.commit()
-            print('time:%s, data:%s'%(time, data))
+            print('time:%s, data:%s'%(t, data))
             count = threading.active_count()
-            print('time:%s, threading: %d' % (time, count))
+            print('time:%s, threading: %d' % (t, count))
         else:
             return 0
     except Exception as e:
@@ -96,21 +96,21 @@ def oxygen_insert(data):
 # insert pressure
 pressure = '4,ID:40404040,BPSS=345,BPSZ=577'
 def pressure_insert(data):
-    time = str(gettime())
-    print("time:%s, receive:%s"%(time, data))
+    tm = str(gettime())
+    print("time:%s, receive:%s"%(tm, data))
     try:
         data = data[2:]
         dl = data.split(',')
         id = dl[0].split(':')[1]
         bpss = dl[1].split('=')[1]
         bpsz = dl[2].split('=')[1]
-        time = gettime()
-        sql = "insert into mhuser_pressuredata(time, bpss_value, bpsz_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{3}\')), \'{3}\')".format(time, bpss, bpsz, id)
+        t = gettime()
+        sql = "insert into mhuser_pressuredata(time, bpss_value, bpsz_value, own_id, diviceid) values(\'{0}\', \'{1}\', \'{2}\', (select user_id from mhuser_normaluser where user_id = (select id from mhuser_mhuser where deviceid=\'{3}\')), \'{3}\')".format(t, bpss, bpsz, id)
         cursor.execute(sql)
         db.commit()
-        print('time:%s, data:%s'%(time, data))
+        print('time:%s, data:%s'%(t, data))
         count = threading.active_count()
-        print('time:%s, threading: %d' % (time, count))
+        print('time:%s, threading: %d' % (t, count))
     except Exception as e:
         print(e)
         return 0
@@ -147,18 +147,16 @@ class Recv(threading.Thread):
 
 
 while True:
-    time = str(gettime())
-    print('time:%s, waiting for connection...'%time)
+    t = str(gettime())
+    print('time:%s, waiting for connection...'%t)
     count = threading.active_count()
-    print('time:%s, threading: %d' % (time,count))
+    print('time:%s, threading: %d' % (t,count))
     tcpCliSock, addr = tcpSerSock.accept()
-    print('time:%s, ...connected from:%s'%(time, addr))
+    print('time:%s, ...connected from:%s'%(t, addr))
     # count = threading.current_thread()
     # print(count)
 
     recv = Recv(tcpCliSock)
     recv.start()
 tcpSerSock.close()
-
-
 
