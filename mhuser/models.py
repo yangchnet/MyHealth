@@ -125,3 +125,8 @@ class OxygenData(models.Model):
 
     class Meta:
         ordering = ['-time']
+
+
+class Chgpasswd(models.Model):
+    email = models.EmailField(default='', null=True, blank=True, max_length=50)
+    vertification = models.CharField(default='', null=True, blank=True, max_length=50)

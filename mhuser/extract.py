@@ -48,6 +48,7 @@ def oxygen_data(quertset):
 def heart_data(quertset):
     s_result = []
     for q in quertset.reverse():
+    # for q in quertset:
         s_r = []
         s_r.append(str(q.time))
         s_r.append(q.s_value)

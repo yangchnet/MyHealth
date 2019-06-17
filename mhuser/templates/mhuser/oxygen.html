@@ -201,8 +201,7 @@
                             y: Math.random()
                         });
                     }*/
-                    var data =
-                    {{ hr_data | safe }}
+                    var data ={{ hr_data | safe }}
                     return data;
                 }())
             }];
@@ -262,8 +261,8 @@
                 text: '{{ owner }}的血氧数据图'
             };
             var xAxis = {
-            categories: {{ spo2 | safe }}
-        }
+                categories: {{ spo2 | safe }}
+            };
             var yAxis = {
                 title: {
                     text: 'Value'
@@ -318,8 +317,7 @@
                             y: Math.random()
                         });
                     }*/
-                    var data =
-                    {{ spo2 | safe }}
+                    var data = {{ spo2 | safe }};
                     return data;
                 }())
             }];

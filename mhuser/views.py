@@ -1,6 +1,6 @@
-from .models import MhUser, Match, NormalUser, DoctorUser, HeartData, OxygenData, TemData, PressureData
-from .forms import Register, Login, DateForm
-
+from .models import MhUser, Match, NormalUser, DoctorUser, \
+    HeartData, OxygenData, TemData, PressureData, Chgpasswd
+from .forms import Register, Login, DateForm, FindPasswdForm
 from django.contrib.auth import login
 from django.contrib.auth import logout
 from django.db import IntegrityError
@@ -11,7 +11,9 @@ from notifications.models import Notification
 from explain.views import getexplainlist
 from .extract import tem_data, pres_data, oxygen_data, heart_data
 from .profile import get_profile
-
+from django.core.mail import send_mail
+import random
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -53,11 +55,20 @@ def user_login(request):
     if request.method == 'POST':
         user = Login(request.POST)
         if user.is_valid():
+            try:
+                MhUser.objects.get(username=user.cleaned_data['user_name'])
+            except MhUser.DoesNotExist:
+                context = {'username_ph': '用户名不存在'}
+                return render(request, 'mhuser/login.html', context)
+
             curr_user = auth.authenticate(username=user.cleaned_data['user_name'],
-                                          password=user.cleaned_data['user_password'])
+                                              password=user.cleaned_data['user_password'])
             if curr_user is not None:
                 login(request, curr_user)
                 return HttpResponseRedirect('/myhealth')
+            else:
+                context = {'password_ph': '密码错误'}
+                return render(request, 'mhuser/login.html', context)
     return HttpResponseRedirect('/myhealth')
 
 
@@ -99,6 +110,7 @@ def is_perm(doctor, user, charged):
         return 0
 
 
+<<<<<<< HEAD
 @login_required
 def heartbeat(request, user_id):
     ck = CKEditorForm()
@@ -164,6 +176,9 @@ def heartbeat(request, user_id):
                    'explains': explains, 'explain_count': explain_count,
                    'type': 'heartbeat', 's_data': s_data, 'data': data}
         return render(request, 'mhuser/test.html', context)
+=======
+
+>>>>>>> 250b2dc22eecd4b216e9c8738ac8aaeeb8d10258
 
 
 @login_required
@@ -261,6 +276,72 @@ def oxygen(request, user_id):
                    'type': 'heartbeat', 'hr_data': hr_data, 'spo2': spo2, 'data': data}
         return render(request, 'mhuser/test.html', context)
 
+@login_required
+def heartbeat(request, user_id):
+    ck = CKEditorForm()
+    dateform = DateForm(request.POST)
+    if request.method == "GET":
+        # 当前用户是医生
+        if request.user.usertype == 'doctor':
+            # 获取用户信息
+            profile = get_profile(request.user)
+            # 检查是否有权限查看
+            if is_perm(DoctorUser.objects.get(user=request.user), NormalUser.objects.get(pk=user_id), 'heartbeat'):
+                explains = getexplainlist(request, user_id, 'heartbeat')
+                try:
+                    explain_count = len(explains)
+                except TypeError:
+                    explain_count = 0
+                s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id)))
+                data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+                context = {'ck': ck, 'profile': profile, 'form': dateform,
+                           'owner': MhUser.objects.get(pk=user_id).username,
+                           'explains': explains, 'explain_count': explain_count,
+                           'type': 'heartbeat', 's_data': s_data, 'data': data}
+                return render(request, 'mhuser/heartbeat.html', context)
+            else:  # 无权限查看
+                return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+        # 当前用户是普通用户
+        elif request.user.usertype == 'normal':
+            # 获取用户信息
+            profile = get_profile(request.user)
+            explains = getexplainlist(request, user_id, 'heartbeat')
+            try:
+                explain_count = len(explains)
+            except TypeError:
+                explain_count = 0
+            data_length = len(HeartData.objects.all())
+            s_data = heart_data(HeartData.objects.filter(
+                own=NormalUser.objects.get(user=request.user), id__range=(data_length-500, data_length)))
+            data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
+            context = {'ck': ck, 'profile': profile, 'form': dateform,
+                       'owner': MhUser.objects.get(pk=user_id).username,
+                       'explains': explains, 'explain_count': explain_count,
+                       'type': 'heartbeat', 's_data': s_data, 'data': data}
+            return render(request, 'mhuser/heartbeat.html', context)
+        else:
+            return HttpResponse('请求被拒绝，您可能没有权限访问该数据')
+    elif request.method == 'POST':  # 发出按时间查询请求
+        dateform = DateForm(request.POST)
+        profile = get_profile(request.user)
+        explains = getexplainlist(request, user_id, 'heartbeat')
+        try:
+            explain_count = len(explains)
+        except TypeError:
+            explain_count = 0
+        if dateform.is_valid():
+            s_data = HeartData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+            data = HeartData.objects.filter(
+                time__range=(dateform.cleaned_data['start_date'], dateform.cleaned_data['end_date']),
+                own=NormalUser.objects.get(pk=user_id))
+        dateform = DateForm()
+        context = {'ck': ck, 'profile': profile, 'form': dateform,
+                   'owner': MhUser.objects.get(pk=user_id).username,
+                   'explains': explains, 'explain_count': explain_count,
+                   'type': 'heartbeat', 's_data': s_data, 'data': data}
+        return render(request, 'mhuser/test.html', context)
 
 @login_required
 def tem(request, user_id):
@@ -438,3 +519,50 @@ def test(request, user_id):
         dateform = DateForm()
         context = {'form': dateform, 's_data': s_data, 'data': data}
         return render(request, 'mhuser/test.html', context)
+
+@csrf_exempt
+def ver_ajax(request):
+    vertification = random.randint(10000, 99999)
+    while True:
+        try:
+            Chgpasswd.objects.get(vertification=vertification)
+            vertification = random.randint(10000, 99999)
+        except:
+            break
+        # if Chgpasswd.objects.get(vertification=vertification):
+        #     vertification = random.randint(10000, 99999)
+        # else:
+        #     break
+    if request.is_ajax():
+        # data = request.POST
+        email = request.GET.get('email')
+    Chgpasswd(email=email, vertification=vertification).save()
+    send_mail(
+            'Change Password',
+            '您正在尝试更改MyHealth站点的密码，验证码是{0}，如果非本人操作，请忽略此信息。'.format(vertification),
+            '1048887414@qq.com',
+            ['{0}'.format(email)],
+            fail_silently=False,
+        )
+    response = JsonResponse({"info": "email is successfully send"})
+    return response
+
+
+def forgetpassword(request):
+    if request.method == 'GET':
+        return render(request, 'mhuser/forgetpassword.html')
+    if request.method == 'POST':
+        findpasswdform = FindPasswdForm(request.POST)
+        if findpasswdform.is_valid():
+            vertf_get = findpasswdform.cleaned_data['verification']
+            passwd_get = findpasswdform.cleaned_data['new_passwd']
+            retypepasswd_get = findpasswdform.cleaned_data['retype_passwd']
+            vert = Chgpasswd.objects.get(vertification=int(vertf_get))
+            if vert and passwd_get == retypepasswd_get:
+                email = vert.email
+                user = MhUser.objects.get(email=email)
+                user.set_password(passwd_get)
+                user.save()
+            vert.delete()
+            return HttpResponseRedirect('/mhuser/login')
+    return render(request, 'mhuser/forgetpassword.html')

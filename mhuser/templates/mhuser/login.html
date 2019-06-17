@@ -17,19 +17,21 @@
                     <input type="text" name="user_name" id="user_login"
                            class="form-control form-control-lg input-block"
                            placeholder="username" autofocus>
+                    <label style="color: #ff2200; font-size: 15px;">{{ username_ph }}</label>
 
                 </dl>
                 <dl class="form-group">
                     <dt class="input-label">
                         <div class="switch-wrap d-flex justify-content-between ">
                             <label class="form-label f5" for="user_password">密码</label>
-                            <a href="">忘记密码？</a>
+                            <a href="{% url 'mhuser:forgetpassword' %}">忘记密码？</a>
                         </div>
                     </dt>
                     <dd>
                         <input type="password" name="user_password" id="user_password"
                                class="form-control form-control-lg input-block"
                                placeholder="Create a password">
+                        <label style="color: #ff2200; font-size: 15px;">{{ password_ph }}</label>
                     </dd>
                 </dl>
                 <p class="create-account-callout mt-3" style="color:white">

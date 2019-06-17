@@ -18,8 +18,6 @@ class Login(forms.Form):
     user_password = forms.CharField()
 
 
-
-
 class DateForm(forms.Form):
     start_date = forms.DateTimeField(
         input_formats=['%d/%m/%Y %H:%M'],
@@ -29,3 +27,10 @@ class DateForm(forms.Form):
         input_formats=['%d/%m/%Y %H:%M'],
         widget=XDSoftDateTimePickerInput()
     )
+
+
+class FindPasswdForm(forms.Form):
+    # email = forms.EmailField()
+    verification = forms.CharField()
+    new_passwd = forms.CharField()
+    retype_passwd = forms.CharField()
