@@ -22,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$7z$c8%vpoi+9^6hdcq60w3brp14=z!eiig&1fq7s6p9$mnmxz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+#DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["59.110.140.133", "www.zeroyl.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -86,9 +86,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_mysql',
         'USER': 'root',
-        'PASSWORD': 'Lichang1-',
-        'HOST': '59.110.140.133',    # 主机
-        'PORT': '3306',         # 数据库使用的端口
+        'PASSWORD': 'ahnu2019',
+        'HOST': 'localhost',    # 主机
+        'PORT': '',         # 数据库使用的端口
     }
 }
 

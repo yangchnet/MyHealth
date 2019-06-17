@@ -133,7 +133,8 @@ def heartbeat(request, user_id):
                 explain_count = len(explains)
             except TypeError:
                 explain_count = 0
-            s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(user=request.user)))
+            data_length = len(HeartData.objects.all())
+            s_data = heart_data(HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id), id__range=(data_length-500, data_length)))
             data = HeartData.objects.filter(own=NormalUser.objects.get(pk=user_id))
             context = {'ck': ck, 'profile': profile, 'form': dateform,
                        'owner': MhUser.objects.get(pk=user_id).username,
