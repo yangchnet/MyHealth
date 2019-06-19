@@ -1,0 +1,14 @@
+2409:8930:1202:5a9:b015:ee31:3412:ec32 - - [19/Jun/2019:02:30:06 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:1202:5a9:b015:ee31:3412:ec32 - - [19/Jun/2019:02:30:26 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:1202:5a9:b015:ee31:3412:ec32 - - [19/Jun/2019:03:48:47 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:1202:5a9:b015:ee31:3412:ec32 - - [19/Jun/2019:03:52:02 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:1202:5a9:b015:ee31:3412:ec32 - - [19/Jun/2019:03:52:27 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:1202:5a9:b015:ee31:3412:ec32 - - [19/Jun/2019:03:53:17 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:1202:5a9:b015:ee31:3412:ec32 - - [19/Jun/2019:03:54:07 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:12a6:e1:dd4d:61e0:614a:5fe1 - - [19/Jun/2019:10:07:37 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2409:8930:12a6:e1:dd4d:61e0:614a:5fe1 - - [19/Jun/2019:10:08:05 +0000] "GET /Android_server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 500 1522
+2001:da8:270:2019:0:0:0:ec - - [19/Jun/2019:10:30:43 +0000] "GET /Android_Server/servlet HTTP/1.1" 404 1056
+2001:da8:270:2019:0:0:0:ec - - [19/Jun/2019:10:30:44 +0000] "GET /favicon.ico HTTP/1.1" 404 1034
+2001:da8:270:2019:0:0:0:ec - - [19/Jun/2019:10:30:55 +0000] "GET /Android_Server/servlet/Login HTTP/1.1" 404 1068
+2001:da8:270:2019:0:0:0:ec - - [19/Jun/2019:10:32:54 +0000] "GET /Android_Server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 404 1068
+2001:da8:270:2019:0:0:0:ec - - [19/Jun/2019:10:33:32 +0000] "GET /Android_Server/servlet/Login?name=normal1&password=normal1&userType=0 HTTP/1.1" 404 1068

@@ -110,7 +110,7 @@ def is_perm(doctor, user, charged):
         return 0
 
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 @login_required
 def heartbeat(request, user_id):
     ck = CKEditorForm()
@@ -176,9 +176,9 @@ def heartbeat(request, user_id):
                    'explains': explains, 'explain_count': explain_count,
                    'type': 'heartbeat', 's_data': s_data, 'data': data}
         return render(request, 'mhuser/test.html', context)
-=======
+#=======
 
->>>>>>> 250b2dc22eecd4b216e9c8738ac8aaeeb8d10258
+#>>>>>>> 250b2dc22eecd4b216e9c8738ac8aaeeb8d10258
 
 
 @login_required
